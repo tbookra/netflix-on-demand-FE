@@ -1,5 +1,5 @@
 import React from "react";
-import RegistrationForm from "../../forms/registrationForm";
+import { RegistrationForm } from "../../forms";
 const Registration = () => {
   const handleSubmitForm = (values) => {
     console.log(values);

@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-import { Registration } from "./screens/auth";
+import { Registration, Login } from "./screens/auth";
 
-function App() {
+const App = () => {
+  const [login, setLogin] = useState(true);
   return (
     <div className="App">
-      <Registration />
+      {login ? <Login /> : <Registration />}
+
+      <button title="switch" onClick={() => setLogin(!login)}>
+        Switch
+      </button>
     </div>
   );
-}
+};
 
 export default App;

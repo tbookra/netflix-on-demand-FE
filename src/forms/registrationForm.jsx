@@ -3,14 +3,14 @@ import { Button, Checkbox } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
 import { registrationSchema } from "../validation";
-const LoginForm = (props) => {
+const RegistrationForm = (props) => {
   return (
     <div>
       <Formik
         initialValues={{
           email: "",
           password: "",
-          full_name:"",
+          full_name: "",
           rememberMe: false,
         }}
         validationSchema={registrationSchema}
@@ -67,4 +67,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
