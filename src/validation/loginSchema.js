@@ -7,8 +7,7 @@ const loginSchema = yup.object({
     .string()
     .required(errorMessages("Email"))
     .matches(emailRegExp, errorMessages("Email", "Invalid")),
-  password: yup.string().required(errorMessages("Password")).min(8).max(24),
-  
+  password: yup.string().required(errorMessages("Password")).min(5).max(24),
 });
 
 export default loginSchema;
