@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { RegistrationForm } from "../../forms";
 import { httpRequest } from "../../api";
 const Registration = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmitForm = async (values) => {
     console.log(values);
     try {
-      const data = await httpRequest.post("/auth/register", values);
+      const { data } = await httpRequest.post("/auth/register", values);
+      if (data.error) return setErrorMessage(data.error);
+      if (data.token) localStorage.setItem("token", data.token);
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -15,6 +19,7 @@ const Registration = () => {
     <div>
       <h1>Sign In</h1>
       <RegistrationForm submitForm={handleSubmitForm} />
+      {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
     </div>
   );
 };

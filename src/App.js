@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import axios from "axios";
+import { httpRequest } from "./api";
 import { Registration, Login } from "./screens/auth";
 
 const App = () => {
@@ -8,8 +8,8 @@ const App = () => {
 
   const indexReq = async () => {
     try {
-      const data = axios.get("http://localhost:5000");
-      console.log((await data).config);
+      const data = httpRequest.get("/");
+      console.log(data);
     } catch (err) {
       console.log("catch");
       console.log(err);
