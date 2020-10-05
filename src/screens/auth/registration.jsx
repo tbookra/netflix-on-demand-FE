@@ -1,14 +1,11 @@
 import React from "react";
 import { RegistrationForm } from "../../forms";
-import axios from "axios";
+import { httpRequest } from "../../api";
 const Registration = () => {
   const handleSubmitForm = async (values) => {
     console.log(values);
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/auth/register",
-        values
-      );
+      const data = await httpRequest.post("/auth/register", values);
       console.log(data);
     } catch (err) {
       console.log(err);

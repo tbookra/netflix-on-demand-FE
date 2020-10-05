@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import errorMessages from "./errorMessages";
-// const emailRegExp = /^([a-zA-Z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
 const registrationSchema = yup.object({
   email: yup

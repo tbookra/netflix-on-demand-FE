@@ -1,19 +1,12 @@
 import React from "react";
 import { LoginForm } from "../../forms";
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "http://localhost:5000",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+import { httpRequest } from "../../api";
 
 const Login = () => {
   const handleSubmitForm = async (values) => {
     console.log(values);
     try {
-      const data = await api.post("/auth/login", values);
+      const data = await httpRequest.post("/auth/login", values);
       console.log(data);
     } catch (err) {
       console.log(err);
