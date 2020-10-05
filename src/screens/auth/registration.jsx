@@ -1,12 +1,11 @@
 import React from "react";
-import { LoginForm } from "../../forms";
+import { RegistrationForm } from "../../forms";
 import { httpRequest } from "../../api";
-
-const Login = () => {
+const Registration = () => {
   const handleSubmitForm = async (values) => {
     console.log(values);
     try {
-      const data = await httpRequest.post("/auth/login", values);
+      const data = await httpRequest.post("/auth/register", values);
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -14,10 +13,10 @@ const Login = () => {
   };
   return (
     <div>
-      <h1>Login</h1>
-      <LoginForm submitForm={handleSubmitForm} />
+      <h1>Sign In</h1>
+      <RegistrationForm submitForm={handleSubmitForm} />
     </div>
   );
 };
 
-export default Login;
+export default Registration;
