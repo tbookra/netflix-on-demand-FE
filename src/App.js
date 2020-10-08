@@ -8,7 +8,7 @@ const App = () => {
 
   const indexReq = async () => {
     try {
-      const data = httpRequest.get("/");
+      const data = await httpRequest.get("/");
       console.log(data);
     } catch (err) {
       console.log("catch");

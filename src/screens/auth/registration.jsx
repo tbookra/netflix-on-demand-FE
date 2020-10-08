@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RegistrationForm } from "../../forms";
 import { httpRequest } from "../../api";
+import * as tokenHandler from "../../api/tokenHandler";
 const Registration = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -9,7 +10,7 @@ const Registration = () => {
     try {
       const { data } = await httpRequest.post("/auth/register", values);
       if (data.error) return setErrorMessage(data.error);
-      if (data.token) localStorage.setItem("token", data.token);
+      if (data.token) tokenHandler.setToken(data.token);
       console.log(data);
     } catch (err) {
       console.log(err);
