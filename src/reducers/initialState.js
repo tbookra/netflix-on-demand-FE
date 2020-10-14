@@ -4,6 +4,5 @@ export const initialState = {
     token: null,
      errorMessage:null,
     isFetching: false,
-   
   },
 };

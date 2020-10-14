@@ -14,3 +14,26 @@ const setUserEmail = (email) => {
     payload: email,
   };
 };
+
+const setError = (error) => {
+  return{
+    type:authTypes.FETCH_ERROR,
+    payload:error
+  }
+}
+
+
+// const setTokenAuth = (values) => {
+//   return (dispatch)=>{
+//     dispatch({type:authTypes.FETCH_REQUEST})
+//      const {data} = await httpRequest.post('auth/login', {values})
+//       if(data.token){
+//         dispatch({type:authTypes.FETCH_SUCCESS})
+//         dispatch(setUserToken(data.token))
+//       } 
+//       if(data.error){
+//          dispatch(setError(data.error))
+//         dispatch(setError(data.error))
+//       } 
+//   }
+// }
