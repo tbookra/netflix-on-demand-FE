@@ -1,22 +1,24 @@
-import React, {useEffect} from 'react';
-import {useParams} from 'react-router-dom'
+import React, {useState,useEffect} from 'react';
+import {useParams, Redirect} from 'react-router-dom'
 import {tmdb} from '../../api'
 import * as moviesUrls from '../../config/moviesUrls'
 
 const MovieItem = () =>{
     const {id} = useParams()
+    const [err, setErr] = useState(false)
     useEffect(()=>{
-        ( async() => {
+          ( async() => {
     try{
+         setErr(false)
         const {data} = await tmdb.get(moviesUrls.getMovie(id))
         console.log(data)
     }catch(err){
-        console.log(err)
+        setErr(true)
     }
-})();
-        
+})();  
     },[id])
     return (
+        err? <Redirect to='/*'/>:
         <div>
             <h1>{id}</h1>
         </div>
