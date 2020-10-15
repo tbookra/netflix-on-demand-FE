@@ -1,5 +1,12 @@
-import * as authTypes from "./authTypes";
+import * as authTypes from "./authTypes"; 
 import { httpRequest } from "../api";
+
+const setLogged = (isToken) => {
+  return {
+    type: authTypes.SET_LOGGED,
+    payload: isToken,
+  }
+}
 
 const setUserToken = (token) => {
   return {
@@ -20,7 +27,7 @@ const setError = (error) => {
     type:authTypes.FETCH_ERROR,
     payload:error
   }
-}
+};
 
 
 // const setTokenAuth = (values) => {

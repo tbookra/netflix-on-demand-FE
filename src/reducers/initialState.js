@@ -1,8 +1,9 @@
-export const initialState = {
+export const initialState = { 
   auth: {
     userEmail: null,
     token: null,
-     errorMessage:null,
+    errorMessage:null,
     isFetching: false,
+    logedIn: false,
   },
 };

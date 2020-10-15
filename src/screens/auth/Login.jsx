@@ -21,7 +21,9 @@ const Login = () => {
     try {
       const { data } = await httpRequest.post("/auth/login", values);
       if (data.error) return setErrorMessage(data.error);
-      if (data.token) tokenHandler.setToken(data.token)
+      if (data.token) {
+        tokenHandler.setToken(data.token);
+      }
       console.log(data);
     } catch (err) {
       console.log(err);
