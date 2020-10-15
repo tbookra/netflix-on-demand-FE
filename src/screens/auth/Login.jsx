@@ -35,7 +35,7 @@ const Login = () => {
       
       <div style={{ margin: 20 }}></div>
       <button onClick={indexReq}>Index</button>
-      <div>not a member? click <Link to="/Registration">HERE</Link> to register</div>
+      <div>not a member? click <Link to="/registration">HERE</Link> to register</div>
     </div>
   );
 };
