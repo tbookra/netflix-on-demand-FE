@@ -1,12 +1,18 @@
-import * as authTypes from "../actions/authTypes";
+import * as authTypes from "../actions/authTypes"; 
 import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
+    case authTypes.SET_LOGGED:
+      return {
+        ...state,
+        loggedIn: action.payload, 
+      };
+
     case authTypes.FETCH_REQUEST:
       return {
         ...state,
-        isFetching: true,
+        isFetching: true, 
       };
 
     case authTypes.FETCH_SUCCESS:

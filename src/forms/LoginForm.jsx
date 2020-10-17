@@ -21,6 +21,7 @@ const LoginForm = (props) => {
               name="email"
               type="text"
               label="Email"
+              placeholder="Email@mail.com"
               value={props.values.email}
               handleChange={props.handleChange("email")}
               handleBlur={props.handleBlur("email")}
@@ -28,8 +29,9 @@ const LoginForm = (props) => {
             />
             <Input
               name="password"
-              type="text"
+              type="text" 
               label="Password"
+              placeholder="PASSWORD"
               value={props.values.password}
               handleChange={props.handleChange("password")}
               handleBlur={props.handleBlur("password")}

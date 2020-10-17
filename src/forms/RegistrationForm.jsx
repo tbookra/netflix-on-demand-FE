@@ -22,6 +22,7 @@ const RegistrationForm = (props) => {
               name="email"
               type="text"
               label="Email"
+              placeholder="Email@mail.com"
               value={props.values.email}
               handleChange={props.handleChange("email")}
               handleBlur={props.handleBlur("email")}
@@ -31,6 +32,7 @@ const RegistrationForm = (props) => {
               name="password"
               type="text"
               label="Password"
+              placeholder="PASSWORD"
               value={props.values.password}
               handleChange={props.handleChange("password")}
               handleBlur={props.handleBlur("password")}

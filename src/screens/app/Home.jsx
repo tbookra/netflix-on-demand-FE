@@ -1,24 +1,29 @@
 import React,{useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-
-import * as authTypes from "../../actions/authTypes"; 
-import {setLogged} from '../../actions/authActions';
-import {getToken} from '../../api/tokenHandler';
+// import {  useDispatch } from 'react-redux';
+// import {setLogged} from '../../actions/authActions';
+// import {getToken} from '../../api/tokenHandler';
 
 
 
-const Home = (props) => {
 
-const dispatch = useDispatch();
-const logged = useSelector(state => state.auth.logedIn)
 
-useEffect(()=>{
-const isTokenExsist = getToken() ? true : false;
-console.log('token', isTokenExsist);
-dispatch({type: 'SET_LOGGED', payload: isTokenExsist});
-console.log('after logged', logged);
 
-},[])
+
+
+const Home = () => {
+  // const dispatch = useDispatch();
+  
+
+
+
+// useEffect(()=>{
+//   const isToken = getToken() ? true : false;
+//   dispatch(setLogged(isToken));
+
+
+
+// },[])
+
   return (
     <div>
       <h1>home</h1>
@@ -26,21 +31,6 @@ console.log('after logged', logged);
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
 
-//     logedIn: state.auth.logedIn,
-    
-//   }
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     setLogged: () => dispatch({type: authTypes.SET_LOGGED}),
-     
-//   }
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
 export default Home;
 

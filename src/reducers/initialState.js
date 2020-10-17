@@ -4,6 +4,6 @@ export const initialState = {
     token: null,
     errorMessage:null,
     isFetching: false,
-    logedIn: false,
+    loggedIn: false,
   },
 };

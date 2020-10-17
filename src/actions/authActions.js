@@ -1,7 +1,8 @@
 import * as authTypes from "./authTypes"; 
-import { httpRequest } from "../api";
+// import { httpRequest } from "../api";
 
-const setLogged = (isToken) => {
+export const setLogged = (isToken) => {
+  
   return {
     type: authTypes.SET_LOGGED,
     payload: isToken,
