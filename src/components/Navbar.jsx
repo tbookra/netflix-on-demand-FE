@@ -9,10 +9,10 @@ const Navbar =() =>{
             <NavLink activeClassName="active" className="navs" to="/">
                 HOME
             </NavLink>
-            <NavLink activeClassName="active" className="navs" to="/Item">
+            <NavLink activeClassName="active" className="navs" to="/movieItem">
                 Item
             </NavLink>
-            <NavLink activeClassName="active" className="navs" to="/Login">
+            <NavLink activeClassName="active" className="navs" to="/login">
                 Login
             </NavLink>
 

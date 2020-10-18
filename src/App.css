@@ -5,3 +5,13 @@
 .navs {
   margin-left: 5px;
 }
+
+#moviesRow {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.moviesRowItem {
+  margin: 0.75rem;
+}
