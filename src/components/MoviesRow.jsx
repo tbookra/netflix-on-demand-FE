@@ -1,31 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import {tmdb} from '../api'
-import * as moviesUrl from '../config/moviesUrls'
+import {getMovieImage} from '../config/movies-config'
 import {  Link } from "react-router-dom";
 
 
-const MoviesRow = ({rowUrl, title}) => {
+const MoviesRow = ({rowUrl, rowTitle}) => {
 const [movies, setMovies] = useState([])
 
 useEffect(()=>{
-    
-    const fetchData = async(url) => {
-        const {data:{results}} = await tmdb.get(url)
+    ( async() => {
+    try{
+         const {data:{results}} = await tmdb.get(rowUrl)
         setMovies(results)
+    }catch(err){
+        console(err)
     }
-    fetchData(rowUrl)
+})();  
    
 },[rowUrl])
     return(
         <div>
-            <h3>{title}</h3>
+            <h3>{rowTitle}</h3>
             <div id='moviesRow'>
                 
             {movies.map((movie, index)=>{
                 return(
                     <div key={index} className='moviesRowItem'>
                         <Link to={`/movieItem/${movie.id}`}>
-                                <img src={moviesUrl.getMovieImage(movie.poster_path)} alt="img"/>
+                                <img src={getMovieImage(movie.poster_path)} alt="img"/>
                         </Link>
                         
                     </div>

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {useParams, Redirect} from 'react-router-dom'
 import {tmdb} from '../../api'
-import * as moviesUrls from '../../config/moviesUrls'
+import {getMovie} from '../../config/movies-config'
 
 const MovieItem = () =>{
     const {id} = useParams()
@@ -10,7 +10,7 @@ const MovieItem = () =>{
           ( async() => {
     try{
          setErr(false)
-        const {data} = await tmdb.get(moviesUrls.getMovie(id))
+        const {data} = await tmdb.get(getMovie(id))
         console.log(data)
     }catch(err){
         setErr(true)
