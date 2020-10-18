@@ -23,7 +23,7 @@ const setUserEmail = (email) => {
   };
 };
 
-const setError = (error) => {
+export const setError = (error) => {
   return{
     type:authTypes.FETCH_ERROR,
     payload:error

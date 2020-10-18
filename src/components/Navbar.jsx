@@ -5,8 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {  NavLink } from "react-router-dom";
@@ -53,7 +51,7 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
-        {logged ? <div to="/" >{"Hello " + logged}</div> : ''}
+        {logged ? <div to="/" >{"Hello " + logged.full_name}</div> : ''}
           </Typography>
           <Typography variant="h6" className={classes.title}>
             MY VIDEOS
