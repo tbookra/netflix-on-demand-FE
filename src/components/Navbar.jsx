@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl); 
   const dispatch = useDispatch();
   const logged = useSelector(state => state.auth.loggedIn);
      
