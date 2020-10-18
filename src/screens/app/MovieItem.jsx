@@ -6,6 +6,7 @@ import {getMovie} from '../../config/movies-config'
 const MovieItem = () =>{
     const {id} = useParams()
     const [err, setErr] = useState(false)
+
     useEffect(()=>{
           ( async() => {
     try{
