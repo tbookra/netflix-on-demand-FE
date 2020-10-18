@@ -1,15 +1,17 @@
 import React, {useState,useEffect} from 'react';
 import {useParams, Redirect} from 'react-router-dom'
-import {tmdb} from '../../api'
+import {tmdb, httpRequest} from '../../api'
 import {getMovie} from '../../config/movies-config'
 
 const MovieItem = () =>{
     const {id} = useParams()
     const [err, setErr] = useState(false)
 
-    useEffect(()=>{
-          ( async() => {
+    useEffect(()=>{    
+    ( async() => {
     try{
+        await httpRequest.post(`/movie/addMovie`,{movieId:id})
+        // await httpRequest.get(`/movie/checkIfMovieAccessible/${id}`)
          setErr(false)
         const {data} = await tmdb.get(getMovie(id))
         console.log(data)
