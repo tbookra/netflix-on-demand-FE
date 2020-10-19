@@ -4,27 +4,27 @@ import {tmdb, httpRequest} from '../../api'
 import {getMovie} from '../../config/movies-config'
 
 const MovieItem = () =>{
-    const {id} = useParams()
+    const {movieId} = useParams();
     const [err, setErr] = useState(false)
     const history = useHistory()
     useEffect(()=>{    
     ( async() => {
     try{
-        const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${id}`)
+        const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieId}`)
         console.log('movieData',isMovieAccessible)
-        if(!isMovieAccessible) return history.push('/purchasePage')
+        if(!isMovieAccessible) return history.replace(`/purchasePage/${movieId}`)
          setErr(false)
-        const {data} = await tmdb.get(getMovie(id))
+        const {data} = await tmdb.get(getMovie(movieId))
         console.log(data)
     }catch(err){
         setErr(true)
     }
 })();  
-    },[id, history])
+    },[movieId, history])
     return (
         err? <Redirect to='/*'/>:
         <div>
-            <h1>{id}</h1>
+            <h1>{movieId}</h1>
         </div>
     )
 };

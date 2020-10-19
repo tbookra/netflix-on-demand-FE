@@ -9,12 +9,12 @@ export const routes = [
     
   },
   {
-    path: "/movieItem/:id",
+    path: "/movieItem/:movieId",
     component: MovieItem,
     privateRoute:true
   },
   {
-    path: "/purchasePage",
+    path: "/purchasePage/:movieId",
     component: PurchasePage
   },
   {
