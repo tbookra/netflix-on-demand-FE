@@ -1,18 +1,19 @@
 import React, {useState,useEffect} from 'react';
-import {useParams,useHistory, Redirect} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import {tmdb, httpRequest} from '../../api'
 import {getMovie} from '../../config/movies-config'
 import {Pricing} from '../../components'
 const PurchasePage = () =>{
     const [movie, setMovie] = useState({})
     const {movieId} = useParams();
-
+    const history = useHistory()
     const onAddMovie = async(movie_id) => {
         try{
             const {data:isMovieAdded} = await httpRequest.post('/movie/addMovie', {movieId:movie_id})
             console.log('isMovieAdded',isMovieAdded)
+            history.replace(`/movieItem/${movieId}`)
         }catch(err){
-
+            console.log(err)
         }
     }
     
