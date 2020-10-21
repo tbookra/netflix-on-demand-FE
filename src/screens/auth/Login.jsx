@@ -1,10 +1,8 @@
 import React from "react";
 import { Link, useHistory  } from 'react-router-dom';
 import { LoginForm } from "../../forms";
-// import { httpRequest } from "../../api";
 import {  useSelector, useDispatch } from 'react-redux';
-import { submitFormLogics } from './logics/submitFormLogics';
-
+import { submitFormLogics } from '../../actions/authActions'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,24 +14,9 @@ const Login = () => {
     try{
     await dispatch(submitFormLogics(values,'login'));
     history.push('/');
-     console.log(0)
     } catch (err) {
       console.log(err);
     }
-    
-    //   try {
-    //   const { data } = await httpRequest.post("/auth/login", values);
-    //   if (data.error) return setErrorMessage(data.error);
-    //   if (data.token) {
-    //     tokenHandler.setToken(data.token);
-    //   const {user} = data
-    //     dispatch(setLogged(user));
-    //     history.push("/");
-    //   }
-    //   console.log(data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

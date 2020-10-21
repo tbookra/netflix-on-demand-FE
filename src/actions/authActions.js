@@ -1,5 +1,6 @@
 import * as authTypes from "./authTypes"; 
-// import { httpRequest } from "../api";
+import { httpRequest } from '../api';
+import * as tokenHandler from '../api/tokenHandler';
 
 export const setLogged = (isToken) => {
   
@@ -9,20 +10,6 @@ export const setLogged = (isToken) => {
   }
 }
 
-// const setUserToken = (token) => {
-//   return {
-//     type: authTypes.SET_TOKEN,
-//     payload: token,
-//   };
-// };
-
-// const setUserEmail = (email) => {
-//   return {
-//     type: authTypes.SET_EMAIL,
-//     payload: email,
-//   };
-// };
-
 export const setError = (error) => {
   return{
     type:authTypes.FETCH_ERROR,
@@ -30,18 +17,18 @@ export const setError = (error) => {
   }
 };
 
-
-// const setTokenAuth = (values) => {
-//   return (dispatch)=>{
-//     dispatch({type:authTypes.FETCH_REQUEST})
-//      const {data} = await httpRequest.post('auth/login', {values})
-//       if(data.token){
-//         dispatch({type:authTypes.FETCH_SUCCESS})
-//         dispatch(setUserToken(data.token))
-//       } 
-//       if(data.error){
-//          dispatch(setError(data.error))
-//         dispatch(setError(data.error))
-//       } 
-//   }
-// }
+export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
+        try{
+            const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
+            if (data.error) dispatch(setError((data.error)));
+            if (data.token) {      
+              tokenHandler.setToken(data.token);
+              dispatch(setLogged(data.user));
+    }
+        }catch(err){
+          console.log(err)
+        }
+  
+  }
+ 
+  
