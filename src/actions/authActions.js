@@ -9,19 +9,19 @@ export const setLogged = (isToken) => {
   }
 }
 
-const setUserToken = (token) => {
-  return {
-    type: authTypes.SET_TOKEN,
-    payload: token,
-  };
-};
+// const setUserToken = (token) => {
+//   return {
+//     type: authTypes.SET_TOKEN,
+//     payload: token,
+//   };
+// };
 
-const setUserEmail = (email) => {
-  return {
-    type: authTypes.SET_EMAIL,
-    payload: email,
-  };
-};
+// const setUserEmail = (email) => {
+//   return {
+//     type: authTypes.SET_EMAIL,
+//     payload: email,
+//   };
+// };
 
 export const setError = (error) => {
   return{

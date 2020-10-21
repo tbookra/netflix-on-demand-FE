@@ -6,20 +6,17 @@ import {setLogged, setError} from '../../../actions/authActions';
 
 
 
-// console.log('submit form login')
-export const submitFormLogics =  (values) => async(dispatch) =>{
-        console.log('submot form inside return')
+export const submitFormLogics =  (values, log) => async(dispatch) =>{
         try{
-            const { data } = await httpRequest.post("/auth/login", values);
-    console.log(data);
-    if (data.error) dispatch(setError((data.error)));
+            const { data } = await httpRequest.post(`/auth/${log}`, values);
+            if (data.error) dispatch(setError((data.error)));
+console.log('after error');
+            if (data.token) {
+                console.log(3,data.token)
+              tokenHandler.setToken(data.token);
+            dispatch(setLogged(data.user));
+            console.log('after setLogged');
 
-    if (data.token) {
-        console.log(3,data.token)
-      tokenHandler.setToken(data.token);
-    // const {user} = data
-    dispatch(setLogged(true));
-    
     }
         }catch(err){
           console.log(err)

@@ -1,22 +1,21 @@
 import React from "react";
-import { Link  } from 'react-router-dom';
+import { Link, useHistory  } from 'react-router-dom';
 import { LoginForm } from "../../forms";
-import { httpRequest } from "../../api";
+// import { httpRequest } from "../../api";
 import {  useSelector, useDispatch } from 'react-redux';
 import { submitFormLogics } from './logics/submitFormLogics';
 
 
 const Login = () => {
-  // const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const errorMessage = useSelector(state => state.auth.errorMessage);
-  // const history = useHistory();
+  const history = useHistory();
 
   
   const handleSubmitForm = async (values) => {
     try{
-    await dispatch(submitFormLogics(values))
-    
+    await dispatch(submitFormLogics(values,'login'));
+    history.push('/');
      console.log(0)
     } catch (err) {
       console.log(err);
