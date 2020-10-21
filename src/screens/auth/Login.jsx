@@ -12,15 +12,7 @@ const Login = () => {
   const errorMessage = useSelector(state => state.auth.errorMessage);
   // const history = useHistory();
 
-  const indexReq = async () => {
-    try {
-      const data = await httpRequest.get("/");
-      console.log('data11',data);
-    } catch (err) {
-      console.log("catch");
-      console.log(err);
-    }
-  };
+  
   const handleSubmitForm = async (values) => {
     try{
     await dispatch(submitFormLogics(values))
@@ -52,7 +44,7 @@ const Login = () => {
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
       
       <div style={{ margin: 20 }}></div>
-      <button onClick={indexReq}>Index</button>
+     
       <div>not a member? click <Link to="/Registration">HERE</Link> to register</div>
     </div>
   );
