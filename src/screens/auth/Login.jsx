@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link,  Redirect  } from 'react-router-dom';
 import { LoginForm } from "../../forms";
 import {  useSelector, useDispatch } from 'react-redux';
@@ -6,13 +6,16 @@ import { submitFormLogics } from '../../actions/authActions'
 
 const Login = () => {
   const dispatch = useDispatch();
-  const {errorMessage, loggedIn} = useSelector(state => state.auth);
+  const { loggedIn} = useSelector(state => state.auth);
+  const [errorMessage, setErrorMessage] = useState('')
+  // const {errorMessage, loggedIn} = useSelector(state => state.auth);
   // const logged = useSelector(state => state.auth.loggedIn);
 
   
   const handleSubmitForm = async (values) => {
     try{
-    await dispatch(submitFormLogics(values,'login'));
+    const error = await dispatch(submitFormLogics(values,'login'));
+    setErrorMessage(error)
     } catch (err) {
       console.log(err);
     }

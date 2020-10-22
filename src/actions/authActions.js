@@ -19,14 +19,17 @@ export const setError = (error) => {
 
 export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
         try{
+          console.log('try submit form')
             const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
-            if (data.error) dispatch(setError((data.error)));
+            if (data.error) return data.error;
+            // if (data.error) dispatch(setError((data.error)));
             if (data.token) {  
               dispatch({type:authTypes.FETCH_SUCCESS})    
               tokenHandler.setToken(data.token);
               dispatch(setLogged(data.user));
     }
         }catch(err){
+               console.log('catch submit form')
           console.log(err)
         }
   
