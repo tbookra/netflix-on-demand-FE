@@ -5,15 +5,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as StoreProvider } from "react-redux";
-import configureStore from "./store/configureStore";
-const store = configureStore();
+import {PersistGate} from 'redux-persist/es/integration/react'
+import {persistedStore, store} from "./store/configureStore";
 
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PersistGate persistor={persistedStore} loading={null}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
