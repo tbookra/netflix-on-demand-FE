@@ -30,7 +30,7 @@ const RegistrationForm = (props) => {
             />
             <Input
               name="password"
-              type="text"
+              type="password"
               label="Password"
               placeholder="PASSWORD"
               value={props.values.password}

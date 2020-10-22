@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-import { Link,  Redirect  } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link,  Redirect, useHistory  } from 'react-router-dom';
 import { LoginForm } from "../../forms";
 import {  useSelector, useDispatch } from 'react-redux';
 import { submitFormLogics } from '../../actions/authActions'
 
 const Login = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const { loggedIn} = useSelector(state => state.auth);
   const [errorMessage, setErrorMessage] = useState('')
-  // const {errorMessage, loggedIn} = useSelector(state => state.auth);
-  // const logged = useSelector(state => state.auth.loggedIn);
 
+  useEffect(()=>{
+    loggedIn&&history.replace('/')
+  }, [history, loggedIn])
   
   const handleSubmitForm = async (values) => {
     try{
-    const error = await dispatch(submitFormLogics(values,'login'));
+    const error = await dispatch(submitFormLogics(values,'login'))
     setErrorMessage(error)
     } catch (err) {
       console.log(err);
@@ -30,7 +32,6 @@ const Login = () => {
       <div style={{ margin: 20 }}></div>
      
       <div>not a member? click <Link to="/Registration">HERE</Link> to register</div>
-      {loggedIn ? <Redirect to='/' /> : <Redirect to='/Login' /> }
     </div>
   );
 };

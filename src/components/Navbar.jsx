@@ -9,8 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {  NavLink } from "react-router-dom";
 import { useSelector, useDispatch  } from 'react-redux';
-import {removeToken} from '../api/tokenHandler';
-import {setLogged} from '../actions/authActions';
+import * as authTypes from '../actions/authTypes'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +28,10 @@ const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl); 
   const dispatch = useDispatch();
-  const {loggedIn} = useSelector(state => state.auth);
-     console.log(loggedIn)
+  const {loggedIn, userName} = useSelector(state => state.auth);
+  
   const onLogout = () => {
-      removeToken();
-      dispatch(setLogged(false));     
+      dispatch({type:authTypes.SET_LOGOUT})    
   }
   
 
@@ -45,9 +43,7 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-useEffect(() => {
-  
-})
+
 
   return (
     <div className={classes.root}>
@@ -55,7 +51,7 @@ useEffect(() => {
       <AppBar position="static">
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
-        {loggedIn ? <div to="/" >{"Hello " + loggedIn.full_name}</div> : ''}
+        {loggedIn ? <div to="/" >{"Hello " + userName}</div> : ''}
           </Typography>
           <Typography variant="h6" className={classes.title}>
             MY VIDEOS

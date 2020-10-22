@@ -13,29 +13,26 @@ const authReducer = (state = initialState.auth, action) => {
       return {
         ...state,
         isFetching: false,
-        errorMessage:null
       };
          case authTypes.FETCH_ERROR:
       return {
         ...state,
-        errorMessage: action.payload,
+           isFetching: false,
       };
 
-    case authTypes.SET_TOKEN:
+    case authTypes.SET_USER:
       return {
         ...state,
-        token: action.payload,
+        token: action.payload.token,
+        userName: action.payload.userName,
+        loggedIn: true,
       };
 
-         case authTypes.SET_EMAIL:
+         case authTypes.SET_LOGOUT:
       return {
         ...state,
-        userEmail: action.payload,
-      };
-         case authTypes.SET_LOGGED:
-      return {
-        ...state,
-        loggedIn: action.payload, 
+        loggedIn: false, 
+        token:null
       };
 
     default:
