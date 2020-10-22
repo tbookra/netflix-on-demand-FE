@@ -1,16 +1,15 @@
 import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import { routes } from './config/routes-config'
-import {Navbar,PrivateRoute} from './components'
-
+import { routes } from './config/routes-config';
+import {Navbar,PrivateRoute} from './components';
 
 const App = () => {
-  
+
   return (
     <div className="App ui container">
 
-      <Navbar  />
+      <Navbar />
             <Switch>
            {
              routes.map((route,index)=>(
