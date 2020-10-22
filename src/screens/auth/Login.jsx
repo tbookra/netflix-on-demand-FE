@@ -32,6 +32,7 @@ const Login = () => {
       <div style={{ margin: 20 }}></div>
      
       <div>not a member? click <Link to="/Registration">HERE</Link> to register</div>
+
     </div>
   );
 };

@@ -1,32 +1,15 @@
 import React from "react";
-// import {  useDispatch } from 'react-redux';
-// import {setLogged} from '../../actions/authActions';
-// import {getToken} from '../../api/tokenHandler';
-
-
-
-
-
-
-
-
+import {moviesUrls} from '../../config/movies-config'
+import {MoviesRow} from '../../components'
 const Home = () => {
-  // const dispatch = useDispatch();
-  
-
-
-
-// useEffect(()=>{
-//   const isToken = getToken() ? true : false;
-//   dispatch(setLogged(isToken));
-
-
-
-// },[])
-
   return (
     <div>
       <h1>home</h1>
+      {moviesUrls.map((movie, index)=>{
+        return(
+          <MoviesRow key={index} rowTitle={movie.category} rowUrl={movie.fetchUrl}/>
+        )
+      })}
     </div>
   );
 };

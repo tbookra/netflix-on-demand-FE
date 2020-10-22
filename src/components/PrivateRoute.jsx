@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
+import * as tokenHandler from '../api/tokenHandler'
 
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    const token = localStorage.getItem('token')
+    const token = tokenHandler.getToken()
    
     return (
 
