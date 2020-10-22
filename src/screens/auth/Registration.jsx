@@ -7,8 +7,8 @@ import { submitFormLogics } from './logics/submitFormLogics';
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const errorMessage = useSelector(state => state.auth.errorMessage);
-  const logged = useSelector(state => state.auth.loggedIn);
+   const {errorMessage, loggedIn} = useSelector(state => state.auth);
+  // const logged = useSelector(state => state.auth.loggedIn);
 
   const handleSubmitForm = async (values) => {
     try{
@@ -25,7 +25,7 @@ const Registration = () => {
       <h1>Sign In</h1>
       <RegistrationForm submitForm={handleSubmitForm} />
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
-      {logged ? <Redirect to='/' /> : <Redirect to='/Registration' /> }
+      {loggedIn ? <Redirect to='/' /> : <Redirect to='/Registration' /> }
     </div>
   );
 };

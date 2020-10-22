@@ -29,8 +29,8 @@ const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl); 
   const dispatch = useDispatch();
-  const logged = useSelector(state => state.auth.loggedIn);
-     
+  const {loggedIn} = useSelector(state => state.auth);
+     console.log(loggedIn)
   const onLogout = () => {
       removeToken();
       dispatch(setLogged(false));     
@@ -55,7 +55,7 @@ useEffect(() => {
       <AppBar position="static">
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
-        {logged ? <div to="/" >{"Hello " + logged.full_name}</div> : ''}
+        {loggedIn ? <div to="/" >{"Hello " + loggedIn.full_name}</div> : ''}
           </Typography>
           <Typography variant="h6" className={classes.title}>
             MY VIDEOS
@@ -87,7 +87,7 @@ useEffect(() => {
               >
                 <MenuItem onClick={handleClose}><NavLink to="/">HOME</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}><NavLink to="/Item">Item </NavLink></MenuItem>
-                <MenuItem onClick={handleClose}>{logged ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>
+                <MenuItem onClick={handleClose}>{loggedIn ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>
                
               </Menu>
             </div>

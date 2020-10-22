@@ -3,12 +3,6 @@ import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
-    case authTypes.SET_LOGGED:
-      return {
-        ...state,
-        loggedIn: action.payload, 
-      };
-
     case authTypes.FETCH_REQUEST:
       return {
         ...state,
@@ -19,6 +13,12 @@ const authReducer = (state = initialState.auth, action) => {
       return {
         ...state,
         isFetching: false,
+        errorMessage:null
+      };
+         case authTypes.FETCH_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
       };
 
     case authTypes.SET_TOKEN:
@@ -32,11 +32,10 @@ const authReducer = (state = initialState.auth, action) => {
         ...state,
         userEmail: action.payload,
       };
-
-    case authTypes.FETCH_ERROR:
+         case authTypes.SET_LOGGED:
       return {
         ...state,
-        errorMessage: action.payload,
+        loggedIn: action.payload, 
       };
 
     default:

@@ -6,8 +6,8 @@ import { submitFormLogics } from '../../actions/authActions'
 
 const Login = () => {
   const dispatch = useDispatch();
-  const errorMessage = useSelector(state => state.auth.errorMessage);
-  const logged = useSelector(state => state.auth.loggedIn);
+  const {errorMessage, loggedIn} = useSelector(state => state.auth);
+  // const logged = useSelector(state => state.auth.loggedIn);
 
   
   const handleSubmitForm = async (values) => {
@@ -27,7 +27,7 @@ const Login = () => {
       <div style={{ margin: 20 }}></div>
      
       <div>not a member? click <Link to="/Registration">HERE</Link> to register</div>
-      {logged ? <Redirect to='/' /> : <Redirect to='/Login' /> }
+      {loggedIn ? <Redirect to='/' /> : <Redirect to='/Login' /> }
     </div>
   );
 };

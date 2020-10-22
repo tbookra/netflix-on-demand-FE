@@ -21,7 +21,8 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
         try{
             const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
             if (data.error) dispatch(setError((data.error)));
-            if (data.token) {      
+            if (data.token) {  
+              dispatch({type:authTypes.FETCH_SUCCESS})    
               tokenHandler.setToken(data.token);
               dispatch(setLogged(data.user));
     }
