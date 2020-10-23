@@ -2,7 +2,6 @@ import React from "react";
 import {moviesUrls} from '../../config/movies-config'
 import {MoviesRow} from '../../components'
 const Home = () => {
- 
   return (
     <div>
       <h1>home</h1>
@@ -15,4 +14,6 @@ const Home = () => {
   );
 };
 
+
 export default Home;
+

@@ -4,9 +4,11 @@ const Input = (props) => {
   return (
     <div>
       <TextField
-        variant="standard"
+        variant="outlined"
+        color="primary"
         name={props.name}
         type={props.type}
+        placeholder={props.placeholder}
         value={props.value}
         label={props.label}
         onChange={props.handleChange}

@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from "react";
+import { Redirect, useHistory  } from 'react-router-dom';
+
+import {  useSelector, useDispatch } from 'react-redux';
 import { RegistrationForm } from "../../forms";
-import { httpRequest } from "../../api";
-import * as tokenHandler from "../../api/tokenHandler";
+import { submitFormLogics } from '../../actions/authActions';
+
 const Registration = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+    const dispatch = useDispatch();
+    const history = useHistory()
+    const { loggedIn} = useSelector(state => state.auth);
+    const [errorMessage, setErrorMessage] = useState('')
+
+     useEffect(()=>{
+    loggedIn&&history.replace('/')
+  }, [history, loggedIn])
 
   const handleSubmitForm = async (values) => {
-    console.log(values);
-    try {
-      const { data } = await httpRequest.post("/auth/register", values);
-      if (data.error) return setErrorMessage(data.error);
-      if (data.token) tokenHandler.setToken(data.token);
-      console.log(data);
+    try{
+    const error = await dispatch(submitFormLogics(values,'register'))
+    setErrorMessage(error)
+   
     } catch (err) {
       console.log(err);
     }
+ 
+
   };
   return (
     <div>
