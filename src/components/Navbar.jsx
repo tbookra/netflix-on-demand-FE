@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import {  NavLink } from "react-router-dom";
 import { useSelector, useDispatch  } from 'react-redux';
 import * as authTypes from '../actions/authTypes'
-
+import {removeToken} from '../api/tokenHandler'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -32,7 +32,8 @@ const Navbar = (props) => {
   const {loggedIn, userName} = useSelector(state => state.auth);
   
   const onLogout = () => {
-      dispatch({type:authTypes.SET_LOGOUT})    
+      dispatch({type:authTypes.SET_LOGOUT}) 
+      removeToken();   
   }
   
 

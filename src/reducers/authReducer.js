@@ -23,8 +23,7 @@ const authReducer = (state = initialState.auth, action) => {
     case authTypes.SET_USER:
       return {
         ...state,
-        token: action.payload.token,
-        userName: action.payload.userName,
+        userName: action.payload,
         loggedIn: true,
       };
 
@@ -32,7 +31,6 @@ const authReducer = (state = initialState.auth, action) => {
       return {
         ...state,
         loggedIn: false, 
-        token:null
       };
 
     default:
