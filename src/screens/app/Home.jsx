@@ -11,13 +11,9 @@ const [userMoviesData, setUserMoviesData] = useState({
   useEffect(()=>{
     (async()=>{
       try{
-        console.log('useEffect try')
-        const {data} = await httpRequest.get('/movie/getAccessibleMovies')
-        console.log(data)
-        // setUserMoviesData(oldState=>({...oldState, isMember,purchasedMovies }))
-    
+        const {data:{isMember, purchasedMovies}} = await httpRequest.get('/movie/getAccessibleMovies')
+        setUserMoviesData(oldState=>({...oldState, isMember,purchasedMovies }))
       }catch(err){
-        console.log('useEffect catch')
         console.log(err)
       }
     })()
@@ -27,7 +23,7 @@ const [userMoviesData, setUserMoviesData] = useState({
       <h1>home</h1>
       {moviesUrls.map((movie, index)=>{
         return(
-          <MoviesRow key={index} rowTitle={movie.category} rowUrl={movie.fetchUrl}/>
+          <MoviesRow key={index} rowTitle={movie.category} rowUrl={movie.fetchUrl} userMoviesData={userMoviesData}/>
         )
       })}
     </div>

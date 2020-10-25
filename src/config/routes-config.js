@@ -15,7 +15,8 @@ export const routes = [
   },
   {
     path: "/purchasePage/:movieId",
-    component: PurchasePage
+    component: PurchasePage,
+    privateRoute:true
   },
   {
     path: "/login",
