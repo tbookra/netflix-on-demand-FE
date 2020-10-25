@@ -14,12 +14,13 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
           dispatch({type:authTypes.FETCH_REQUEST})
           const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
           console.log(data)
-          if (data.error) return data.error;
-          // if (data.token) { 
+          if (data.error){
+            dispatch({type:authTypes.FETCH_ERROR})
+            return data.error;
+          } 
             dispatch({type:authTypes.FETCH_SUCCESS}) 
             dispatch(setUserData(data.userName))  
             setToken(data.token)
-          // }
         }catch(err){
           console.log(err)
         }
