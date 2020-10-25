@@ -1,6 +1,6 @@
 import * as authTypes from "./authTypes"; 
 import { httpRequest } from '../api';
-import * as tokenHandler from '../api/tokenHandler'
+import {setToken} from '../api/tokenHandler'
 
  const setUserData = (userData) => {
   return{
@@ -20,7 +20,7 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
           } 
             dispatch({type:authTypes.FETCH_SUCCESS}) 
             dispatch(setUserData(data.userName))  
-            tokenHandler.setToken(data.token)
+            setToken(data.token)
         }catch(err){
           console.log(err)
         }
