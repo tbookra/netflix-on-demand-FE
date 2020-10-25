@@ -32,8 +32,8 @@ const Navbar = (props) => {
   const {loggedIn, userName} = useSelector(state => state.auth);
   
   const onLogout = () => {
-      dispatch({type:authTypes.SET_LOGOUT})  
-      removeToken();  
+      dispatch({type:authTypes.SET_LOGOUT}) 
+      removeToken();   
   }
   
 

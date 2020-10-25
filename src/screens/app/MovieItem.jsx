@@ -1,27 +1,30 @@
 import React, {useState,useEffect} from 'react';
-import {useParams, Redirect} from 'react-router-dom'
-import {tmdb} from '../../api'
+import {useParams,useHistory, Redirect} from 'react-router-dom'
+import {tmdb, httpRequest} from '../../api'
 import {getMovie} from '../../config/movies-config'
 
 const MovieItem = () =>{
-    const {id} = useParams()
+    const {movieId} = useParams();
     const [err, setErr] = useState(false)
-
-    useEffect(()=>{
-          ( async() => {
+    const history = useHistory()
+    useEffect(()=>{    
+    ( async() => {
     try{
+        const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieId}`)
+        console.log('movieData',isMovieAccessible)
+        if(!isMovieAccessible) return history.replace(`/purchasePage/${movieId}`)
          setErr(false)
-        const {data} = await tmdb.get(getMovie(id))
+        const {data} = await tmdb.get(getMovie(movieId))
         console.log(data)
     }catch(err){
         setErr(true)
     }
 })();  
-    },[id])
+    },[movieId, history])
     return (
         err? <Redirect to='/*'/>:
         <div>
-            <h1>{id}</h1>
+            <h1>{movieId}</h1>
         </div>
     )
 };
