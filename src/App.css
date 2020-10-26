@@ -15,3 +15,24 @@
 .moviesRowItem {
   margin: 0.75rem;
 }
+#moviesSection {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  overflow-x: auto;
+}
+
+@media screen and (max-width:1024px) {
+  #moviesSection {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media screen and (max-width:710px) {
+  #moviesSection {
+    grid-template-columns: auto  auto;
+  }
+}
+@media screen and (max-width:470px) {
+  #moviesSection {
+    grid-template-columns:   auto;
+  }
+}

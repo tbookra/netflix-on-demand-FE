@@ -10,9 +10,7 @@ const [movies, setMovies] = useState([])
 useEffect(()=>{
     ( async() => {
     try{
-        console.log('sectionUrl',sectionUrl)
          const {data:{results}} = await tmdb.get(sectionUrl)
-         console.log('results',results)
         setMovies(results)
     }catch(err){
         console.log(err)
@@ -23,7 +21,7 @@ useEffect(()=>{
 
     return (
         <div>
-            <div id='moviesRow'>
+            <div id='moviesSection' className="ui container">
                 
                 {movies.map((movie, index)=>{
                     return(
