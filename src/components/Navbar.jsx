@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -83,7 +83,7 @@ const Navbar = (props) => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}><NavLink to="/">HOME</NavLink></MenuItem>
-                <MenuItem onClick={handleClose}><NavLink to="/Item">Item </NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink to="/MovieSection/popular">Popular Movies</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}>{loggedIn ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>
                
               </Menu>

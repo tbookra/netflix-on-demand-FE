@@ -4,7 +4,7 @@ import {getMovieImage} from '../config/movies-config'
 import {  Link } from "react-router-dom";
 
 
-const MoviesRow = ({rowUrl, rowTitle}) => {
+const MoviesRow = ({rowUrl, rowTitle}) => { 
 const [movies, setMovies] = useState([])
 
 useEffect(()=>{
@@ -13,7 +13,7 @@ useEffect(()=>{
          const {data:{results}} = await tmdb.get(rowUrl)
         setMovies(results)
     }catch(err){
-        console(err)
+        console.log(err)
     }
 })();  
    

@@ -1,4 +1,4 @@
-import {Home,MovieItem,PurchasePage, NotFoundPage} from '../screens/app'
+import {Home,MovieItem,PurchasePage, NotFoundPage, MovieSections} from '../screens/app'
 import {Login,Registration} from '../screens/auth'
 
 export const routes = [
@@ -25,7 +25,10 @@ export const routes = [
     path: "/registration",
     component: Registration
   },
- 
+  {
+    path: "/MovieSection/:section",
+    component: MovieSections
+  },
   {
     path: "*",
     component: NotFoundPage
