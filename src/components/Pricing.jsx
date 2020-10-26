@@ -68,14 +68,6 @@ const tiers = [
 const Pricing = ({movieData, addMovie}) => {
 const classes = useStyles();
 
-
-/*
-id: 724989
-poster_path: "/ugZW8ocsrfgI95pnQ7wrmKDxIe.jpg"
-title: "Hard Kill"
-
-*/
-
   return (
     <Container>
       <CssBaseline />
