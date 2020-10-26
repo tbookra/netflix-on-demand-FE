@@ -21,6 +21,11 @@
   overflow-x: auto;
 }
 
+.page_buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (max-width:1024px) {
   #moviesSection {
     grid-template-columns: auto auto auto;

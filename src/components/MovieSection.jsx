@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {useParams, Redirect, Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
+import {PageButtons} from './';
 import {tmdb} from '../api'
-import {getMovieImage , getMovie} from '../config/movies-config'
+import {getMovieImage } from '../config/movies-config'
 
 
-const MovieSection = ({sectionUrl}) => {
+const MovieSection = ({sectionUrl, section }) => {
 const [movies, setMovies] = useState([])
 
 useEffect(()=>{
@@ -21,6 +22,7 @@ useEffect(()=>{
 
     return (
         <div>
+            <PageButtons section={section} />
             <div id='moviesSection' className="ui container">
                 
                 {movies.map((movie, index)=>{
@@ -34,6 +36,7 @@ useEffect(()=>{
                     )
                 })}
                 </div>
+    <PageButtons section={section} />
         </div>
     )
 };

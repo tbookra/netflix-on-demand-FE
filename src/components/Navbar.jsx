@@ -84,6 +84,10 @@ const Navbar = (props) => {
               >
                 <MenuItem onClick={handleClose}><NavLink to="/">HOME</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}><NavLink to="/MovieSection/popular">Popular Movies</NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink to="/MovieSection/top_rated">Top Rated</NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink to="/MovieSection/trending">Trending</NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink to="/MovieSection/discover">Netflix Originals</NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink to="/MovieSection/action">Action Movies</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}>{loggedIn ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>
                
               </Menu>
