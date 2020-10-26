@@ -18,7 +18,7 @@ export const sectionType = (section) => {
                 sectionUpType: pageTypes.TOP_RATED_UP,
                 sectionDownType: pageTypes.TOP_RATED_DOWN,
                 urlArr: 1,
-                state: 'top_rated',
+                state: 'top_ratedPage',
             };
             case 'trending':
                 return {
