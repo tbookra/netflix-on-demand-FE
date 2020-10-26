@@ -10,7 +10,9 @@ import {sectionType} from '../../config/sectionTypes';
 
 const MovieSections = () => {
     const {section} = useParams();
-    const page = useSelector(state => state.page.popularPage);
+
+
+    const page = useSelector(state => state.page[sectionType(section).state]); 
     const url = moviesUrls(page);
    
 

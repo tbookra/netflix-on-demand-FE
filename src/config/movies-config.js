@@ -11,19 +11,19 @@ export const moviesUrls = (page) =>{
         },
         {
             category:"Top Rated Movies",
-            fetchUrl:`/movie/top_rated?api_key=${API_KEY}&language=en-US`
+            fetchUrl:`/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
         },
         {
             category:"Trending Movies",
-            fetchUrl:`/trending/all/week?api_key=${API_KEY}&language=en-US`
+            fetchUrl:`/trending/all/week?api_key=${API_KEY}&language=en-US&page=${page}`
         },
         {
             category:"Netflix Originals",
-            fetchUrl:`/discover/tv?api_key=${API_KEY}&with_network=213`
+            fetchUrl:`/discover/tv?api_key=${API_KEY}&with_network=213&page=${page}`
         },
         {
             category:"Action Movies",
-            fetchUrl:`/discover/movie?api_key=${API_KEY}&with_genres=28`
+            fetchUrl:`/discover/movie?api_key=${API_KEY}&with_genres=28&page=${page}`
         },
     ]
 } 

@@ -1,18 +1,21 @@
 import React,{useEffect} from 'react';
 import {  useSelector, useDispatch } from 'react-redux';
-
+import {sectionType} from '../config/sectionTypes';
 import * as pageTypes from '../actions/pageTypes';
 
 const PageButtons = ({section}) => {
     const dispatch = useDispatch();
-    const page = useSelector(state => state.page.popularPage);
+    const page = useSelector(state => state.page[sectionType(section).state]);
 
     const handlePageUp = () =>{
-        dispatch({type: pageTypes.POPULAR_PAGE_UP})
-        console.log('page up pushed!!', page, section)
+        dispatch({type: pageTypes[sectionType(section).sectionUpType]})
+        console.log('page up a!!', pageTypes[sectionType(section).sectionUpType])
+        // console.log('page up 2!!', pageTypes[sectionType(section).sectionUpType])
+        console.log('page up b!!', page, section)
+        // top_rated trending
     }
     const handlePageDown = () =>{
-        dispatch({type: pageTypes.POPULAR_PAGE_DOWN})
+        dispatch({type: pageTypes[sectionType(section).sectionDownType]})
         console.log('page up pushed!!', page)
     }
 
