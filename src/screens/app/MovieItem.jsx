@@ -10,17 +10,14 @@ const MovieItem = () =>{
     useEffect(()=>{    
     ( async() => {
     try{
-        const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieId}`)
-        console.log('movieData',isMovieAccessible)
-        if(!isMovieAccessible) return history.replace(`/purchasePage/${movieId}`)
-         setErr(false)
         const {data} = await tmdb.get(getMovie(movieId))
+        setErr(false)
         console.log(data)
     }catch(err){
         setErr(true)
     }
 })();  
-    },[movieId, history])
+    },[movieId])
     return (
         err? <Redirect to='/*'/>:
         <div>
