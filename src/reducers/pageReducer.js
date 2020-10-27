@@ -9,16 +9,10 @@ const pageReducer = (state = initialState.page, action) => {
         popularPage: state.popularPage + 1, 
       };
       case pageTypes.POPULAR_PAGE_DOWN:
-          if(state.popularPage === 1) { return {
-            ...state,
-          }
-        } else {
-            return {
-                ...state,
-                popularPage:  state.popularPage - 1,
-              };  
-          }
-       
+        return {
+          ...state,
+          popularPage:  state.popularPage - 1,
+        };
         case pageTypes.TOP_RATED_UP:
             return {
             ...state,
@@ -58,6 +52,15 @@ const pageReducer = (state = initialState.page, action) => {
             return {
             ...state,
             actionPage: state.actionPage - 1,
+            };
+        case pageTypes.PAGES_RESET:
+            return {
+            ...state,
+            popularPage: 1,
+            top_ratedPage: 1,
+            trendingPage: 1,
+            originalsPage: 1,
+            actionPage: 1,
             };
 
             default:

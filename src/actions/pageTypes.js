@@ -8,3 +8,4 @@ export const ORIGINALS_UP = "ORIGINALS_UP";
 export const ORIGINALS_DOWN = "ORIGINALS_DOWN"; 
 export const ACTION_UP = "ACTION_UP"; 
 export const ACTION_DOWN = "ACTION_DOWN"; 
+export const PAGES_RESET = "PAGES_RESET"; 
