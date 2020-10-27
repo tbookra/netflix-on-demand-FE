@@ -8,14 +8,12 @@ const PageButtons = ({section}) => {
     const page = useSelector(state => state.page[sectionType(section).state]);
 
     const handlePageUp = () =>{
-        dispatch({type: pageTypes[sectionType(section).sectionUpType]})
+        page === 1000 ? console.log("") : dispatch({type: pageTypes[sectionType(section).sectionUpType]})
         console.log('page up a!!', pageTypes[sectionType(section).sectionUpType])
-        // console.log('page up 2!!', pageTypes[sectionType(section).sectionUpType])
         console.log('page up b!!', page, section)
-        // popular top_rated trending discover action
     }
     const handlePageDown = () =>{
-        dispatch({type: pageTypes[sectionType(section).sectionDownType]})
+        page === 1 ? console.log("") : dispatch({type: pageTypes[sectionType(section).sectionDownType]})
         console.log('page up pushed!!', page)
     }
 
@@ -27,14 +25,14 @@ useEffect(()=>{
         <div className= "page_buttons">
 <div class="ui animated button primary" tabindex="0">
   <div class="visible content">Page Down</div>
-  <div class="hidden content" onClick={page ===1 ? "" : handlePageDown}>
+  <div class="hidden content" onClick={handlePageDown}>
     <i class="left arrow icon"></i>
   </div>
 </div>
 
 <div class="ui animated button primary" tabindex="0">
   <div class="visible content" >Page Up</div>
-  <div class="hidden content" onClick={page ===1000 ? "" : handlePageUp}>
+  <div class="hidden content" onClick={handlePageUp}>
   <i class="right arrow icon"></i>
   </div>
 </div>
