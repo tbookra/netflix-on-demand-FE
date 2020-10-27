@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {  useSelector, useDispatch } from 'react-redux';
 import Fab from '@material-ui/core/Fab';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -14,10 +14,6 @@ const PageButtons = ({section}) => {
         if((direction === "Up" && page ===1000) || (direction === "Down" && page === 1)) return; 
             dispatch({type: pageTypes[sectionType(section)[`section${direction}Type`]]});
     }
-
-useEffect(()=>{
-    console.log('page', page)
-},[page])
 
     return(
         <div className= "page_buttons">
