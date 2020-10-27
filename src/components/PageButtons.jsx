@@ -11,7 +11,7 @@ const PageButtons = ({section}) => {
     const page = useSelector(state => state.page[sectionType(section).state]);
 
     const handlePageMove = (page, direction) =>{
-        if((direction === "up" && page ===1000) || (direction === "down" && page === 1)) return; 
+        if((direction === "Up" && page ===1000) || (direction === "Down" && page === 1)) return; 
             dispatch({type: pageTypes[sectionType(section)[`section${direction}Type`]]});
     }
 
