@@ -1,5 +1,8 @@
 import React,{useEffect} from 'react';
 import {  useSelector, useDispatch } from 'react-redux';
+import Fab from '@material-ui/core/Fab';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import {sectionType} from '../config/sectionTypes';
 import * as pageTypes from '../actions/pageTypes';
 
@@ -7,14 +10,9 @@ const PageButtons = ({section}) => {
     const dispatch = useDispatch();
     const page = useSelector(state => state.page[sectionType(section).state]);
 
-    const handlePageUp = () =>{
-        page === 1000 ? console.log("") : dispatch({type: pageTypes[sectionType(section).sectionUpType]})
-        console.log('page up a!!', pageTypes[sectionType(section).sectionUpType])
-        console.log('page up b!!', page, section)
-    }
-    const handlePageDown = () =>{
-        page === 1 ? console.log("") : dispatch({type: pageTypes[sectionType(section).sectionDownType]})
-        console.log('page up pushed!!', page)
+    const handlePageMove = (page, direction) =>{
+        if((direction === "up" && page ===1000) || (direction === "down" && page === 1)) return; 
+            dispatch({type: pageTypes[sectionType(section)[`section${direction}Type`]]});
     }
 
 useEffect(()=>{
@@ -23,19 +21,17 @@ useEffect(()=>{
 
     return(
         <div className= "page_buttons">
-<div class="ui animated button primary" tabindex="0">
-  <div class="visible content">Page Down</div>
-  <div class="hidden content" onClick={handlePageDown}>
-    <i class="left arrow icon"></i>
-  </div>
-</div>
+<Fab variant="extended" color="primary" onClick={()=> handlePageMove(page, "Down")}>
+<ArrowBackIcon  /> 
+Page Down
+</Fab>
 
-<div class="ui animated button primary" tabindex="0">
-  <div class="visible content" >Page Up</div>
-  <div class="hidden content" onClick={handlePageUp}>
-  <i class="right arrow icon"></i>
-  </div>
-</div>
+<Fab variant="extended" color="primary" onClick={()=> handlePageMove(page, "Up")}>
+Page Up
+<ArrowForwardIcon  /> 
+</Fab>
+
+
 </div>
     )
 }
