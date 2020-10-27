@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { Link} from 'react-router-dom'
+import { Link} from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 import {PageButtons} from './';
 import {tmdb} from '../api'
 import {getMovieImage } from '../config/movies-config'
@@ -22,8 +23,9 @@ useEffect(()=>{
 
     return (
         <div>
+            <Container maxWidth="lg">
             <PageButtons section={section} />
-            <div id='moviesSection' className="ui container">
+            <div id='moviesSection' >
                 
                 {movies.map((movie, index)=>{
                     return(
@@ -37,6 +39,7 @@ useEffect(()=>{
                 })}
                 </div>
     <PageButtons section={section} />
+    </Container>
         </div>
     )
 };
