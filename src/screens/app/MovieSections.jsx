@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 
 import MovieSection from '../../components/MovieSection';
@@ -22,9 +22,10 @@ const MovieSections = () => {
     }
 
     const url = moviesUrls(page);
-   useEffect(()=>{
-       console.log('movies page:',page)
-   },[page, url])
+
+useEffect(()=>{
+    setPage(1)
+},[section])
 
     return(
         <div>
