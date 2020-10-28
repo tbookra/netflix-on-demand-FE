@@ -6,7 +6,7 @@ import {tmdb} from '../api'
 import {getMovieImage } from '../config/movies-config'
 
 
-const MovieSection = ({sectionUrl, section }) => {
+const MovieSection = ({sectionUrl, section, handlePageMove }) => {
 const [movies, setMovies] = useState([])
 
 useEffect(()=>{
@@ -24,7 +24,7 @@ useEffect(()=>{
     return (
         <div>
             <Container maxWidth="lg">
-            <PageButtons section={section} />
+            <PageButtons section={section} handlePageMove={handlePageMove} />
             <div id='moviesSection' >
                 
                 {movies.map((movie, index)=>{
@@ -38,7 +38,7 @@ useEffect(()=>{
                     )
                 })}
                 </div>
-    <PageButtons section={section} />
+    <PageButtons section={section}  handlePageMove={handlePageMove}  />
     </Container>
         </div>
     )

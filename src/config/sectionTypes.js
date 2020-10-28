@@ -1,13 +1,11 @@
-import * as pageTypes from '../actions/pageTypes';
 
 export const sectionType = (section) => {
-    switch (section) {
+    try{
+        switch (section) {
             case 'popular':
             return {
                 sectionName: 'popular',
                 sectionTitle: 'The Most Popular Movies',
-                sectionUpType: pageTypes.POPULAR_PAGE_UP,
-                sectionDownType: pageTypes.POPULAR_PAGE_DOWN,
                 urlArr: 0,
                 state: 'popularPage',
             };
@@ -15,8 +13,6 @@ export const sectionType = (section) => {
                 return {
                 sectionName: 'top_rated',
                 sectionTitle: 'The Top Rated Movies',
-                sectionUpType: pageTypes.TOP_RATED_UP,
-                sectionDownType: pageTypes.TOP_RATED_DOWN,
                 urlArr: 1,
                 state: 'top_ratedPage',
             };
@@ -24,8 +20,6 @@ export const sectionType = (section) => {
                 return {
                     sectionName: 'trending',
                     sectionTitle: 'The Most requested Movies',
-                    sectionUpType: pageTypes.TRENDING_UP,
-                    sectionDownType: pageTypes.TRENDING_DOWN,
                     urlArr: 2,
                     state: 'trendingPage',
                 };
@@ -33,8 +27,6 @@ export const sectionType = (section) => {
                 return {
                     sectionName: 'discover',
                     sectionTitle: 'Netflix Original Productions',
-                    sectionUpType: pageTypes.ORIGINALS_UP,
-                    sectionDownType: pageTypes.ORIGINALS_DOWN,
                     urlArr: 3,
                     state: 'originalsPage',
                 };
@@ -42,8 +34,6 @@ export const sectionType = (section) => {
                 return {
                     sectionName: 'action',
                     sectionTitle: 'Action Movies',
-                    sectionUpType: pageTypes.ACTION_UP,
-                    sectionDownType: pageTypes.ACTION_DOWN,
                     urlArr: 4,
                     state: 'actionPage',
                 };
@@ -53,10 +43,12 @@ export const sectionType = (section) => {
                 return{
                     sectionName: 'popular',
                     sectionTitle: 'The Most Popular Movies',
-                    sectionUpType: pageTypes.POPULAR_PAGE_UP,
-                    sectionDownType: pageTypes.POPULAR_PAGE_DOWN,
                     urlArr: 0,
                     state:  'popularPage',
                 };
     }
+    }catch(e){
+        console.log(e);
+    }
+    
 }
