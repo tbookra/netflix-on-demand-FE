@@ -4,6 +4,7 @@ import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles} from '@
 import {MoveToInbox as InboxIcon, Mail as MailIcon} from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 import { useSelector, useDispatch  } from 'react-redux';
+import {HomeIcon} from '../svgIcons';
 import * as authTypes from '../../actions/authTypes'
 import {removeToken} from '../../api/tokenHandler'
 import {Link} from 'react-router-dom'
@@ -36,10 +37,10 @@ const DrawerList = ({toggleDrawer}) => {
               onKeyDown={toggleDrawer(false)}
           >
               <List>
-                <Link to={loggedIn?'/':'/Login'}>
-                    <ListItem button onClick={loggedIn && onLogout}>
-                        <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
-                        <ListItemText primary={loggedIn?'Logout':'Login'} />
+                <Link to='/'>
+                    <ListItem button >
+                        <ListItemIcon> <HomeIcon  /> </ListItemIcon>
+                        <ListItemText primary={'HOME'} />
                     </ListItem>   
                 </Link>
               </List>
@@ -87,6 +88,15 @@ const DrawerList = ({toggleDrawer}) => {
                     </ListItem>   
                 </Link>
               </List> 
+              <Divider />
+              <List>
+                <Link to={loggedIn?'/':'/Login'}>
+                    <ListItem button onClick={loggedIn && onLogout}>
+                        <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
+                        <ListItemText primary={loggedIn?'Logout':'Login'} />
+                    </ListItem>   
+                </Link>
+              </List>
           </div>
       );
   };
