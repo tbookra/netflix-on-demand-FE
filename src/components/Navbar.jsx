@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
       justifyContent: 'space-between'
   },
   title: {
-    color: '#E50914',
+    color: '#d81f26',
     textDecoration: 'none',
    },
   username: {
@@ -38,7 +38,7 @@ const Navbar = (props) => {
           </Typography>
           <Link to='/' className={classes.title}>
             <Typography variant="h4" >
-              Netflix
+              NETFLIX
             </Typography>
           </Link>
 
