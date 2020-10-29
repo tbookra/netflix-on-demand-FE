@@ -1,12 +1,15 @@
+
 import React, {useState, useEffect} from "react";
 import {moviesUrls} from '../../config/movies-config'
 import {httpRequest} from '../../api'
 import {MoviesRow} from '../../components'
+import Container from '@material-ui/core/Container';
 const Home = () => {
-const [userMoviesData, setUserMoviesData] = useState({
-  isMember:false,
-  purchasedMovies:[]
-})
+  const url = moviesUrls(1)
+  const [userMoviesData, setUserMoviesData] = useState({
+    isMember:false,
+    purchasedMovies:[]
+  })
     console.log(userMoviesData)
   useEffect(()=>{
     (async()=>{
@@ -18,14 +21,17 @@ const [userMoviesData, setUserMoviesData] = useState({
       }
     })()
   },[])
+
   return (
     <div>
+      <Container maxWidth="lg">
       <h1>home</h1>
-      {moviesUrls.map((movie, index)=>{
+      {url.map((movie, index)=>{ 
         return(
           <MoviesRow key={index} rowTitle={movie.category} rowUrl={movie.fetchUrl} userMoviesData={userMoviesData}/>
         )
       })}
+      </Container>
     </div>
   );
 };
