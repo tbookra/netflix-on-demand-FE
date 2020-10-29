@@ -9,13 +9,14 @@ export const routes = [
     
   },
   {
-    path: "/movieItem/:id",
+    path: "/movieItem/:movieId",
     component: MovieItem,
     privateRoute:true
   },
   {
-    path: "/purchasePage",
-    component: PurchasePage
+    path: "/purchasePage/:movieId",
+    component: PurchasePage,
+    privateRoute:true
   },
   {
     path: "/login",

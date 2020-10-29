@@ -15,49 +15,33 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
-}));
+});
 
 
 const Navbar = (props) => {
+
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl); 
-  const dispatch = useDispatch();
   const {loggedIn, userName} = useSelector(state => state.auth);
   
-  const onLogout = () => {
-      dispatch({type:authTypes.SET_LOGOUT})  
-      removeToken();  
-  }
+
   
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
-
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
-        {loggedIn ? <div to="/" >{"Hello " + userName}</div> : ''}
+        {loggedIn ? <div to="/" >{"Hello " + userName}</div> : null}
           </Typography>
-          <Typography variant="h6" className={classes.title}>
-            MY VIDEOS
-          </Typography>
+          <Link to='/' className={classes.title}>
+            <Typography variant="h6" >
+              Netflix
+            </Typography>
+          </Link>
             <div>
+
               <IconButton
                edge = "start"
                className={classes.menuButton}
@@ -88,11 +72,9 @@ const Navbar = (props) => {
                 <MenuItem onClick={handleClose}><NavLink to="/MovieSection/trending">Trending</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}><NavLink to="/MovieSection/discover">Netflix Originals</NavLink></MenuItem>
                 <MenuItem onClick={handleClose}><NavLink to="/MovieSection/action">Action Movies</NavLink></MenuItem>
-                <MenuItem onClick={handleClose}>{loggedIn ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>
-               
+                <MenuItem onClick={handleClose}>{loggedIn ? <NavLink to="/Login" onClick={onLogout}>Logout</NavLink> : <NavLink to="/Login" >Login</NavLink>}</MenuItem>               
               </Menu>
             </div>
-      
         </Toolbar>
       </AppBar>
     </div>
