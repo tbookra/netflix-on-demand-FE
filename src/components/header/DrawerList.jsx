@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx';
-import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles} from '@material-ui/core'
+import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Typography} from '@material-ui/core'
 import {MoveToInbox as InboxIcon, Mail as MailIcon} from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 import { useSelector, useDispatch  } from 'react-redux';
@@ -15,6 +15,15 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: 'auto',
+  },
+  dividerTitle:{
+// color: '#E50914',
+color: 'grey',
+fontWeight: 'bolder',
+marginTop: '10%',
+textDecoration: 'underline',
+marginLeft: '20%',
+width: 'auto',
   },
 });
 
@@ -55,7 +64,7 @@ const DrawerList = ({toggleDrawer}) => {
                 </Link>
               </List>
               <Divider />
-
+                    <Typography className={clsx(classes.dividerTitle)}>Netflix Sections:</Typography>
                <List>
                    <Link to={"/MovieSection/popular"}>
                     <ListItem button >
