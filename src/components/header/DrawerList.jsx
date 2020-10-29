@@ -43,14 +43,38 @@ const DrawerList = ({toggleDrawer}) => {
                 </Link>
               </List>
               <Divider />
-              {/* <List>
-                  {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                      <ListItem button key={text}>
-                          <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                          <ListItemText primary={text} />
-                      </ListItem>
-                  ))}
-              </List> */}
+               <List>
+                   <Link to={"/MovieSection/popular"}>
+                    <ListItem button >
+                        <ListItemIcon></ListItemIcon>
+                        <ListItemText primary={'Most Popular'} />
+                    </ListItem>   
+                </Link>
+                 <Link to={"/MovieSection/top_rated"}>
+                    <ListItem button >
+                        <ListItemIcon></ListItemIcon>
+                        <ListItemText primary={"Top Rated"} />
+                    </ListItem>   
+                </Link>
+                 <Link to={"/MovieSection/trending"}>
+                    <ListItem button >
+                        <ListItemIcon></ListItemIcon>
+                        <ListItemText primary={"Trending"} />
+                    </ListItem>   
+                </Link>
+                 <Link to={"/MovieSection/discover"}>
+                    <ListItem button >
+                        <ListItemIcon></ListItemIcon>
+                        <ListItemText primary={"Netflix Originals"} />
+                    </ListItem>   
+                </Link>
+                 <Link to={"/MovieSection/action"}>
+                    <ListItem button >
+                        <ListItemIcon></ListItemIcon>
+                        <ListItemText primary={"Action Movies"} />
+                    </ListItem>   
+                </Link>
+              </List> 
           </div>
       );
   };
