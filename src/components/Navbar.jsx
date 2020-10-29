@@ -13,11 +13,15 @@ import {Link} from 'react-router-dom'
     textDecoration: 'none',
    },
   username: {
+    width: '15%',
     fontSize: '0.85em',
   },
-  // nav: {
-  //   flexGrow: 1,
-  // },
+  nav: {
+    width: '15%',
+    // marginRight: '1%',
+    // position: 'relative',
+    // right: '1%'
+  },
 
 });
 
