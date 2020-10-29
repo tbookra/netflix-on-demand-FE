@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <div>
       <Container maxWidth="lg">
-      <h1>home</h1>
+      {/* <h1>home</h1> */}
       {url.map((movie, index)=>{ 
         return(
           <MoviesRow key={index} rowTitle={movie.category} rowUrl={movie.fetchUrl} userMoviesData={userMoviesData}/>

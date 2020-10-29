@@ -1,7 +1,8 @@
 import React from 'react'
 import clsx from 'clsx';
 import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles} from '@material-ui/core'
-import {MoveToInbox as InboxIcon, Mail as MailIcon} from '@material-ui/icons'
+import {MoveToInbox as InboxIcon, Mail as MailIcon} from '@material-ui/icons';
+import SearchIcon from '@material-ui/icons/Search';
 import { useSelector, useDispatch  } from 'react-redux';
 import * as authTypes from '../../actions/authTypes'
 import {removeToken} from '../../api/tokenHandler'
@@ -43,6 +44,17 @@ const DrawerList = ({toggleDrawer}) => {
                 </Link>
               </List>
               <Divider />
+
+              <List>
+                <Link to={'/SearchPage'}>
+                    <ListItem button >
+                        <ListItemIcon><SearchIcon /> </ListItemIcon>
+                        <ListItemText primary={'Search'} />
+                    </ListItem>   
+                </Link>
+              </List>
+              <Divider />
+
                <List>
                    <Link to={"/MovieSection/popular"}>
                     <ListItem button >
