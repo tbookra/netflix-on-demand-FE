@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(6, 0, 4),
   },
   cardHeader: {
     backgroundColor:
@@ -66,6 +66,7 @@ const tiers = [
 ];
 
 const Pricing = ({movieData, addMovie}) => {
+  console.log('pricing', movieData)
 const classes = useStyles();
 
   return (

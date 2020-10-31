@@ -4,42 +4,46 @@ import Container from '@material-ui/core/Container';
 import {PageButtons} from './';
 import {tmdb} from '../api'
 import {getMovieImage } from '../config/movies-config'
+import Skeleton from '@material-ui/lab/Skeleton';
 
 
 const MovieSection = ({sectionUrl, section, handlePageMove }) => {
-const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState([])
 
-useEffect(()=>{
-    ( async() => {
-    try{
-         const {data:{results}} = await tmdb.get(sectionUrl)
-        setMovies(results)
-    }catch(err){
-        console.log(err)
-    }
-})();  
-   
-},[sectionUrl])
+    useEffect(()=>{
+        ( async() => {
+            try{
+                const {data:{results}} = await tmdb.get(sectionUrl)
+                setMovies(results)
+            }catch(err){
+                console.log(err)
+            }
+        })();  
+    },[sectionUrl])
 
     return (
         <div>
             <Container maxWidth="lg">
             <PageButtons section={section} handlePageMove={handlePageMove} />
             <div id='moviesSection' >
-                
-                {movies.map((movie, index)=>{
-                    return(
+                {movies.map((movie, index)=>(
+                    movie
+                    ?
                         <div key={index} className='moviesRowItem'>
-                            <Link to={`/movieItem/${movie.id}`}>
+                            <Link  
+                            to={{
+                                pathname: `/movieItem/${movie.id}`,
+                                state: { movieData:movie}
+                            }}>
                                     <img src={getMovieImage(movie.poster_path)} alt="img"/>
-                            </Link>
-                            
-                        </div>
-                    )
-                })}
-                </div>
-    <PageButtons section={section}  handlePageMove={handlePageMove}  />
-    </Container>
+                            </Link> 
+                        </div> 
+                    :
+                        <Skeleton variant="rect" width={210} height={118} />    
+                ))}
+            </div>
+            <PageButtons section={section}  handlePageMove={handlePageMove}  />
+            </Container>
         </div>
     )
 };
