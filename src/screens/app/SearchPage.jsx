@@ -1,13 +1,7 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+import {Avatar, Button, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'; // import costum input...
 import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,8 +46,11 @@ const useStyles = makeStyles((theme) => ({
         <Typography component="h1" variant="h5">
           Search your favorate show here
         </Typography>
+        {/*  */}
+        {/* 
+        צריך לשנות את הקומפוננטה של האינפוט ולהטמיע פורמיק עם יופ
+        */}
         <form className={classes.form} noValidate>
-       
           <TextField
             variant="outlined"
             margin="normal"
@@ -63,25 +60,19 @@ const useStyles = makeStyles((theme) => ({
             label='Search Here...'
             name="search"
             autoComplete="search"
-            autoFocus
-            
+            autoFocus           
           />
-           
-         
-          
           <Button
-            type="submit"
-            
+            type="submit" 
             variant="contained"
             color="secondary"
             className={classes.submit}
-          >
-              
+          >           
               Search 
             <SearchIcon />
-          </Button>
-          
+          </Button>       
         </form>
+        {/*  */}
       </div>
     
     </Container>

@@ -1,8 +1,7 @@
 import React from 'react'
 import clsx from 'clsx';
 import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Typography} from '@material-ui/core'
-import {MoveToInbox as InboxIcon, Mail as MailIcon} from '@material-ui/icons';
-import SearchIcon from '@material-ui/icons/Search';
+import {MoveToInbox as InboxIcon, Mail as MailIcon, Search as SearchIcon } from '@material-ui/icons';
 import { useSelector, useDispatch  } from 'react-redux';
 import {HomeIcon} from '../svgIcons';
 import * as authTypes from '../../actions/authTypes'
@@ -17,13 +16,12 @@ const useStyles = makeStyles({
     width: 'auto',
   },
   dividerTitle:{
-// color: '#E50914',
-color: 'grey',
-fontWeight: 'bolder',
-marginTop: '10%',
-textDecoration: 'underline',
-marginLeft: '20%',
-width: 'auto',
+    color: 'grey',
+    fontWeight: 'bolder',
+    marginTop: '10%',
+    textDecoration: 'underline',
+    marginLeft: '20%',
+    width: 'auto',
   },
 });
 

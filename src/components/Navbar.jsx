@@ -18,10 +18,10 @@ import {Link} from 'react-router-dom'
   },
   nav: {
     width: '15%',
-    // marginRight: '1%',
-    // position: 'relative',
-    // right: '1%'
   },
+  rootDiv:{
+    marginBottom:100
+  }
 
 });
 
@@ -34,8 +34,8 @@ const Navbar = (props) => {
 
   
   return (
-    <div >
-      <AppBar position="static"  >
+    <div className={classes.rootDiv} >
+      <AppBar position="fixed"  >
         <Toolbar className={classes.root}>
         <Typography variant="h6" className={classes.username}>
         {loggedIn ? <div to="/" >{"Hello " + userName}</div> : null}
@@ -45,21 +45,6 @@ const Navbar = (props) => {
               NETFLIX
             </Typography>
           </Link>
-
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
-
             <div className={classes.nav}>
               <Drawer/>
             </div>
