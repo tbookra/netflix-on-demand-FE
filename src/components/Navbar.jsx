@@ -1,15 +1,28 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, makeStyles} from '@material-ui/core'
+import {AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core';
 import { useSelector} from 'react-redux';
 import Drawer from './header/Drawer'
 import {Link} from 'react-router-dom'
   const useStyles = makeStyles({
   root: {
-    flexGrow: 1,
+      display: 'flex',
+      justifyContent: 'space-between'
   },
   title: {
-    flexGrow: 1,
+    color: '#d81f26',
+    textDecoration: 'none',
+   },
+  username: {
+    width: '15%',
+    fontSize: '0.85em',
   },
+  nav: {
+    width: '15%',
+  },
+  rootDiv:{
+    marginBottom:100
+  }
+
 });
 
 
@@ -21,18 +34,18 @@ const Navbar = (props) => {
 
   
   return (
-    <div className={classes.root}>
-      <AppBar position="static" >
-        <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+    <div className={classes.rootDiv} >
+      <AppBar position="fixed"  >
+        <Toolbar className={classes.root}>
+        <Typography variant="h6" className={classes.username}>
         {loggedIn ? <div to="/" >{"Hello " + userName}</div> : null}
           </Typography>
           <Link to='/' className={classes.title}>
-            <Typography variant="h6" >
-              Netflix
+            <Typography variant="h4" >
+              NETFLIX
             </Typography>
           </Link>
-            <div>
+            <div className={classes.nav}>
               <Drawer/>
             </div>
         </Toolbar>
