@@ -46,6 +46,12 @@ const DrawerList = ({toggleDrawer}) => {
               onKeyDown={toggleDrawer(false)}
           >
               <List>
+                <Link to={loggedIn?'/':'/Login'}>
+                    <ListItem button onClick={loggedIn && onLogout}>
+                        <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
+                        <ListItemText primary={loggedIn?'Logout':'Login'} />
+                    </ListItem>   
+                </Link>
                 <Link to='/'>
                     <ListItem button >
                         <ListItemIcon> <HomeIcon  /> </ListItemIcon>
@@ -98,14 +104,6 @@ const DrawerList = ({toggleDrawer}) => {
                 </Link>
               </List> 
               <Divider />
-              <List>
-                <Link to={loggedIn?'/':'/Login'}>
-                    <ListItem button onClick={loggedIn && onLogout}>
-                        <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
-                        <ListItemText primary={loggedIn?'Logout':'Login'} />
-                    </ListItem>   
-                </Link>
-              </List>
           </div>
       );
   };
