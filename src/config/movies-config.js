@@ -27,3 +27,5 @@ export const moviesUrls = (page) =>{
         },
     ]
 } 
+
+export const youtubeBaseUrl = (videoId) => `https://youtu.be/${videoId}`
