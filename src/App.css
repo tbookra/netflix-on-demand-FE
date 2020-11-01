@@ -21,23 +21,34 @@
   overflow-x: auto;
 }
 
-.page_buttons{
+.page_buttons {
   display: flex;
   justify-content: space-between;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   #moviesSection {
     grid-template-columns: auto auto auto;
   }
 }
-@media screen and (max-width:710px) {
+@media screen and (max-width: 710px) {
   #moviesSection {
-    grid-template-columns: auto  auto;
+    grid-template-columns: auto auto;
   }
 }
-@media screen and (max-width:470px) {
+@media screen and (max-width: 470px) {
   #moviesSection {
-    grid-template-columns:   auto;
+    grid-template-columns: auto;
   }
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
