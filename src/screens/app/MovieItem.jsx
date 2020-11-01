@@ -4,62 +4,40 @@ import { httpRequest} from '../../api'
 import {MovieItemData} from '../../components'
 import {CircularProgress} from '@material-ui/core'
 const MovieItem = () =>{
-    const {state={}} = useLocation()
-    console.log('movie Item', state)
-    const [userMoviesData, setUserMoviesData] = useState({
-    isMember:false,
-    purchasedMovies:[]
-    })
-    const [isLoading, setIsLoading] = useState(true)
+    const {state:{movieData}} = useLocation()
     const [isAccessible, setIsAccessible] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(()=>{
-    (async()=>{
-        console.log('effect 1')
-        setIsLoading(true)
-      try{
-        const {data:{isMember, purchasedMovies}} = await httpRequest.get('/movie/getAccessibleMovies')
-        setUserMoviesData(oldState=>({...oldState, isMember,purchasedMovies }))
-      }catch(err){
-        console.log(err)
-      }
-    })()
-  },[])
+    useEffect(()=>{
+      (async()=>{
+        try{
+          const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieData.id}`)
+          setIsAccessible(isMovieAccessible)
+          setIsLoading(false)
+        }catch(err){
+          console.log(err)
+        }
+      })()
+    },[movieData])
 
-  useEffect(()=>{
-    console.log('effect 2')
-    if(!state || !state.movieData) return setIsLoading(false)
-      let isMoviePurchased = userMoviesData.purchasedMovies.filter(purchasedMovie=>purchasedMovie.movieId == state.movieData.id)
-      console.log('isMoviePurchased',isMoviePurchased)
-    if(userMoviesData.isMember || isMoviePurchased.length > 0){
-        setIsAccessible(true)
-    }else{
-        setIsAccessible(false) 
+    if(isLoading){
+        return(
+            <CircularProgress />
+        )
     }
-    setIsLoading(false)
-  },[userMoviesData, state ])
-
-if(isLoading){
-    return(
-        <CircularProgress />
-    )
-}
-
-if(!isAccessible ){
-    console.log('inside return', state.movieData)
-    return(
-           <Redirect to={{
-            pathname: `/purchasePage/${state.movieData.id || ''}`,
-            state: {movieData:state.movieData}
-        }}
-        />
-    )
-}
 
     return (
+      isAccessible 
+      ?
         <div>
-            <MovieItemData movieData={state.movieData}/>
+            <MovieItemData movieData={movieData} />
         </div>
+      :
+        <Redirect to={{
+          pathname: `/purchasePage/${movieData.id}`,
+          state: {movieData}
+        }}/>
+      
     )
 };
 

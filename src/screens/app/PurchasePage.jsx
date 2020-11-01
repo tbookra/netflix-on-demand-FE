@@ -1,25 +1,30 @@
-import React from 'react';
-import {useHistory, useLocation} from 'react-router-dom'
+import React, {useState} from 'react';
+import {useLocation, Redirect} from 'react-router-dom'
 import { httpRequest} from '../../api'
 import {Pricing} from '../../components'
 const PurchasePage = () =>{
-     const {state:{movieData}} = useLocation()
-    console.log('purchase', movieData)
-    const history = useHistory()
+    const {state:{movieData}} = useLocation()
+    const [isAddSuccessfully, setIsAddSuccessfully] = useState(false)
     const onAddMovie = async(movie_id) => {
         try{
             const {data:isMovieAdded} = await httpRequest.post('/movie/addMovie', {movieId:movie_id})
             console.log('isMovieAdded',isMovieAdded)
-            history.replace(`/movieItem/${movie_id}`)
+            setIsAddSuccessfully(isMovieAdded.added)
         }catch(err){
             console.log(err)
         }
     }
 
     return (
-        <div>
+        isAddSuccessfully
+        ?
+            <Redirect to={{
+                pathname: `/movieItem/${movieData.id}`,
+                state: {movieData}
+            }}/>
+        :
             <Pricing movieData={movieData} addMovie={onAddMovie}/>
-        </div>
+       
        
     )
 };
