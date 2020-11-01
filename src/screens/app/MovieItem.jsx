@@ -1,28 +1,43 @@
 import React, {useState,useEffect} from 'react';
-import {useParams,useHistory, Redirect} from 'react-router-dom'
-import {tmdb, httpRequest} from '../../api'
-import {getMovie} from '../../config/movies-config'
-
+import {useLocation, Redirect} from 'react-router-dom'
+import { httpRequest} from '../../api'
+import {MovieItemData} from '../../components'
+import {CircularProgress} from '@material-ui/core'
 const MovieItem = () =>{
-    const {movieId} = useParams();
-    const [err, setErr] = useState(false)
-    const history = useHistory()
-    useEffect(()=>{    
-    ( async() => {
-    try{
-        const {data} = await tmdb.get(getMovie(movieId))
-        setErr(false)
-        console.log(data)
-    }catch(err){
-        setErr(true)
+    const {state:{movieData}} = useLocation()
+    const [isAccessible, setIsAccessible] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(()=>{
+      (async()=>{
+        try{
+          const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieData.id}`)
+          setIsAccessible(isMovieAccessible)
+          setIsLoading(false)
+        }catch(err){
+          console.log(err)
+        }
+      })()
+    },[movieData])
+
+    if(isLoading){
+        return(
+            <CircularProgress />
+        )
     }
-})();  
-    },[movieId])
+
     return (
-        err? <Redirect to='/*'/>:
+      isAccessible 
+      ?
         <div>
-            <h1>{movieId}</h1>
+            <MovieItemData movieData={movieData} />
         </div>
+      :
+        <Redirect to={{
+          pathname: `/purchasePage/${movieData.id}`,
+          state: {movieData}
+        }}/>
+      
     )
 };
 
