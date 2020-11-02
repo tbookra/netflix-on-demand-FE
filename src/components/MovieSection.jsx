@@ -38,13 +38,6 @@ const MovieSection = ({sectionUrl, section, handlePageMove }) => {
                             >
                                 <img src={getMovieImage(movie.poster_path)} alt="img"/>
                             </Link> 
-                            {/* <Link  
-                            to={{
-                                pathname: `/movieItem/${movie.id}`,
-                                state: { movieData:movie}
-                            }}>
-                                    <img src={getMovieImage(movie.poster_path)} alt="img"/>
-                            </Link>  */}
                         </div> 
                     :
                         <Skeleton variant="rect" width={210} height={118} />    
