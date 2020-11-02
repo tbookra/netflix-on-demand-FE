@@ -5,9 +5,11 @@ import {PageButtons} from './';
 import {tmdb} from '../api'
 import {getMovieImage } from '../config/movies-config'
 import Skeleton from '@material-ui/lab/Skeleton';
-
+import {insertMovie} from '../actions/appActions'
+import {useDispatch} from 'react-redux'
 
 const MovieSection = ({sectionUrl, section, handlePageMove }) => {
+    const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
 
     useEffect(()=>{
@@ -30,13 +32,19 @@ const MovieSection = ({sectionUrl, section, handlePageMove }) => {
                     movie
                     ?
                         <div key={index} className='moviesRowItem'>
-                            <Link  
+                             <Link 
+                            to={`/movieItem/${ movie.id}`}
+                            onClick={()=>dispatch(insertMovie(movie))}
+                            >
+                                <img src={getMovieImage(movie.poster_path)} alt="img"/>
+                            </Link> 
+                            {/* <Link  
                             to={{
                                 pathname: `/movieItem/${movie.id}`,
                                 state: { movieData:movie}
                             }}>
                                     <img src={getMovieImage(movie.poster_path)} alt="img"/>
-                            </Link> 
+                            </Link>  */}
                         </div> 
                     :
                         <Skeleton variant="rect" width={210} height={118} />    

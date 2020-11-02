@@ -3,22 +3,23 @@ import {useLocation, Redirect} from 'react-router-dom'
 import { httpRequest} from '../../api'
 import {MovieItemData} from '../../components'
 import {CircularProgress} from '@material-ui/core'
+import {useSelector} from 'react-redux'
 const MovieItem = () =>{
-    const {state:{movieData}} = useLocation()
+    const {currentMovie} = useSelector(state=>state.mainApp)
     const [isAccessible, setIsAccessible] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
       (async()=>{
         try{
-          const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${movieData.id}`)
+          const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${currentMovie.id}`)
           setIsAccessible(isMovieAccessible)
           setIsLoading(false)
         }catch(err){
           console.log(err)
         }
       })()
-    },[movieData])
+    },[currentMovie])
 
     if(isLoading){
         return(
@@ -30,14 +31,10 @@ const MovieItem = () =>{
       isAccessible 
       ?
         <div>
-            <MovieItemData movieData={movieData} />
+            <MovieItemData/>
         </div>
       :
-        <Redirect to={{
-          pathname: `/purchasePage/${movieData.id}`,
-          state: {movieData}
-        }}/>
-      
+        <Redirect to={`/purchasePage/${currentMovie.id}`}/>      
     )
 };
 

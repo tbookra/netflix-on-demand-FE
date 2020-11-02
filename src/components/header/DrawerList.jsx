@@ -44,7 +44,7 @@ const DrawerList = ({toggleDrawer}) => {
           >
               <List>
                 <Link to={loggedIn?'/':'/Login'}>
-                    <ListItem button onClick={loggedIn && onLogout}>
+                    <ListItem button onClick={loggedIn ? onLogout : undefined}>
                         <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
                         <ListItemText primary={loggedIn?'Logout':'Login'} />
                     </ListItem>   

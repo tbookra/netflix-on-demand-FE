@@ -38,7 +38,7 @@ const Navbar = (props) => {
       <AppBar position="fixed"  >
         <Toolbar className={classes.root}>
         <Typography variant="h6" className={classes.username}>
-        {loggedIn ? <div to="/" >{"Hello " + userName}</div> : null}
+        {loggedIn ? "Hello " + userName : null}
           </Typography>
           <Link to='/' className={classes.title}>
             <Typography variant="h4" >

@@ -3,14 +3,17 @@ import ReactPlayer from 'react-player/youtube'
 import {tmdb} from '../api'
 import {youtubeBaseUrl, getMovieVideo} from '../config/movies-config'
 import {CircularProgress} from '@material-ui/core'
-const MovieItemData = ({movieData}) => {
+import {useSelector} from 'react-redux'
+
+const MovieItemData = () => {
+    const {currentMovie} = useSelector(state=>state.mainApp)
     const [isVideoExists, setIsVideoExists] = useState(null)
     const [videoKey, setVideoKey] = useState('')
 
     useEffect(()=>{
         (async()=>{
         try{
-            const {data:{results}} = await tmdb.get(getMovieVideo(movieData.id))
+            const {data:{results}} = await tmdb.get(getMovieVideo(currentMovie.id))
             if(!results.length) return setIsVideoExists(false)
             setIsVideoExists(true)
             const [trailer] = results.filter((item)=>item.type === "Trailer")
@@ -19,7 +22,7 @@ const MovieItemData = ({movieData}) => {
             console.log(err)
         }
         })()
-    },[movieData])
+    },[currentMovie])
 
     if(isVideoExists!==null && !isVideoExists){
         return(
@@ -29,7 +32,7 @@ const MovieItemData = ({movieData}) => {
 
     return(
         <div className='movieItemDataRoot'>
-            <h1>{movieData.title}</h1>
+            <h1>{currentMovie.title}</h1>
             
                 {videoKey
                     ?
