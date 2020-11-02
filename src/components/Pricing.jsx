@@ -66,8 +66,8 @@ const tiers = [
 ];
 
 const Pricing = ({movieData, addMovie}) => {
-  console.log('pricing', movieData)
-const classes = useStyles();
+  
+  const classes = useStyles();
 
   return (
     <Container>

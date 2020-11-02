@@ -27,3 +27,7 @@ export const moviesUrls = (page) =>{
         },
     ]
 } 
+
+export const getMovieVideo = (movieId) =>`/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+
+export const youtubeBaseUrl = (videoId) => `https://youtu.be/${videoId}`

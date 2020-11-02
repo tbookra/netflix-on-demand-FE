@@ -8,7 +8,6 @@ const PurchasePage = () =>{
     const onAddMovie = async(movie_id) => {
         try{
             const {data:isMovieAdded} = await httpRequest.post('/movie/addMovie', {movieId:movie_id})
-            console.log('isMovieAdded',isMovieAdded)
             setIsAddSuccessfully(isMovieAdded.added)
         }catch(err){
             console.log(err)

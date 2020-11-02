@@ -31,7 +31,6 @@ const DrawerList = ({toggleDrawer}) => {
     const {loggedIn} = useSelector(state => state.auth);
   
     const onLogout = () => {
-        console.log('on logout')
       dispatch({type:authTypes.SET_LOGOUT}) 
       removeToken();   
     }

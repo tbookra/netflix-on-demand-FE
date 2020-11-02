@@ -14,10 +14,8 @@ const MovieSections = () => {
     const handlePageMove = ( direction) =>{
         if(direction === "Up" && page !==1000 ) {
             setPage(page + 1) 
-            console.log('page', page)
         } else if ((direction === "Down" && page !==1)){
             setPage(page - 1) 
-            console.log('page', page)
         }; 
     }
 
