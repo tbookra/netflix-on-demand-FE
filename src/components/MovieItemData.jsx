@@ -43,7 +43,9 @@ const MovieItemData = ({movieData}) => {
                             height='100%'
                         />
                     :
-                        <CircularProgress/>
+                        <div className='loading'>
+                            <CircularProgress size={100} />
+                        </div>
             }
               
             </div>
