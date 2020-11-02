@@ -4,5 +4,8 @@ export const initialState = {
     isFetching: false,
     loggedIn: false, 
   },
+  mainApp:{
+    currentMovie:{}
+  }
  
 };
