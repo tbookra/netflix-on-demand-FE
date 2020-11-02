@@ -13,10 +13,7 @@ const MovieItemData = ({movieData}) => {
             const {data:{results}} = await tmdb.get(getMovieVideo(movieData.id))
             if(!results.length) return setIsVideoExists(false)
             setIsVideoExists(true)
-            console.log(movieData.id)
-            console.log(results)
             const [trailer] = results.filter((item)=>item.type === "Trailer")
-            console.log(trailer)
             setVideoKey(trailer.key)
         }catch(err){
             console.log(err)
@@ -31,24 +28,27 @@ const MovieItemData = ({movieData}) => {
     }
 
     return(
-        <div>
+        <div className='movieItemDataRoot'>
             <h1>{movieData.title}</h1>
-            <div className='player-wrapper'>
+            
                 {videoKey
                     ?
+                    <div className='player-wrapper'>
                         <ReactPlayer
-                            className='react-player'
+                        className='react-player'
                             url={youtubeBaseUrl(videoKey)}
-                            width='100%'
-                            height='100%'
+                            width='50%'
+                            height='50%'
+                            controls
                         />
+                    </div>
                     :
-                        <div className='loading'>
-                            <CircularProgress size={100} />
-                        </div>
+                    <div className='loading'>
+                        <CircularProgress size={100} />
+                    </div>
             }
               
-            </div>
+            
         </div>
     )
 }

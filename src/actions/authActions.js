@@ -13,7 +13,6 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
         try{          
           dispatch({type:authTypes.FETCH_REQUEST})
           const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
-          console.log(data)
           if (data.error){
             dispatch({type:authTypes.FETCH_ERROR})
             return data.error;
