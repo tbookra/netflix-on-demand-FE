@@ -3,9 +3,10 @@ import {tmdb} from '../api'
 import {getMovieImage} from '../config/movies-config'
 import {  Link } from "react-router-dom";
 import Skeleton from '@material-ui/lab/Skeleton';
-
-
+import {insertMovie} from '../actions/appActions'
+import {useDispatch} from 'react-redux'
 const MoviesRow = ({rowUrl, rowTitle}) => {
+    const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
 
     useEffect(()=>{
@@ -28,10 +29,9 @@ const MoviesRow = ({rowUrl, rowTitle}) => {
                      ?
                         <div key={index} className='moviesRowItem'>
                             <Link 
-                            to={{
-                                pathname: `/movieItem/${ movie.id}`,
-                                state: { movieData:movie}
-                            }}>
+                            to={`/movieItem/${ movie.id}`}
+                            onClick={()=>dispatch(insertMovie(movie))}
+                            >
                                 <img src={getMovieImage(movie.poster_path)} alt="img"/>
                             </Link>                      
                         </div>  

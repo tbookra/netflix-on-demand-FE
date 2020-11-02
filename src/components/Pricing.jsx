@@ -6,8 +6,7 @@ import
       Typography, makeStyles,
        Container } from '@material-ui/core'
 import StarIcon from '@material-ui/icons/StarBorder';
-
-
+import {useSelector} from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -65,8 +64,9 @@ const tiers = [
   },
 ];
 
-const Pricing = ({movieData, addMovie}) => {
-  
+
+const Pricing = ({addMovie}) => {
+  const {currentMovie} = useSelector(state=>state.mainApp)
   const classes = useStyles();
 
   return (
@@ -75,7 +75,7 @@ const Pricing = ({movieData, addMovie}) => {
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Wnat to buy -{movieData.title}-?
+          Want to buy -{currentMovie.title}-?
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
           Select one of the options below, either buy the movie itself(one time payment) or buy membership for access all the movies
@@ -116,7 +116,7 @@ const Pricing = ({movieData, addMovie}) => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={()=>addMovie(movieData.id)}>
+                  <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={()=>addMovie(currentMovie.id)}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
