@@ -1,8 +1,8 @@
-import React from 'react';
-import {Avatar, Button, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
-import TextField from '@material-ui/core/TextField'; // import costum input...
+import React, {useState} from 'react';
+import {   useDispatch } from 'react-redux';
+import {SearchForm} from '../../forms';
+import {Avatar, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: '10%',
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -33,8 +33,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- const SearchPage = () => {
+
+
+ const SearchPage = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmitForm = async (values) => {
+    try{
+      console.log('test',values)
+    // const error = await dispatch(submitFormLogics(values,'register'))
+    // setErrorMessage(error)
+   
+    } catch (err) {
+      console.log(err);
+    }}
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -43,36 +58,21 @@ const useStyles = makeStyles((theme) => ({
         <Avatar className={classes.avatar}>
           <SearchIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" >
           Search your favorate show here
         </Typography>
-        {/*  */}
-        {/* 
-        צריך לשנות את הקומפוננטה של האינפוט ולהטמיע פורמיק עם יופ
-        */}
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="search"
-            label='Search Here...'
-            name="search"
-            autoComplete="search"
-            autoFocus           
-          />
-          <Button
-            type="submit" 
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >           
-              Search 
-            <SearchIcon />
-          </Button>       
-        </form>
-        {/*  */}
+        
+       <SearchForm 
+      //  submitForm={handleSubmitForm}
+      onChange = {handleSubmitForm}
+       />
+<Typography component="h1" variant="h5" >
+{/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}
+        </Typography>
+         
+        
+       
+       
       </div>
     
     </Container>
