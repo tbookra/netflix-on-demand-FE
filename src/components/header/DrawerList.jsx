@@ -5,6 +5,7 @@ import {MoveToInbox as InboxIcon, Mail as MailIcon, Search as SearchIcon } from 
 import { useSelector, useDispatch  } from 'react-redux';
 import {HomeIcon} from '../svgIcons';
 import * as authTypes from '../../actions/authTypes'
+import * as appTypes from '../../actions/appTypes'
 import {removeToken} from '../../api/tokenHandler'
 import {Link} from 'react-router-dom'
 
@@ -32,6 +33,7 @@ const DrawerList = ({toggleDrawer}) => {
   
     const onLogout = () => {
       dispatch({type:authTypes.SET_LOGOUT}) 
+      dispatch({type:appTypes.CLEAN_STATE})
       removeToken();   
     }
 

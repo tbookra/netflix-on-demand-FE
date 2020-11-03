@@ -75,7 +75,7 @@ const Pricing = ({addMovie}) => {
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Want to buy -{currentMovie.title}-?
+          Want to buy -{currentMovie.original_title}-?
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
           Select one of the options below, either buy the movie itself(one time payment) or buy membership for access all the movies

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useLocation, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import { httpRequest} from '../../api'
 import {Pricing} from '../../components'
 import {useSelector} from 'react-redux'

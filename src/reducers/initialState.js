@@ -5,7 +5,8 @@ export const initialState = {
     loggedIn: false, 
   },
   mainApp:{
-    currentMovie:{}
+    currentMovie:{},
+    movieFetchingError:null
   }
  
 };

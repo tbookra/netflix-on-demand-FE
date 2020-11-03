@@ -29,8 +29,8 @@ const MoviesRow = ({rowUrl, rowTitle}) => {
                      ?
                         <div key={index} className='moviesRowItem'>
                             <Link 
-                            to={`/movieItem/${ movie.id}`}
-                            onClick={()=>dispatch(insertMovie(movie))}
+                            to={`/movieItem/${movie.id}`}
+                            onClick={()=>dispatch(insertMovie(movie.id))}
                             >
                                 <img src={getMovieImage(movie.poster_path)} alt="img"/>
                             </Link>                      

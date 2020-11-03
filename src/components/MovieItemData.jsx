@@ -19,20 +19,24 @@ const MovieItemData = () => {
             const [trailer] = results.filter((item)=>item.type === "Trailer")
             setVideoKey(trailer.key)
         }catch(err){
-            console.log(err)
+            setIsVideoExists(false)
         }
         })()
     },[currentMovie])
 
     if(isVideoExists!==null && !isVideoExists){
         return(
-            <h1>Sorry this Movie has no video to share</h1>
+            <div>
+                 <h1>{currentMovie.original_title}</h1>
+                 <h2>Sorry this Movie has no video to share</h2>
+            </div>
+            
         )
     }
 
     return(
         <div className='movieItemDataRoot'>
-            <h1>{currentMovie.title}</h1>
+            <h1>{currentMovie.original_title}</h1>
             
                 {videoKey
                     ?

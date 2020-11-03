@@ -7,7 +7,7 @@ import {getMovieImage } from '../config/movies-config'
 import Skeleton from '@material-ui/lab/Skeleton';
 import {insertMovie} from '../actions/appActions'
 import {useDispatch} from 'react-redux'
-
+import * as appTypes from '../actions/appTypes'
 const MovieSection = ({sectionUrl, section, handlePageMove }) => {
     const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
@@ -15,13 +15,14 @@ const MovieSection = ({sectionUrl, section, handlePageMove }) => {
     useEffect(()=>{
         ( async() => {
             try{
+                dispatch({type:appTypes.CLEAN_STATE})
                 const {data:{results}} = await tmdb.get(sectionUrl)
                 setMovies(results)
             }catch(err){
                 console.log(err)
             }
         })();  
-    },[sectionUrl])
+    },[sectionUrl,dispatch])
 
     return (
         <div>
@@ -34,7 +35,7 @@ const MovieSection = ({sectionUrl, section, handlePageMove }) => {
                         <div key={index} className='moviesRowItem'>
                              <Link 
                             to={`/movieItem/${ movie.id}`}
-                            onClick={()=>dispatch(insertMovie(movie))}
+                            onClick={()=>dispatch(insertMovie(movie.id))}
                             >
                                 <img src={getMovieImage(movie.poster_path)} alt="img"/>
                             </Link> 

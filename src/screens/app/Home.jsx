@@ -1,11 +1,17 @@
 
-import React from "react";
+import React, {useEffect} from "react";
 import {moviesUrls} from '../../config/movies-config'
 import {MoviesRow} from '../../components'
 import Container from '@material-ui/core/Container';
-const Home = () => {
-  const moviesConfig = moviesUrls(1)
+import {useDispatch} from 'react-redux'
+import * as appTypes from '../../actions/appTypes'
 
+const Home = () => {
+  const dispatch = useDispatch()
+  const moviesConfig = moviesUrls(1)
+  useEffect(()=>{
+    dispatch({type:appTypes.CLEAN_STATE})
+  },[dispatch])
   return (
     <div>
       <Container maxWidth="lg">
