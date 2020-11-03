@@ -23,6 +23,11 @@ const mainAppReducer = (state = initialState.mainApp, action) => {
             currentMovie:{},
             movieFetchingError:action.payload
         };
+        case appTypes.DARK_MODE:
+            return{
+                ...state,
+                darkMode:action.payload
+            }
       
     default:
         return state;

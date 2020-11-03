@@ -9,12 +9,13 @@ import {PersistGate} from 'redux-persist/es/integration/react'
 import {persistedStore, store} from "./store/configureStore";
 import {ThemeProvider, createMuiTheme, CssBaseline} from '@material-ui/core'
 
-const theme = createMuiTheme({
-  palette:{
-    type:'dark'
-  }
-})
+// const theme = (darkMode) => createMuiTheme({
+//   palette:{
+//     type:darkMode?"dark":"light"
+//   }
+// })
 
+console.log('index store', store.getState())
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>

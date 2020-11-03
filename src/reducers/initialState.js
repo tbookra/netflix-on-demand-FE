@@ -6,7 +6,8 @@ export const initialState = {
   },
   mainApp:{
     currentMovie:{},
-    movieFetchingError:null
+    movieFetchingError:null,
+    darkMode:false
   }
  
 };
