@@ -7,13 +7,23 @@ import * as serviceWorker from './serviceWorker';
 import { Provider as StoreProvider } from "react-redux";
 import {PersistGate} from 'redux-persist/es/integration/react'
 import {persistedStore, store} from "./store/configureStore";
+import {ThemeProvider, createMuiTheme, CssBaseline} from '@material-ui/core'
+
+const theme = createMuiTheme({
+  palette:{
+    type:'dark'
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
       <PersistGate persistor={persistedStore} loading={null}>
         <BrowserRouter>
-          <App />
+          <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <App />
+          </ThemeProvider>
         </BrowserRouter>
       </PersistGate>
     </StoreProvider>
