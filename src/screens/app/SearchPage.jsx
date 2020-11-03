@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {   useDispatch } from 'react-redux';
 import {SearchForm} from '../../forms';
 import {Avatar, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
@@ -39,12 +39,17 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
+  const [searchStr, setSearchStr] = useState('');
 
-  const handleSubmitForm = async (values) => {
+useEffect(()=>{
+  console.log('test', searchStr)
+},[searchStr])
+
+
+  const handleChangeForm =  (values) => {
     try{
-      console.log('test',values)
-    // const error = await dispatch(submitFormLogics(values,'register'))
-    // setErrorMessage(error)
+      setSearchStr(values)
+    
    
     } catch (err) {
       console.log(err);
@@ -64,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
         
        <SearchForm 
       //  submitForm={handleSubmitForm}
-      onChange = {handleSubmitForm}
+      onChange = {handleChangeForm}
        />
 <Typography component="h1" variant="h5" >
 {/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}
