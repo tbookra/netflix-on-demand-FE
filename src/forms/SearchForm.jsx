@@ -3,46 +3,34 @@ import { Formik } from "formik";
 import {searchSchema} from '../validation';
 import Input from '../components/Input';
 
-
-
-
-
  const SearchForm = (props) => {
- 
-
   return (
-    
         <Formik
         initialValues={{
-          search: "",
-         
+          searchString: "", 
         }}
-        
+        onSubmit={(values)=>console.log(values)}
         // validationSchema={searchSchema}
       >
         {(props) => (
           <div >
             <Input
-              name="search"
+              name="searchString"
               type="text"
               label="Search"
               placeholder="SEARCH HERE..."
-              value={props.values.search}
-              handleChange={props.handleChange("search")}
-              handleBlur={props.handleBlur("search")}
-              onChange ={props.handleSubmit}
+              value={props.values.searchString}
+              handleChange={(e)=>{
+                props.handleChange(e)
+                setTimeout(()=>{
+                  props.submitForm()
+                })
+              }}
+    
             />
-            
-
-            
           </div>
         )}
       </Formik>
-       
-       
-    
-    
-   
   );
 };
 

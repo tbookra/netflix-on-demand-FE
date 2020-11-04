@@ -69,7 +69,7 @@ useEffect(()=>{
         
        <SearchForm 
       //  submitForm={handleSubmitForm}
-      onChange = {handleChangeForm}
+      // onChange = {handleChangeForm}
        />
 <Typography component="h1" variant="h5" >
 {/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}
