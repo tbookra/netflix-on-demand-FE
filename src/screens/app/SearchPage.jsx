@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: '10%',
   },
   search_results:{
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 
 
  const SearchPage = (props) => {
+
   const classes = useStyles();
-  // const [errorMessage, setErrorMessage] = useState('');
   const [searchStr, setSearchStr] = useState('');
   const [page, setPage] = useState(1);
 
@@ -55,7 +55,7 @@ const handlePageMove = ( direction) =>{
 const setString = (str) => {
   setSearchStr(str)
 }
-  
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -67,16 +67,17 @@ const setString = (str) => {
         <Typography component="h1" variant="h5" >
           Search your favorate show here
         </Typography>
+
        <div className={classes.form}>
        <SearchForm   setString={setString}  />
          </div> 
+
        <div className={classes.search_results}>
        <SearchedMovies searchString={searchStr} handlePageMove={handlePageMove} page={page} />
        </div>
        
 
 <Typography component="h1" variant="h5" >
-{/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}
         </Typography>
          
         

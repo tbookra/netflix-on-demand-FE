@@ -1,9 +1,8 @@
 import * as yup from "yup";
-import errorMessages from "./errorMessages";
 
 const searchSchema = yup.object({
-  search: yup
-    .string().max(35,"searching over 35 charecters is not aloud!")
+  searchString: yup
+    .string().max(25,"searching over 25 charecters is not aloud!")
     
     
  

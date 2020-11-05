@@ -6,8 +6,8 @@ import {tmdb} from '../api'
 import {getMovieImage,getSearchMovies } from '../config/movies-config';
 import Skeleton from '@material-ui/lab/Skeleton';
 import {insertMovie} from '../actions/appActions'
-import {useDispatch} from 'react-redux'
-import * as appTypes from '../actions/appTypes'
+import {useDispatch} from 'react-redux';
+
 const SearchedMovies = ({searchString, page, handlePageMove }) => {
     const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
