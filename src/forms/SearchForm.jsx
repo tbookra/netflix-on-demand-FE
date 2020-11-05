@@ -1,8 +1,5 @@
 import React from 'react';
 import { Formik } from "formik";
-import {searchSchema} from '../validation';
-import {getSearchMovies} from '../config/movies-config';
-import tmdb from '../api/tmdb'
 import Input from '../components/Input';
 
  const SearchForm = (props) => {
@@ -13,12 +10,9 @@ import Input from '../components/Input';
           searchString: "", 
         }}
         onSubmit={ async (values)=>{
-          // console.log('values',values.searchString)
-          const url = getSearchMovies(values.searchString);
-          // console.log('url',url)
-          const {data:{results}} = await tmdb.get(url);
-          console.log(results)
+          props.setString(values)
         }}
+        
         // validationSchema={searchSchema}
       >
         {(props) => (

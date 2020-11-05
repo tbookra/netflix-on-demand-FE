@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {   useDispatch } from 'react-redux';
+import React, {useState} from 'react';
 import {SearchForm} from '../../forms';
+import {SearchedMovies} from '../../components';
 import {Avatar, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -37,24 +37,22 @@ const useStyles = makeStyles((theme) => ({
 
  const SearchPage = (props) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
   const [searchStr, setSearchStr] = useState('');
+  const [page, setPage] = useState(1);
 
-useEffect(()=>{
-  console.log('test', searchStr)
-},[searchStr])
-
-
-  const handleChangeForm =  (values) => {
-    try{
-      setSearchStr(values)
-    
-   
-    } catch (err) {
-      console.log(err);
-    }}
-
+const handlePageMove = ( direction) =>{
+  if(direction === "Up" && page !==1000 ) {
+      setPage(page + 1) 
+  } else if ((direction === "Down" && page !==1)){
+      setPage(page - 1) 
+  }; 
+  console.log(page)
+}
+const setString = (str) => {
+  setSearchStr(str)
+}
+  
 
   return (
     <Container component="main" maxWidth="xs">
@@ -67,10 +65,9 @@ useEffect(()=>{
           Search your favorate show here
         </Typography>
         
-       <SearchForm 
-      //  submitForm={handleSubmitForm}
-      // onChange = {handleChangeForm}
-       />
+       <SearchForm   setString={setString}  />
+       <SearchedMovies searchString={searchStr} handlePageMove={handlePageMove} page={page} />
+
 <Typography component="h1" variant="h5" >
 {/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}
         </Typography>
