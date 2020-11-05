@@ -17,7 +17,7 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
             try{
                 // dispatch({type:appTypes.CLEAN_STATE})
                 const url = getSearchMovies(searchString['searchString'],page)
-                const {data:{results}} = await tmdb.get(url)
+                const {data:{results}} = searchString ? await tmdb.get(url) : "";
                 setMovies(results)
             }catch(err){
                 console.log(err)
@@ -28,7 +28,7 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
     return (
         <div>
             <Container maxWidth="lg">
-            <PageButtons  handlePageMove={handlePageMove} />
+            {searchString ? <PageButtons  handlePageMove={handlePageMove}/> : "" }
             <div id='moviesSection' >
                 {movies.map((movie, index)=>(
                     movie
@@ -45,7 +45,7 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
                         <Skeleton variant="rect" width={210} height={118} />    
                 ))}
             </div>
-            <PageButtons  handlePageMove={handlePageMove}  />
+            {searchString ? <PageButtons  handlePageMove={handlePageMove}/> : "" }
             </Container>
         </div>
     )
