@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: '10%',
   },
+  search_results:{
+    marginTop: '10%',
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -64,9 +67,13 @@ const setString = (str) => {
         <Typography component="h1" variant="h5" >
           Search your favorate show here
         </Typography>
-        
+       <div className={classes.form}>
        <SearchForm   setString={setString}  />
+         </div> 
+       <div className={classes.search_results}>
        <SearchedMovies searchString={searchStr} handlePageMove={handlePageMove} page={page} />
+       </div>
+       
 
 <Typography component="h1" variant="h5" >
 {/* {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>} */}

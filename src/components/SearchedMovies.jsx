@@ -25,27 +25,32 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
         })();  
     },[searchString,page])
 
+    console.log('movies',movies.length)
     return (
         <div>
             <Container maxWidth="lg">
-            {searchString ? <PageButtons  handlePageMove={handlePageMove}/> : "" }
+            {(!searchString || (movies.length < 20 && page === 1) ) ? "" : <PageButtons  handlePageMove={handlePageMove} /> }
+            {movies.length > 0 ? 
             <div id='moviesSection' >
-                {movies.map((movie, index)=>(
-                    movie
-                    ?
-                        <div key={index} className='moviesRowItem'>
-                             <Link 
-                            to={`/movieItem/${ movie.id}`}
-                            onClick={()=>dispatch(insertMovie(movie.id))}
-                            >
-                                <img src={getMovieImage(movie.poster_path)} alt="img"/>
-                            </Link> 
-                        </div> 
-                    :
-                        <Skeleton variant="rect" width={210} height={118} />    
-                ))}
-            </div>
-            {searchString ? <PageButtons  handlePageMove={handlePageMove}/> : "" }
+            {movies.map((movie, index)=>(
+                movie
+                ?
+                    <div key={index} className='moviesRowItem'>
+                         <Link 
+                        to={`/movieItem/${ movie.id}`}
+                        onClick={()=>dispatch(insertMovie(movie.id))}
+                        >
+                            <img src={getMovieImage(movie.poster_path)} alt="img"/>
+                        </Link> 
+                    </div> 
+                :
+                    <Skeleton variant="rect" width={210} height={118} />    
+            ))}
+        </div> :
+        <Skeleton variant="rect" width={400} height={500} style={{backgroundColor: "inherit"}} />
+        }
+            
+            {(!searchString || (movies.length < 20 && page === 1) ) ? "" : <PageButtons  handlePageMove={handlePageMove} /> }
             </Container>
         </div>
     )
