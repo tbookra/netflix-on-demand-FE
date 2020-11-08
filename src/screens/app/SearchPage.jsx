@@ -53,7 +53,10 @@ const handlePageMove = ( direction) =>{
   console.log(page)
 }
 const setString = (str) => {
-  setSearchStr(str)
+  setTimeout(()=>{
+    setSearchStr(str)
+  },650)
+  
 }
 
 

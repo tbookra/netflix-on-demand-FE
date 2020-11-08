@@ -15,8 +15,7 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
     useEffect(()=>{
         ( async() => {
             try{
-                // dispatch({type:appTypes.CLEAN_STATE})
-                const url = getSearchMovies(searchString['searchString'],page)
+                const url =  getSearchMovies(searchString['searchString'],page)
                 const {data:{results}} = searchString ? await tmdb.get(url) : "";
                 setMovies(results)
             }catch(err){
@@ -25,7 +24,6 @@ const SearchedMovies = ({searchString, page, handlePageMove }) => {
         })();  
     },[searchString,page])
 
-    console.log('movies',movies.length)
     return (
         <div>
             <Container maxWidth="lg">
