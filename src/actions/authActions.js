@@ -10,7 +10,7 @@ import {setToken} from '../api/tokenHandler'
 };
 
 export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
-        try{          
+        try{   
           dispatch({type:authTypes.FETCH_REQUEST})
           const { data } = await httpRequest.post(`/auth/${sentFrom}`, values);
           if (data.error){

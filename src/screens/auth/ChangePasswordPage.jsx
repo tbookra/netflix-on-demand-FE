@@ -17,15 +17,15 @@ const ChangePasswordPage = () => {
 
   const handleSubmitForm = async (values) => {
     try{
-    const error = await dispatch(submitFormLogics(values,'register'))
+    const error = await dispatch(submitFormLogics(values,'newPassword'))
     setErrorMessage(error)
    
     } catch (err) {
       console.log(err);
     }
- 
+   };
 
-  };
+  
   return (
     <div>
       <h1>Choose new password</h1>
