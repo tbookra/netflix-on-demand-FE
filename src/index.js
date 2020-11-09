@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as StoreProvider } from "react-redux";
-import {PersistGate} from 'redux-persist/es/integration/react'
-import {persistedStore, store} from "./store/configureStore";
+import { PersistGate } from 'redux-persist/es/integration/react'
+import { persistedStore, store } from "./store/configureStore";
 
+
+console.log('index store', store.getState())
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
