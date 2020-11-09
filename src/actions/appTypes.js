@@ -1,4 +1,3 @@
 export const INSERT_MOVIE = 'INSERT_MOVIE'
 export const CLEAN_STATE = 'CLEAN_STATE'
 export const MOVIE_FETCH_ERROR = 'MOVIE_FETCH_ERROR'
-export const DARK_MODE = 'DARK_MODE'
