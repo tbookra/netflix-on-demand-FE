@@ -9,7 +9,6 @@ const PasswordChange = (props) => {
       <Formik
         initialValues={{
           email: "",
-          old_password: "",
           new_password: "",
           
         }}
@@ -28,16 +27,7 @@ const PasswordChange = (props) => {
               handleBlur={props.handleBlur("email")}
               errors={props.touched.email && props.errors.email}
             />
-            <Input
-              name="old_password"
-              type="password"
-              label="old Password"
-              placeholder="OLD PASSWORD"
-              value={props.values.old_password}
-              handleChange={props.handleChange("old_password")}
-              handleBlur={props.handleBlur("old_password")}
-              errors={props.touched.old_password && props.errors.old_password}
-            />
+            
             <Input
               name="new_password"
               type="password"
