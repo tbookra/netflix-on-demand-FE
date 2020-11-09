@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 const Input = (props) => {
   return (
     <div>
-      <TextField
+      <TextField 
         variant="outlined"
         color="primary"
         name={props.name}

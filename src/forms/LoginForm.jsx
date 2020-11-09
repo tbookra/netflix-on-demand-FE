@@ -28,7 +28,7 @@ const LoginForm = (props) => {
               errors={props.touched.email && props.errors.email}
             />
             <Input
-              name="password"
+              name="password" 
               type="password" 
               label="Password"
               placeholder="PASSWORD"

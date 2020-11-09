@@ -1,8 +1,8 @@
-import React from 'react';
-import {Avatar, Button, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
-import TextField from '@material-ui/core/TextField'; // import costum input...
+import React, {useState} from 'react';
+import {SearchForm} from '../../forms';
+import {SearchedMovies} from '../../components';
+import {Avatar, CssBaseline, Typography, makeStyles, Container} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    width: '100%',
+    marginTop: '10%',
+  },
+  search_results:{
+    marginTop: '10%',
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -33,8 +36,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- const SearchPage = () => {
+
+
+ const SearchPage = (props) => {
+
   const classes = useStyles();
+  const [searchStr, setSearchStr] = useState('');
+  const [page, setPage] = useState(1);
+
+const handlePageMove = ( direction) =>{
+  if(direction === "Up" && page !==1000 ) {
+      setPage(page + 1) 
+  } else if ((direction === "Down" && page !==1)){
+      setPage(page - 1) 
+  }; 
+  console.log(page)
+}
+const setString = (str) => {
+  setTimeout(()=>{
+    setSearchStr(str)
+  },650)
+  
+}
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -43,36 +67,25 @@ const useStyles = makeStyles((theme) => ({
         <Avatar className={classes.avatar}>
           <SearchIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" >
           Search your favorate show here
         </Typography>
-        {/*  */}
-        {/* 
-        צריך לשנות את הקומפוננטה של האינפוט ולהטמיע פורמיק עם יופ
-        */}
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="search"
-            label='Search Here...'
-            name="search"
-            autoComplete="search"
-            autoFocus           
-          />
-          <Button
-            type="submit" 
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >           
-              Search 
-            <SearchIcon />
-          </Button>       
-        </form>
-        {/*  */}
+
+       <div className={classes.form}>
+       <SearchForm   setString={setString}  />
+         </div> 
+
+       <div className={classes.search_results}>
+       <SearchedMovies searchString={searchStr} handlePageMove={handlePageMove} page={page} />
+       </div>
+       
+
+<Typography component="h1" variant="h5" >
+        </Typography>
+         
+        
+       
+       
       </div>
     
     </Container>
