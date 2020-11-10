@@ -3,7 +3,8 @@ import { useHistory  } from 'react-router-dom';
 
 import {  useSelector, useDispatch } from 'react-redux';
 import { PasswordChange } from "../../forms";
-import { submitFormLogics, setChangePassword } from '../../actions/authActions';
+import { submitFormLogics } from '../../actions/authActions';
+import {setChangePassword} from '../../actions/changePasswordAction'
 
 const ChangePasswordPage = () => {
     const dispatch = useDispatch();

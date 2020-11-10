@@ -4,7 +4,7 @@ import { httpRequest} from '../../api'
 import {MovieItemData} from '../../components'
 import {CircularProgress} from '@material-ui/core'
 import {useSelector, useDispatch} from 'react-redux';
-import {setChangePassword} from '../../actions/authActions'
+import {setChangePassword} from '../../actions/changePasswordAction'
 
 const MovieItem = () =>{
     const dispatch = useDispatch();
@@ -28,7 +28,8 @@ const MovieItem = () =>{
             //   setChangePassword(true);
             // }
           // })
-          if(isAccessible === "password") await dispatch(setChangePassword(true))
+          console.log('isMovieAccessible',isMovieAccessible)
+          if(isMovieAccessible === "password") await dispatch(setChangePassword(true))
           setIsAccessible(isMovieAccessible)
           setIsLoading(false)
         }catch(err){
