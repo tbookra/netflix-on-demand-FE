@@ -9,11 +9,12 @@ const ChangePasswordPage = () => {
     const dispatch = useDispatch();
     const history = useHistory()
     const { loggedIn} = useSelector(state => state.auth);
+    const { changePassword} = useSelector(state => state.auth);
     const [errorMessage, setErrorMessage] = useState('')
 
      useEffect(()=>{
-    loggedIn&&history.replace('/')
-  }, [history, loggedIn])
+    (loggedIn && !changePassword)&&history.replace('/')
+  }, [history, loggedIn,changePassword])
 
   const handleSubmitForm = async (values) => {
     try{

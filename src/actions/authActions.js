@@ -8,6 +8,12 @@ import {setToken} from '../api/tokenHandler'
     payload:userData
   }
 };
+export const setChangePassword = (change) => {
+  return{
+    type:authTypes.CHANGE_PASSWORD,
+    payload:change
+  }
+};
 
 export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
         try{   
