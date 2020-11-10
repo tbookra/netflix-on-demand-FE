@@ -3,7 +3,7 @@ import { useHistory  } from 'react-router-dom';
 
 import {  useSelector, useDispatch } from 'react-redux';
 import { PasswordChange } from "../../forms";
-import { submitFormLogics } from '../../actions/authActions';
+import { submitFormLogics, setChangePassword } from '../../actions/authActions';
 
 const ChangePasswordPage = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ChangePasswordPage = () => {
     try{
     const error = await dispatch(submitFormLogics(values,'newPassword'))
     setErrorMessage(error)
-   
+    await dispatch(setChangePassword(false))
     } catch (err) {
       console.log(err);
     }
