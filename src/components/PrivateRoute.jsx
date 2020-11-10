@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 const PrivateRoute = ({component: Component, ...rest}) => {
     const token = getToken()
     const { changePassword} = useSelector(state => state.auth);
-console.log('private', !changePassword)
+    
     return (
         !changePassword ? 
         <Route {...rest} render={props => (

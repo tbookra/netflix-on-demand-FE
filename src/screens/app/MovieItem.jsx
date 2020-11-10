@@ -20,15 +20,7 @@ const MovieItem = () =>{
           }
       (async()=>{
         try{
-           
           const {data:{isMovieAccessible}} = await httpRequest.get(`/movie/checkIfMovieAccessible/${currentMovie.id}`)
-          // console.log('isMovieAccessible',isMovieAccessible, changePassword)
-          // setTimeout(()=>{
-            // if(isMovieAccessible === "change password") {
-            //   setChangePassword(true);
-            // }
-          // })
-          console.log('isMovieAccessible',isMovieAccessible)
           if(isMovieAccessible === "password") await dispatch(setChangePassword(true))
           setIsAccessible(isMovieAccessible)
           setIsLoading(false)
@@ -37,20 +29,6 @@ const MovieItem = () =>{
         }
       })()
     },[currentMovie,isAccessible,dispatch])
-    
-    // (async()=>{
-    //   try{
-    //      if(isAccessible === "password") await dispatch(setChangePassword(true))
-    //     }catch(err){
-    //       console.log(err)
-    //     }
-    //   })();
-
-    // if(changePassword) {
-    //   return(
-    //     <Redirect to='/ChangePasswordPage'  />
-    //   )
-    // }
     
     if(isLoading){
         return(
@@ -63,7 +41,6 @@ const MovieItem = () =>{
     }
 
     return (
-      // changePassword ? <Redirect to='/ChangePasswordPage'  /> :
       isAccessible 
       ?
         <div>
