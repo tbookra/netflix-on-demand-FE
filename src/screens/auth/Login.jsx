@@ -14,7 +14,7 @@ const Login = () => {
     loggedIn&&history.replace('/')
   }, [history, loggedIn])
   
-  const handleSubmitForm = async (values) => {
+  const handleSubmitForm = async (values) => { 
     try{
     const error = await dispatch(submitFormLogics(values,'login'))
     setErrorMessage(error)
@@ -28,6 +28,7 @@ const Login = () => {
       <h1>Login</h1>
       <LoginForm submitForm={handleSubmitForm} />
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
+      {errorMessage === "need to change password" ? <div>click <Link to="/ChangePasswordPage">HERE</Link> to change password</div> : ""}
       
       <div style={{ margin: 20 }}></div>
      
