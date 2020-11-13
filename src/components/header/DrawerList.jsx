@@ -16,6 +16,10 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  links: {
+    //   color:'white'
+// textDecoration: 'none'
+  },
   dividerTitle:{
     color: 'grey',
     fontWeight: 'bolder',
@@ -45,7 +49,7 @@ const DrawerList = ({toggleDrawer}) => {
               onKeyDown={toggleDrawer(false)}
           >
               <List>
-                <Link to={loggedIn?'/':'/Login'}>
+                <Link to={loggedIn?'/':'/Login'} className={clsx(classes.links)}>
                     <ListItem button onClick={loggedIn ? onLogout : undefined}>
                         <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
                         <ListItemText primary={loggedIn?'Logout':'Login'} />

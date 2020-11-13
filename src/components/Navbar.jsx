@@ -13,9 +13,18 @@ const useStyles = makeStyles({
     color: '#d81f26',
     textDecoration: 'none',
   },
+  title2: {
+    color: 'white',
+    textDecoration: 'none',
+  },
   username: {
     width: '15%',
     fontSize: '0.85em',
+  },
+  darkTheme: {
+    position: "absolute",
+    top: "1vh",
+    right: "2vw",
   },
   nav: {
     width: '15%',
@@ -40,6 +49,7 @@ const Navbar = (props) => {
             {loggedIn ? "Hello " + userName : null}
           </Typography>
           {/* <Switch icon={Switchicon} onChange={props.toggleDarkMode} /> */}
+          <div className={classes.darkTheme}>
           <IconButton
             edge="end"
             color="inherit"
@@ -48,9 +58,10 @@ const Navbar = (props) => {
           >
             {Switchicon}
           </IconButton>
+          </div>
           <Link to='/' className={classes.title}>
-            <Typography variant="h4" >
-              NETFLIX
+            <Typography variant="h5" >
+              NETFLIX<Typography variant="h6" display="inline" className={classes.title2}>on</Typography>DEMAND
             </Typography>
           </Link>
           <div className={classes.nav}>
