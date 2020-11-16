@@ -9,7 +9,6 @@ export const setUserData = (userData) => {
   }
 };
 export const setConfirmedEmail = (confirmState) => {
-  console.log('setConfirmedEmail',confirmState)
   return{
     type: authTypes.EMAIL_CONFIRMED,
     payload: confirmState
@@ -31,8 +30,14 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
             dispatch({type:authTypes.FETCH_ERROR})
             return data.error;
           } 
-          dispatch(setWaitingForConfirm(true))
-            
+          if(sentFrom === 'register') {
+            dispatch(setWaitingForConfirm(true))
+          } else {
+            dispatch({type:authTypes.FETCH_SUCCESS}) 
+            dispatch(setUserData(data.userName))  
+            setToken(data.token) 
+          }
+          
         }catch(err){
           console.log(err)
         }

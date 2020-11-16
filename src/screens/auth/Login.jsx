@@ -8,14 +8,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const { loggedIn} = useSelector(state => state.auth);
-  const {waiting_for_confirmaion}= useSelector(state => state.notSavedAuth);
-  const { emailConfirmed} = useSelector(state => state.notSavedAuth);
-  const [errorMessage, setErrorMessage] = useState('')
+   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(()=>{
-    console.log('waiting_for_confirmaion', waiting_for_confirmaion)
-    waiting_for_confirmaion&&history.replace('/ConfirmPleasePage')
-  }, [history, waiting_for_confirmaion])
+    loggedIn&&history.replace('/')
+  }, [history, loggedIn])
   
   const handleSubmitForm = async (values) => {  
     try{
@@ -27,7 +24,7 @@ const Login = () => {
     }
   };
 
-  console.log('login',emailConfirmed,loggedIn )
+  
   return (
     
     <div>

@@ -8,12 +8,12 @@ import { submitFormLogics } from '../../actions/authActions';
 const Registration = () => {
     const dispatch = useDispatch();
     const history = useHistory()
-    const { loggedIn} = useSelector(state => state.auth);
     const [errorMessage, setErrorMessage] = useState('')
+    const {waiting_for_confirmaion}= useSelector(state => state.notSavedAuth);
 
      useEffect(()=>{
-    loggedIn&&history.replace('/')
-  }, [history, loggedIn])
+    waiting_for_confirmaion&&history.replace('/ConfirmPleasePage')
+  }, [history, waiting_for_confirmaion])
 
   const handleSubmitForm = async (values) => {
     try{

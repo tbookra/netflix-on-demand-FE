@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles, IconButton } from '@material-ui/core';
 import { Brightness7, Brightness3 } from '@material-ui/icons'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Drawer from './header/Drawer'
 import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
@@ -38,7 +38,6 @@ const useStyles = makeStyles({
 
 const Navbar = (props) => {
   const classes = useStyles();
-  const dispatch = useDispatch()
   const { loggedIn, userName } = useSelector(state => state.auth);
   const Switchicon = props.theme.palette.type === 'dark' ? <Brightness7 /> : <Brightness3 />
   return (
