@@ -3,16 +3,7 @@ import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
-    case authTypes.WAIT_FOR_CONFIRMATION:
-      return {
-        ...state,
-        waiting_for_confirmaion: action.payload, 
-      };
-    case authTypes.EMAIL_CONFIRMED:
-      return {
-        ...state,
-        emailConfirmed: action.payload, 
-      };
+   
     case authTypes.CHANGE_PASSWORD:
       return {
         ...state,

@@ -6,7 +6,7 @@ import { dispatchConfimation} from '../../actions/authActions';
 
 const ConfirmPleasePage = () => {
     const dispatch = useDispatch();
-    const { emailConfirmed} = useSelector(state => state.auth);
+    const { emailConfirmed} = useSelector(state => state.notSavedAuth);
     const history = useHistory()
 
     useEffect(()=>{

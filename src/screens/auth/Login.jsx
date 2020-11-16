@@ -8,8 +8,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const { loggedIn} = useSelector(state => state.auth);
-  const {waiting_for_confirmaion}= useSelector(state => state.auth);
-  const { emailConfirmed} = useSelector(state => state.auth);
+  const {waiting_for_confirmaion}= useSelector(state => state.notSavedAuth);
+  const { emailConfirmed} = useSelector(state => state.notSavedAuth);
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(()=>{
