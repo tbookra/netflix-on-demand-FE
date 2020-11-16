@@ -2,13 +2,26 @@ import * as authTypes from "./authTypes";
 import { httpRequest } from '../api';
 import {setToken} from '../api/tokenHandler'
 
- const setUserData = (userData) => {
+export const setUserData = (userData) => {
   return{
     type:authTypes.SET_USER,
     payload:userData
   }
 };
+export const setConfirmedEmail = (confirmState) => {
+  console.log('setConfirmedEmail',confirmState)
+  return{
+    type: authTypes.EMAIL_CONFIRMED,
+    payload: confirmState
+  }
+}
 
+export const setWaitingForConfirm = (confirmedData) => {
+  return{
+    type: authTypes.WAIT_FOR_CONFIRMATION,
+    payload: confirmedData
+  }
+}
 
 export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
         try{   
@@ -18,13 +31,18 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
             dispatch({type:authTypes.FETCH_ERROR})
             return data.error;
           } 
-            dispatch({type:authTypes.FETCH_SUCCESS}) 
-            dispatch(setUserData(data.userName))  
-            setToken(data.token)
+          dispatch(setWaitingForConfirm(true))
+            
         }catch(err){
           console.log(err)
         }
   
   }
  
-  
+  export const dispatchConfimation = () => async(dispatch) => {
+    const { data } = await httpRequest.get(`/auth/confirmed`);
+            dispatch({type:authTypes.FETCH_SUCCESS}) 
+            dispatch(setUserData(data.userName))  
+            setToken(data.token)
+            dispatch(setConfirmedEmail(true));
+  }

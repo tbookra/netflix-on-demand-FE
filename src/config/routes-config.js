@@ -1,5 +1,5 @@
 import {Home,MovieItem,PurchasePage,SearchPage, NotFoundPage, MovieSections} from '../screens/app'
-import {Login,Registration,ChangePasswordPage} from '../screens/auth'
+import {Login,Registration,ChangePasswordPage,ConfirmPleasePage} from '../screens/auth'
 
 export const routes = [
   {
@@ -11,6 +11,12 @@ export const routes = [
   {
     path: "/SearchPage",
     component: SearchPage,
+    exact: true,
+    
+  },
+  {
+    path: "/ConfirmPleasePage",
+    component: ConfirmPleasePage,
     exact: true,
     
   },
