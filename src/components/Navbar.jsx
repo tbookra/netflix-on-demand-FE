@@ -45,7 +45,7 @@ const Navbar = (props) => {
       <AppBar position="fixed"  >
         <Toolbar className={classes.root}>
           <Typography variant="h6" className={classes.username}>
-            {loggedIn ? "Hello " + userName : null}
+            {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
           {/* <Switch icon={Switchicon} onChange={props.toggleDarkMode} /> */}
           <div className={classes.darkTheme}>
