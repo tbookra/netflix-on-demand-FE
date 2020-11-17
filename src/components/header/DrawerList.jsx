@@ -105,8 +105,15 @@ const DrawerList = ({toggleDrawer}) => {
                         <ListItemText primary={"Action Movies"} />
                     </ListItem>   
                 </Link>
-              </List> 
               <Divider />
+                <Link to={loggedIn?'/SignoutPage':'/Login'}>
+                    <ListItem button >
+                        {/* <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon> */}
+                        <ListItemText primary={loggedIn?'Signout':''} />
+                    </ListItem>   
+                </Link>
+              </List> 
+              {loggedIn ? <Divider /> : ""}
           </div>
       );
   };
