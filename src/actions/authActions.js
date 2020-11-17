@@ -34,7 +34,7 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
             dispatch(setWaitingForConfirm(true))
           } else {
             dispatch({type:authTypes.FETCH_SUCCESS}) 
-            dispatch(setUserData(data.userName))  
+            dispatch(setUserData(data.userObj.full_name))  
             setToken(data.token) 
           }
           
@@ -47,7 +47,7 @@ export const submitFormLogics =  (values, sentFrom) => async(dispatch) =>{
   export const dispatchConfimation = () => async(dispatch) => {
     const { data } = await httpRequest.get(`/auth/confirmed`);
             dispatch({type:authTypes.FETCH_SUCCESS}) 
-            dispatch(setUserData(data.userName))  
+            dispatch(setUserData(data.userObj.full_name))  
             setToken(data.token)
             dispatch(setConfirmedEmail(true));
   }
