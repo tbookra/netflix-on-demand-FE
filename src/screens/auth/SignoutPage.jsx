@@ -18,7 +18,7 @@ const SignoutPage = () => {
 
   const handleSignout = async () => {
     try{
-    const {data: {deleted}} = await httpRequest.get(`/auth/deleteUser${userName.email}`);
+    const {data: {deleted}} = await httpRequest.get(`/auth/deleteUser/${userName.email}`);
     if (deleted) {
         removeToken();
         await dispatch({type:authTypes.SET_LOGOUT});
