@@ -149,7 +149,8 @@ const Pricing = ({ addMovie, buyMembership }) => {
                     variant={tier.buttonVariant}
                     color="primary"
                     onClick={() => {
-                      if (tier.title === "Buy Movie") addMovie(currentMovie.id);
+                      if (tier.title === "Buy Movie")
+                        addMovie(currentMovie.id, currentMovie.poster_path);
                       else buyMembership();
                     }}
                   >

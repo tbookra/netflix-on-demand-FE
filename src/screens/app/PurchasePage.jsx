@@ -7,10 +7,11 @@ const PurchasePage = () => {
   const { currentMovie } = useSelector((state) => state.mainApp);
   const [isAddSuccessfully, setIsAddSuccessfully] = useState(false);
 
-  const onAddMovie = async (movie_id) => {
+  const onAddMovie = async (movie_id, posterPath) => {
     try {
       const { data: isMovieAdded } = await httpRequest.post("/movie/addMovie", {
         movieId: movie_id,
+        posterPath,
       });
       setIsAddSuccessfully(isMovieAdded.added);
     } catch (err) {

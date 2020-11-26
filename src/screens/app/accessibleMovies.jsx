@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { httpRequest, tmdb } from "../../api";
 import { getMovie, getMovieImgByPath } from "../../config/movies-config";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { insertMovie } from "../../actions/appActions";
 import { useDispatch } from "react-redux";
+
 const AccessibleMovies = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [isMember, setIsMember] = useState();
   const [accessibleMovies, setAccessibleMovies] = useState([]);
+
   useEffect(() => {
     (async () => {
       try {
@@ -27,19 +30,10 @@ const AccessibleMovies = () => {
         "/movie/membership/cancel"
       );
       setIsMember(membership);
+      history.go(0);
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const getMovieImgById = (movie_id) => {
-    tmdb
-      .get(getMovie(movie_id))
-      .then(({ data }) => {
-        const imgPath = `https://image.tmdb.org/t/p/w185${data.poster_path}`;
-        return imgPath;
-      })
-      .catch((err) => console.log(err));
   };
 
   if (isMember) {
@@ -54,21 +48,20 @@ const AccessibleMovies = () => {
 
   return (
     <div>
-      {accessibleMovies.map((movie, index) =>
-        movie ? (
+      {accessibleMovies.map((movie, index) => {
+        return movie ? (
           <div key={index} className="moviesRowItem">
             <Link
               to={`/movieItem/${movie.movieId}`}
               onClick={() => dispatch(insertMovie(movie.movieId))}
             >
-              {/* check why img is not seen */}
-              <img src={getMovieImgById(movie.movieId)} alt="img" />
+              <img src={getMovieImgByPath(movie.posterPath)} alt="img" />
             </Link>
           </div>
         ) : (
           <Skeleton variant="rect" width={210} height={118} />
-        )
-      )}
+        );
+      })}
     </div>
   );
 };
