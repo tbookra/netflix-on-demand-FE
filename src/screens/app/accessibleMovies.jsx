@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { httpRequest, tmdb } from "../../api";
-import { getMovie, getMovieImgByPath } from "../../config/movies-config";
-import { Link, useHistory } from "react-router-dom";
-import Skeleton from "@material-ui/lab/Skeleton";
-import { insertMovie } from "../../actions/appActions";
+import { httpRequest } from "../../api";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Typography, Container, Button, Grid } from "@material-ui/core";
+import { AccessibleMoviesGrid } from "../../components";
 
 const AccessibleMovies = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const [isMember, setIsMember] = useState();
   const [accessibleMovies, setAccessibleMovies] = useState([]);
 
@@ -38,31 +36,24 @@ const AccessibleMovies = () => {
 
   if (isMember) {
     return (
-      <div>
-        <h3>you have a membership</h3>
-        <h5>its mean you have access to all of our movies</h5>
-        <button onClick={handleCancelMembership}>cancel membership</button>
-      </div>
+      <Container>
+        <Typography component="h4" variant="h3">
+          you have a membership
+        </Typography>
+        <Typography component="h5" variant="h4">
+          its mean you have access to all of our movies
+        </Typography>
+        <Button onClick={handleCancelMembership}>cancel membership</Button>
+      </Container>
     );
   }
 
   return (
-    <div>
-      {accessibleMovies.map((movie, index) => {
-        return movie ? (
-          <div key={index} className="moviesRowItem">
-            <Link
-              to={`/movieItem/${movie.movieId}`}
-              onClick={() => dispatch(insertMovie(movie.movieId))}
-            >
-              <img src={getMovieImgByPath(movie.posterPath)} alt="img" />
-            </Link>
-          </div>
-        ) : (
-          <Skeleton variant="rect" width={210} height={118} />
-        );
-      })}
-    </div>
+    <Container>
+      <Grid container spacing={4} wrap="wrap">
+        <AccessibleMoviesGrid accessibleMovies={accessibleMovies} />
+      </Grid>
+    </Container>
   );
 };
 
