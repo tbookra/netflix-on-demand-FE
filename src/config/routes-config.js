@@ -1,49 +1,58 @@
-import {Home,MovieItem,PurchasePage,SearchPage, NotFoundPage, MovieSections} from '../screens/app'
-import {Login,Registration,ChangePasswordPage} from '../screens/auth'
+import {
+  Home,
+  MovieItem,
+  PurchasePage,
+  SearchPage,
+  NotFoundPage,
+  MovieSections,
+  accessibleMovies,
+} from "../screens/app";
+import { Login, Registration, ChangePasswordPage } from "../screens/auth";
 
 export const routes = [
   {
     path: "/",
     component: Home,
     exact: true,
-    
   },
   {
     path: "/SearchPage",
     component: SearchPage,
     exact: true,
-    
   },
   {
     path: "/ChangePasswordPage",
     component: ChangePasswordPage,
     exact: true,
-    
   },
   {
     path: "/movieItem/:movieId",
     component: MovieItem,
-    privateRoute:true
+    privateRoute: true,
   },
   {
     path: "/purchasePage/:movieId",
     component: PurchasePage,
-    privateRoute:true
+    privateRoute: true,
   },
   {
     path: "/login",
-    component: Login
+    component: Login,
   },
   {
     path: "/registration",
-    component: Registration
+    component: Registration,
   },
   {
     path: "/MovieSection/:section",
-    component: MovieSections
+    component: MovieSections,
+  },
+  {
+    path: "/accessibleMovies",
+    component: accessibleMovies,
   },
   {
     path: "*",
-    component: NotFoundPage
-  }
+    component: NotFoundPage,
+  },
 ];

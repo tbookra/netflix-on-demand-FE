@@ -68,7 +68,7 @@ const tiers = [
   },
 ];
 
-const Pricing = ({ addMovie }) => {
+const Pricing = ({ addMovie, buyMembership }) => {
   const { currentMovie } = useSelector((state) => state.mainApp);
   const classes = useStyles();
 
@@ -148,7 +148,11 @@ const Pricing = ({ addMovie }) => {
                     fullWidth
                     variant={tier.buttonVariant}
                     color="primary"
-                    onClick={() => addMovie(currentMovie.id)}
+                    onClick={() => {
+                      if (tier.title === "Buy Movie")
+                        addMovie(currentMovie.id, currentMovie.poster_path);
+                      else buyMembership();
+                    }}
                   >
                     {tier.buttonText}
                   </Button>
