@@ -27,7 +27,7 @@ export const routes = [
     
   },
   {
-    path: "/auth/ConfirmationAccepted",
+    path: "/auth/ConfirmationAccepted/:userEmail",
     component: ConfirmationAccepted,
     exact: true,
     

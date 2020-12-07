@@ -1,10 +1,8 @@
 import React,{useEffect} from 'react'
-import {  useSelector, useDispatch } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import { dispatchConfimation} from '../../actions/authActions';
 
 const ConfirmPleasePage = () => {
-    const dispatch = useDispatch();
     const { emailConfirmed} = useSelector(state => state.notSavedAuth);
     const history = useHistory()
 
@@ -13,14 +11,7 @@ const ConfirmPleasePage = () => {
         emailConfirmed&&history.replace('/')
       }, [history, emailConfirmed])
 
-    // const handleClick = async () =>{
-    //     try{
-    //         await dispatch(dispatchConfimation()) ;
-    //     }catch(e){
-    //         console.log(e)
-    //     }
-    // }
-     
+       
     return(
      
         <div>

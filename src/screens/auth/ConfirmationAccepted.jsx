@@ -1,26 +1,29 @@
 import React,{useEffect} from 'react'
-import {  useSelector, useDispatch } from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useParams} from 'react-router-dom';
 import { httpRequest } from '../../api';
-import { dispatchConfimation} from '../../actions/authActions';
+import {setToken} from '../../api/tokenHandler';
+import {setUserData} from '../../actions/authActions';
+import * as authTypes from "../../actions/authTypes"; 
+
 
 const ConfirmationAccepted = () => {
+    const {userEmail} = useParams();
     const dispatch = useDispatch();
-    const { emailConfirmed} = useSelector(state => state.notSavedAuth);
-    const history = useHistory()
-
+   
     useEffect(()=>{
-      
+     
        (async()=>{
-        console.log('hello')
          try{
-          const data = await httpRequest.get('/auth/confirmed');
-          console.log('data:::', data)
+          const {data} = await httpRequest.get(`/auth/confirmed/${userEmail}`);
+          dispatch({type:authTypes.FETCH_SUCCESS}) 
+          dispatch(setUserData(data.userObj))  
+          setToken(data.token)
          }catch(err){
            console.log(err)
          }
        })()
-     },[])
+     },[userEmail,dispatch])
 
     
      
@@ -29,7 +32,7 @@ const ConfirmationAccepted = () => {
         <div>
             <h1>Thank you for confirming!</h1>
             <h2>Wellcome abord! hope you enjoy our site.</h2>
-            <h2>Now you can start expoloring our owesome vidio collection</h2>
+            <h2>Now you can start expoloring our owesome video collection</h2>
 
         </div>
     )
