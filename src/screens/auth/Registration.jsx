@@ -18,9 +18,11 @@ const Registration = () => {
   const handleSubmitForm = async (values) => {
     try{
     localStorage.removeItem("email");
+    localStorage.removeItem("rememberMe");
     const error = await dispatch(submitFormLogics(values,'register'))
     setErrorMessage(error)
     localStorage.setItem("email", values.email);
+    localStorage.setItem("rememberMe", values.rememberMe);
     } catch (err) {
       console.log(err);
     }

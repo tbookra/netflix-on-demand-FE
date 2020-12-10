@@ -7,11 +7,15 @@ import { httpRequest } from '../../api';
 
 const ConfirmPleasePage = () => {
     const [userEmail, setUserEmail] = useState("");
+    const [rememberMe, setRememberMe] = useState('false');
     const { emailConfirmed} = useSelector(state => state.notSavedAuth);
     const history = useHistory()
 
     useEffect(()=>{
         setUserEmail(localStorage.getItem("email"));
+        setRememberMe(localStorage.getItem("rememberMe"))
+        localStorage.removeItem('email');
+        localStorage.removeItem('rememberMe');
         console.log('emailConfirmed',emailConfirmed)
         emailConfirmed&&history.replace('/')
       }, [history, emailConfirmed])
@@ -20,7 +24,7 @@ const ConfirmPleasePage = () => {
        
       const handleResend = async () => {
         
-        await httpRequest.post('/auth/resend', {userEmail})
+        await httpRequest.post('/auth/resend', {userEmail,rememberMe})
       }
 
     return(
