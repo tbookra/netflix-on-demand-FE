@@ -1,46 +1,54 @@
-import React from 'react'
-import clsx from 'clsx';
-import {List, Divider, ListItem, ListItemIcon, ListItemText, makeStyles, Typography} from '@material-ui/core'
-import {MoveToInbox as InboxIcon, Mail as MailIcon, Search as SearchIcon } from '@material-ui/icons';
-import { useSelector, useDispatch  } from 'react-redux';
-import {HomeIcon} from '../svgIcons';
-import * as authTypes from '../../actions/authTypes'
-import * as appTypes from '../../actions/appTypes'
-import {removeToken} from '../../api/tokenHandler'
-import {Link} from 'react-router-dom'
+import React from "react";
+import clsx from "clsx";
+import {
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import {
+  MoveToInbox as InboxIcon,
+  Mail as MailIcon,
+  Search as SearchIcon,
+  LocalMovies as LocalMoviesIcon,
+} from "@material-ui/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { HomeIcon } from "../svgIcons";
+import * as authTypes from "../../actions/authTypes";
+import * as appTypes from "../../actions/appTypes";
+import { removeToken } from "../../api/tokenHandler";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
     width: 250,
   },
   fullList: {
-    width: 'auto',
+    width: "auto",
   },
-  links: {
-    //   color:'white'
-// textDecoration: 'none'
-  },
-  dividerTitle:{
-    color: 'grey',
-    fontWeight: 'bolder',
-    marginTop: '10%',
-    textDecoration: 'underline',
-    marginLeft: '20%',
-    width: 'auto',
+  dividerTitle: {
+    color: "grey",
+    fontWeight: "bolder",
+    marginTop: "10%",
+    textDecoration: "underline",
+    marginLeft: "20%",
+    width: "auto",
   },
 });
 
-const DrawerList = ({toggleDrawer}) => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const {loggedIn} = useSelector(state => state.auth);
-  
-    const onLogout = () => {
-      dispatch({type:authTypes.SET_LOGOUT}) 
-      dispatch({type:appTypes.CLEAN_STATE})
-      removeToken();   
-    }
+const DrawerList = ({ toggleDrawer }) => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const { loggedIn } = useSelector((state) => state.auth);
 
+  const onLogout = () => {
+    dispatch({ type: authTypes.SET_LOGOUT });
+    dispatch({ type: appTypes.CLEAN_STATE });
+    removeToken();
+  }
       return (
           <div
               className={clsx(classes.list)}
@@ -60,6 +68,14 @@ const DrawerList = ({toggleDrawer}) => {
                         <ListItemIcon> <HomeIcon  /> </ListItemIcon>
                         <ListItemText primary={'HOME'} />
                     </ListItem>   
+                </Link>
+                 <Link to="/accessibleMovies">
+                  <ListItem button>
+                   <ListItemIcon>
+                    <LocalMoviesIcon />
+                   </ListItemIcon>
+                   <ListItemText primary={"Accessible Movies"} />
+                  </ListItem>
                 </Link>
               </List>
               <Divider />
@@ -115,7 +131,7 @@ const DrawerList = ({toggleDrawer}) => {
               </List> 
               {loggedIn ? <Divider /> : ""}
           </div>
-      );
-  };
-
-  export default DrawerList
+      )
+}
+        
+export default DrawerList;

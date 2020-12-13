@@ -7,3 +7,4 @@ export { default as PageButtons } from "./PageButtons";
 export { default as Pricing } from "./Pricing";
 export { default as MovieItemData } from "./MovieItemData";
 export { default as SearchedMovies } from "./SearchedMovies";
+export { default as AccessibleMoviesGrid } from "./AccessibleMoviesGrid";

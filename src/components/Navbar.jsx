@@ -1,25 +1,26 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles, IconButton } from '@material-ui/core';
-import { Brightness7, Brightness3 } from '@material-ui/icons'
-import { useSelector } from 'react-redux';
 import Drawer from './header/Drawer'
 import { Link } from 'react-router-dom'
+import { Brightness7, Brightness3 } from "@material-ui/icons";
+import { useSelector, useDispatch } from "react-redux";
+
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    justifyContent: 'space-between'
+    display: "flex",
+    justifyContent: "space-between",
   },
   title: {
-    color: '#d81f26',
-    textDecoration: 'none',
+    color: "#d81f26",
+    textDecoration: "none",
   },
   title2: {
     color: 'white',
     textDecoration: 'none',
   },
   username: {
-    width: '15%',
-    fontSize: '0.85em',
+    width: "15%",
+    fontSize: "0.85em",
   },
   darkTheme: {
     position: "absolute",
@@ -27,36 +28,36 @@ const useStyles = makeStyles({
     right: "2vw",
   },
   nav: {
-    width: '15%',
+    width: "15%",
   },
   rootDiv: {
-    marginBottom: 100
-  }
-
+    marginBottom: 100,
+  },
 });
-
 
 const Navbar = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch()
   const { loggedIn, userName } = useSelector(state => state.auth);
   const Switchicon = props.theme.palette.type === 'dark' ? <Brightness7 /> : <Brightness3 />
+
   return (
-    <div className={classes.rootDiv} >
-      <AppBar position="fixed"  >
+    <div className={classes.rootDiv}>
+      <AppBar position="fixed">
         <Toolbar className={classes.root}>
           <Typography variant="h6" className={classes.username}>
             {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
-          {/* <Switch icon={Switchicon} onChange={props.toggleDarkMode} /> */}
+          <Switch icon={Switchicon} onChange={props.toggleDarkMode} /> 
           <div className={classes.darkTheme}>
-          <IconButton
+<!--           <IconButton
             edge="end"
             color="inherit"
             aria-label="mode"
             onClick={props.toggleDarkMode}
           >
             {Switchicon}
-          </IconButton>
+          </IconButton> -->
           </div>
           <Link to='/' className={classes.title}>
             <Typography variant="h5" >
@@ -70,6 +71,6 @@ const Navbar = (props) => {
       </AppBar>
     </div>
   );
-}
+};
 
-export default Navbar 
+export default Navbar;
