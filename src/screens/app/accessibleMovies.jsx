@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { httpRequest } from "../../api";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { Typography, Container, Button, Grid } from "@material-ui/core";
 import { AccessibleMoviesGrid } from "../../components";
 

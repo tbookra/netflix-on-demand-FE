@@ -5,12 +5,11 @@ import {
   Typography,
   makeStyles,
   IconButton,
-  Switch,
 } from "@material-ui/core";
 import Drawer from "./header/Drawer";
 import { Link } from "react-router-dom";
 import { Brightness7, Brightness3 } from "@material-ui/icons";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   root: {
@@ -29,11 +28,6 @@ const useStyles = makeStyles({
     width: "15%",
     fontSize: "0.85em",
   },
-  darkTheme: {
-    position: "absolute",
-    top: "1vh",
-    right: "2vw",
-  },
   nav: {
     width: "15%",
   },
@@ -44,7 +38,6 @@ const useStyles = makeStyles({
 
 const Navbar = (props) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const { loggedIn, userName } = useSelector((state) => state.auth);
   const Switchicon =
     props.theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
@@ -56,17 +49,14 @@ const Navbar = (props) => {
           <Typography variant="h6" className={classes.username}>
             {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
-          {/* <Switch icon={Switchicon} onChange={props.toggleDarkMode} /> */}
-          <div className={classes.darkTheme}>
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="mode"
-              onClick={props.toggleDarkMode}
-            >
-              {Switchicon}
-            </IconButton>
-          </div>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="mode"
+            onClick={props.toggleDarkMode}
+          >
+            {Switchicon}
+          </IconButton>
           <Link to="/" className={classes.title}>
             <Typography variant="h5">
               NETFLIX

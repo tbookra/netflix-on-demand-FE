@@ -10,10 +10,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import {
-  MoveToInbox as InboxIcon,
-  Mail as MailIcon,
   Search as SearchIcon,
   LocalMovies as LocalMoviesIcon,
+  ExitToApp as LogoutIcon,
+  VpnKey as LoginIcon,
 } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { HomeIcon } from "../svgIcons";
@@ -22,7 +22,7 @@ import * as appTypes from "../../actions/appTypes";
 import { removeToken } from "../../api/tokenHandler";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
   },
@@ -37,7 +37,13 @@ const useStyles = makeStyles({
     marginLeft: "20%",
     width: "auto",
   },
-});
+  link: {
+    textDecoration: "none",
+  },
+  linkText: {
+    color: theme.palette.type === "light" ? "#000" : "#FFF",
+  },
+}));
 
 const DrawerList = ({ toggleDrawer }) => {
   const classes = useStyles();
@@ -48,90 +54,106 @@ const DrawerList = ({ toggleDrawer }) => {
     dispatch({ type: authTypes.SET_LOGOUT });
     dispatch({ type: appTypes.CLEAN_STATE });
     removeToken();
-  }
-      return (
-          <div
-              className={clsx(classes.list)}
-              role="presentation"
-              onClick={toggleDrawer(false)}
-              onKeyDown={toggleDrawer(false)}
-          >
-              <List>
-                <Link to={loggedIn?'/':'/Login'} className={clsx(classes.links)}>
-                    <ListItem button onClick={loggedIn ? onLogout : undefined}>
-                        <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon>
-                        <ListItemText primary={loggedIn?'Logout':'Login'} />
-                    </ListItem>   
-                </Link>
-                <Link to='/'>
-                    <ListItem button >
-                        <ListItemIcon> <HomeIcon  /> </ListItemIcon>
-                        <ListItemText primary={'HOME'} />
-                    </ListItem>   
-                </Link>
-                 <Link to="/accessibleMovies">
-                  <ListItem button>
-                   <ListItemIcon>
-                    <LocalMoviesIcon />
-                   </ListItemIcon>
-                   <ListItemText primary={"Accessible Movies"} />
-                  </ListItem>
-                </Link>
-              </List>
-              <Divider />
+  };
+  return (
+    <div
+      className={clsx(classes.list)}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        <Link to={loggedIn ? "/" : "/Login"} className={classes.link}>
+          <ListItem button onClick={loggedIn ? onLogout : undefined}>
+            <ListItemIcon>
+              {loggedIn ? <LogoutIcon /> : <LoginIcon />}
+            </ListItemIcon>
+            <ListItemText
+              primary={loggedIn ? "Logout" : "Login"}
+              className={classes.linkText}
+            />
+          </ListItem>
+        </Link>
+        <Link to="/" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary={"HOME"} className={classes.linkText} />
+          </ListItem>
+        </Link>
+        <Link to="/accessibleMovies" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <LocalMoviesIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary={"Accessible Movies"}
+              className={classes.linkText}
+            />
+          </ListItem>
+        </Link>
+      </List>
+      <Divider />
 
-              <List>
-                <Link to={'/SearchPage'}>
-                    <ListItem button >
-                        <ListItemIcon><SearchIcon /> </ListItemIcon>
-                        <ListItemText primary={'Search'} />
-                    </ListItem>   
-                </Link>
-              </List>
-              <Divider />
-                    <Typography className={clsx(classes.dividerTitle)}>Netflix Sections:</Typography>
-               <List>
-                   <Link to={"/MovieSection/popular"}>
-                    <ListItem button >
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={'Most Popular'} />
-                    </ListItem>   
-                </Link>
-                 <Link to={"/MovieSection/top_rated"}>
-                    <ListItem button >
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={"Top Rated"} />
-                    </ListItem>   
-                </Link>
-                 <Link to={"/MovieSection/trending"}>
-                    <ListItem button >
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={"Trending"} />
-                    </ListItem>   
-                </Link>
-                 <Link to={"/MovieSection/discover"}>
-                    <ListItem button >
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={"Netflix Originals"} />
-                    </ListItem>   
-                </Link>
-                 <Link to={"/MovieSection/action"}>
-                    <ListItem button >
-                        <ListItemIcon></ListItemIcon>
-                        <ListItemText primary={"Action Movies"} />
-                    </ListItem>   
-                </Link>
-              <Divider />
-                <Link to={loggedIn?'/SignoutPage':'/Login'}>
-                    <ListItem button >
-                        {/* <ListItemIcon>{loggedIn ? <MailIcon  />  : <InboxIcon /> }</ListItemIcon> */}
-                        <ListItemText primary={loggedIn?'Signout':''} />
-                    </ListItem>   
-                </Link>
-              </List> 
-              {loggedIn ? <Divider /> : ""}
-          </div>
-      )
-}
-        
+      <List>
+        <Link to="/SearchPage" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Search"} className={classes.linkText} />
+          </ListItem>
+        </Link>
+      </List>
+      <Divider />
+      <Typography className={clsx(classes.dividerTitle)}>
+        Netflix Sections:
+      </Typography>
+      <List>
+        <Link to={"/MovieSection/popular"} className={classes.link}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText
+              primary={"Most Popular"}
+              className={classes.linkText}
+            />
+          </ListItem>
+        </Link>
+        <Link to={"/MovieSection/top_rated"} className={classes.link}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText primary={"Top Rated"} className={classes.linkText} />
+          </ListItem>
+        </Link>
+        <Link to={"/MovieSection/trending"} className={classes.link}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText primary={"Trending"} className={classes.linkText} />
+          </ListItem>
+        </Link>
+        <Link to={"/MovieSection/discover"} className={classes.link}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText
+              primary={"Netflix Originals"}
+              className={classes.linkText}
+            />
+          </ListItem>
+        </Link>
+        <Link to={"/MovieSection/action"} className={classes.link}>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText
+              primary={"Action Movies"}
+              className={classes.linkText}
+            />
+          </ListItem>
+        </Link>
+      </List>
+      <Divider />
+    </div>
+  );
+};
+
 export default DrawerList;
