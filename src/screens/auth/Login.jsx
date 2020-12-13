@@ -2,28 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link,  useHistory  } from 'react-router-dom';
 import { LoginForm } from "../../forms";
 import {  useSelector, useDispatch } from 'react-redux';
-import { submitFormLogics } from '../../actions/authActions'
+import { submitFormLogics } from '../../actions/authActions';
 
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const { loggedIn} = useSelector(state => state.auth);
-  const [errorMessage, setErrorMessage] = useState('')
+   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(()=>{
     loggedIn&&history.replace('/')
   }, [history, loggedIn])
   
-  const handleSubmitForm = async (values) => { 
+  const handleSubmitForm = async (values) => {  
     try{
     const error = await dispatch(submitFormLogics(values,'login'))
-    setErrorMessage(error)
+    setErrorMessage(error) 
+     
     } catch (err) {
       console.log(err);
     }
   };
 
+  
   return (
+    
     <div>
       <h1>Login</h1>
       <LoginForm submitForm={handleSubmitForm} />

@@ -1,3 +1,4 @@
+import {Login,Registration,ChangePasswordPage,ConfirmPleasePage,SignoutPage,ConfirmationAccepted} from '../screens/auth'
 import {
   Home,
   MovieItem,
@@ -7,7 +8,6 @@ import {
   MovieSections,
   accessibleMovies,
 } from "../screens/app";
-import { Login, Registration, ChangePasswordPage } from "../screens/auth";
 
 export const routes = [
   {
@@ -19,6 +19,24 @@ export const routes = [
     path: "/SearchPage",
     component: SearchPage,
     exact: true,
+  },
+  {
+    path: "/SignoutPage",
+    component: SignoutPage,
+    exact: true,
+    
+  },
+  {
+    path: "/ConfirmPleasePage",
+    component: ConfirmPleasePage,
+    exact: true,
+    
+  },
+  {
+    path: "/auth/ConfirmationAccepted/:userEmail/:rememberMe",
+    component: ConfirmationAccepted,
+    exact: true,
+    
   },
   {
     path: "/ChangePasswordPage",

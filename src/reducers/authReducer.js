@@ -3,6 +3,7 @@ import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
+   
     case authTypes.CHANGE_PASSWORD:
       return {
         ...state,
