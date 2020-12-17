@@ -62,7 +62,7 @@ const Navbar = (props) => {
             <Typography variant="h5">
               NETFLIX
               <Typography
-                variant="h5"
+                variant="subtitle1"
                 display="inline"
                 className={classes.title2}
               >
