@@ -58,7 +58,6 @@ const Navbar = (props) => {
               color="inherit"
               aria-label="mode"
               onClick={props.toggleDarkMode}
-              // style={isSmallScreen ? { display: "hidden" } : null}
               className={classes.darkModeIcon}
             >
               {Switchicon}
@@ -66,7 +65,7 @@ const Navbar = (props) => {
           )}
 
           <Link to="/" className={classes.title}>
-            <Typography variant="h4">
+            <Typography variant="h5">
               NETFLIX
               <Typography display="inline" className={classes.title2}>
                 on
