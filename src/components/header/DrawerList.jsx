@@ -8,12 +8,16 @@ import {
   ListItemText,
   makeStyles,
   Typography,
+  useMediaQuery,
+  IconButton,
 } from "@material-ui/core";
 import {
   Search as SearchIcon,
   LocalMovies as LocalMoviesIcon,
   ExitToApp as LogoutIcon,
   VpnKey as LoginIcon,
+  Brightness7,
+  Brightness3,
 } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { HomeIcon } from "../svgIcons";
@@ -21,6 +25,7 @@ import * as authTypes from "../../actions/authTypes";
 import * as appTypes from "../../actions/appTypes";
 import { removeToken } from "../../api/tokenHandler";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -45,16 +50,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DrawerList = ({ toggleDrawer }) => {
+const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { loggedIn } = useSelector((state) => state.auth);
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
 
   const onLogout = () => {
     dispatch({ type: authTypes.SET_LOGOUT });
     dispatch({ type: appTypes.CLEAN_STATE });
     removeToken();
   };
+
+  const Switchicon =
+    theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
+
   return (
     <div
       className={clsx(classes.list)}
@@ -63,6 +73,17 @@ const DrawerList = ({ toggleDrawer }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
+        {isSmallScreen ? (
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="mode"
+            onClick={toggleDarkMode}
+            className={classes.darkModeIcon}
+          >
+            {Switchicon}
+          </IconButton>
+        ) : null}
         <Link to={loggedIn ? "/" : "/Login"} className={classes.link}>
           <ListItem button onClick={loggedIn ? onLogout : undefined}>
             <ListItemIcon>
@@ -152,8 +173,18 @@ const DrawerList = ({ toggleDrawer }) => {
         </Link>
       </List>
       <Divider />
+      <Link to={"/SignoutPage"} className={classes.link}>
+        <ListItem button>
+          <ListItemIcon></ListItemIcon>
+          <ListItemText primary={"DELETE"} className={classes.linkText} />
+        </ListItem>
+      </Link>
     </div>
   );
+};
+
+DrawerList.propTypes = {
+  toggleDrawer: PropTypes.func,
 };
 
 export default DrawerList;

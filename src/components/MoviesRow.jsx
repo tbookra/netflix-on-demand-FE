@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { insertMovie } from "../actions/appActions";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+
 const MoviesRow = ({ rowUrl, rowTitle }) => {
   const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
@@ -43,6 +45,11 @@ const MoviesRow = ({ rowUrl, rowTitle }) => {
       </div>
     </div>
   );
+};
+
+MoviesRow.propTypes = {
+  rowTitle: PropTypes.string,
+  rowUrl: PropTypes.string,
 };
 
 export default MoviesRow;

@@ -5,7 +5,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { insertMovie } from "../actions/appActions";
 import { useDispatch } from "react-redux";
 import { Grid } from "@material-ui/core";
-
+import PropTypes from "prop-types";
 const AccessibleMoviesGrid = ({ accessibleMovies }) => {
   const dispatch = useDispatch();
 
@@ -23,6 +23,10 @@ const AccessibleMoviesGrid = ({ accessibleMovies }) => {
       <Skeleton variant="rect" width={210} height={118} />
     )
   );
+};
+
+AccessibleMoviesGrid.propTypes = {
+  accessibleMovies: PropTypes.array,
 };
 
 export default AccessibleMoviesGrid;

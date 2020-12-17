@@ -6,8 +6,11 @@ const newPasswordSchema = yup.object({
     .string()
     .required(errorMessages("Email"))
     .email(errorMessages("Email", "Invalid")),
-   new_password: yup.string().required(errorMessages("new_Password")).min(5).max(24),
- 
+  new_password: yup
+    .string()
+    .required(errorMessages("new_Password"))
+    .min(5)
+    .max(24),
 });
 
 export default newPasswordSchema;
