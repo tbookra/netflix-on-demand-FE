@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -164,6 +165,11 @@ const Pricing = ({ addMovie, buyMembership }) => {
       </Container>
     </Container>
   );
+};
+
+Pricing.propTypes = {
+  addMovie: PropTypes.func,
+  buyMembership: PropTypes.func,
 };
 
 export default Pricing;

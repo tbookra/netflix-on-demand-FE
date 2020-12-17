@@ -21,6 +21,7 @@ import * as authTypes from "../../actions/authTypes";
 import * as appTypes from "../../actions/appTypes";
 import { removeToken } from "../../api/tokenHandler";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -154,6 +155,10 @@ const DrawerList = ({ toggleDrawer }) => {
       <Divider />
     </div>
   );
+};
+
+DrawerList.propTypes = {
+  toggleDrawer: PropTypes.func,
 };
 
 export default DrawerList;

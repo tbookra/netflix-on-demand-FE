@@ -3,6 +3,8 @@ import { Button, Checkbox } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
 import { loginSchema } from "../validation";
+import PropTypes from "prop-types";
+
 const LoginForm = (props) => {
   return (
     <div>
@@ -28,8 +30,8 @@ const LoginForm = (props) => {
               errors={props.touched.email && props.errors.email}
             />
             <Input
-              name="password" 
-              type="password" 
+              name="password"
+              type="password"
               label="Password"
               placeholder="PASSWORD"
               value={props.values.password}
@@ -57,6 +59,10 @@ const LoginForm = (props) => {
       </Formik>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  submitForm: PropTypes.func,
 };
 
 export default LoginForm;

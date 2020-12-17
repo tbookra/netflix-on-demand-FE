@@ -10,6 +10,7 @@ import Drawer from "./header/Drawer";
 import { Link } from "react-router-dom";
 import { Brightness7, Brightness3 } from "@material-ui/icons";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -77,6 +78,11 @@ const Navbar = (props) => {
       </AppBar>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  theme: PropTypes.object,
+  toggleDarkMode: PropTypes.func,
 };
 
 export default Navbar;
