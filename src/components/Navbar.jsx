@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -44,9 +44,6 @@ const Navbar = (props) => {
   const Switchicon =
     props.theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
-  useEffect(() => {
-    console.log(props.theme);
-  }, [props]);
 
   return (
     <div className={classes.rootDiv}>

@@ -1,22 +1,30 @@
-import React from 'react';
-import Fab from '@material-ui/core/Fab';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import React from "react";
+import Fab from "@material-ui/core/Fab";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-const PageButtons = ({handlePageMove}) => { 
-    return(
-        <div className= "page_buttons">
-            <Fab variant="extended" color="primary" onClick={()=> handlePageMove( "Down")}>
-                <ArrowBackIcon  /> 
-                Page Down
-            </Fab>
+const PageButtons = ({ handlePageMove }) => {
+  return (
+    <div className="page_buttons">
+      <Fab
+        variant="extended"
+        color="primary"
+        onClick={() => handlePageMove("Down")}
+      >
+        <ArrowBackIcon />
+        Page Down
+      </Fab>
 
-            <Fab variant="extended" color="primary" onClick={()=> handlePageMove( "Up")}>
-                <ArrowForwardIcon  />
-                Page Up 
-            </Fab>
-        </div>
-    )
-}
+      <Fab
+        variant="extended"
+        color="primary"
+        onClick={() => handlePageMove("Up")}
+      >
+        <ArrowForwardIcon />
+        Page Up
+      </Fab>
+    </div>
+  );
+};
 
 export default PageButtons;

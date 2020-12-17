@@ -2,9 +2,9 @@ export const initialState = {
   auth: {
     userName: null,
     isFetching: false,
-    loggedIn: false, 
+    loggedIn: false,
     changePassword: false,
-   },
+  },
   notSavedAuth: {
     waiting_for_confirmaion: false,
     emailConfirmed: false,
@@ -12,6 +12,5 @@ export const initialState = {
   mainApp: {
     currentMovie: {},
     movieFetchingError: null,
-  }
-
+  },
 };

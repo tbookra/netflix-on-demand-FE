@@ -10,7 +10,6 @@ const PasswordChange = (props) => {
         initialValues={{
           email: "",
           new_password: "",
-          
         }}
         validationSchema={newPasswordSchema}
         onSubmit={(values) => props.submitForm(values)}
@@ -27,7 +26,7 @@ const PasswordChange = (props) => {
               handleBlur={props.handleBlur("email")}
               errors={props.touched.email && props.errors.email}
             />
-            
+
             <Input
               name="new_password"
               type="password"
@@ -37,7 +36,6 @@ const PasswordChange = (props) => {
               handleBlur={props.handleBlur("new_password")}
               errors={props.touched.new_password && props.errors.new_password}
             />
-            
 
             <Button
               variant="outlined"
