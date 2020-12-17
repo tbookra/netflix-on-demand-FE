@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Toolbar,
   Typography,
   makeStyles,
   IconButton,
+  useMediaQuery,
 } from "@material-ui/core";
 import Drawer from "./header/Drawer";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ import { Brightness7, Brightness3 } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
@@ -35,13 +36,17 @@ const useStyles = makeStyles({
   rootDiv: {
     marginBottom: 100,
   },
-});
+}));
 
 const Navbar = (props) => {
   const classes = useStyles();
   const { loggedIn, userName } = useSelector((state) => state.auth);
   const Switchicon =
     props.theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
+  useEffect(() => {
+    console.log(props.theme);
+  }, [props]);
 
   return (
     <div className={classes.rootDiv}>
@@ -50,29 +55,30 @@ const Navbar = (props) => {
           <Typography variant="h6" className={classes.username}>
             {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="mode"
-            onClick={props.toggleDarkMode}
-          >
-            {Switchicon}
-          </IconButton>
+          {isSmallScreen ? null : (
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="mode"
+              onClick={props.toggleDarkMode}
+              // style={isSmallScreen ? { display: "hidden" } : null}
+              className={classes.darkModeIcon}
+            >
+              {Switchicon}
+            </IconButton>
+          )}
+
           <Link to="/" className={classes.title}>
-            <Typography variant="h5">
+            <Typography variant="h4">
               NETFLIX
-              <Typography
-                variant="subtitle1"
-                display="inline"
-                className={classes.title2}
-              >
+              <Typography display="inline" className={classes.title2}>
                 on
               </Typography>
               DEMAND
             </Typography>
           </Link>
           <div className={classes.nav}>
-            <Drawer />
+            <Drawer theme={props.theme} toggleDarkMode={props.toggleDarkMode} />
           </div>
         </Toolbar>
       </AppBar>

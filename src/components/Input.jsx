@@ -3,7 +3,6 @@ import { TextField } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 const Input = (props) => {
-  console.log(props);
   return (
     <div>
       <TextField
