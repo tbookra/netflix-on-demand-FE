@@ -20,7 +20,6 @@ const SearchedMovies = ({ searchString, page, handlePageMove }) => {
           const {
             data: { results },
           } = await tmdb.get(url);
-          console.log(results);
           const filterResult = results.filter(
             (movie) => movie.poster_path != null
           );
