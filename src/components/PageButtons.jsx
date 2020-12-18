@@ -1,5 +1,5 @@
 import React from "react";
-import Fab from "@material-ui/core/Fab";
+import {Fab} from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 

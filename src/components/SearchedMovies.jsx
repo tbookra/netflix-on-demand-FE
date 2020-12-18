@@ -32,7 +32,7 @@ const SearchedMovies = ({ searchString, page, handlePageMove }) => {
   }, [searchString, page]);
 
   return (
-    <div>
+    <Container>
       <Container maxWidth="lg">
         {!searchString || (movies.length < 20 && page === 1) ? (
           ""
@@ -40,22 +40,22 @@ const SearchedMovies = ({ searchString, page, handlePageMove }) => {
           <PageButtons handlePageMove={handlePageMove} />
         )}
         {movies.length > 0 ? (
-          <div id="moviesSection">
+          <Container id="moviesSection">
             {movies.map((movie, index) =>
               movie ? (
-                <div key={index} className="moviesRowItem">
+                <Container key={index} className="moviesRowItem">
                   <Link
                     to={`/movieItem/${movie.id}`}
                     onClick={() => dispatch(insertMovie(movie.id))}
                   >
                     <img src={getMovieImgByPath(movie.poster_path)} alt="img" />
                   </Link>
-                </div>
+                </Container>
               ) : (
                 <Skeleton variant="rect" width={210} height={118} />
               )
             )}
-          </div>
+          </Container>
         ) : (
           <Skeleton
             variant="rect"
@@ -71,7 +71,7 @@ const SearchedMovies = ({ searchString, page, handlePageMove }) => {
           <PageButtons handlePageMove={handlePageMove} />
         )}
       </Container>
-    </div>
+    </Container>
   );
 };
 

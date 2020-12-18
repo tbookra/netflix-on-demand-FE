@@ -1,10 +1,10 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import { TextField, Container } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 const Input = (props) => {
   return (
-    <div>
+    <Container>
       <TextField
         variant="outlined"
         color="primary"
@@ -17,7 +17,7 @@ const Input = (props) => {
         onBlur={props.handleBlur}
       />
       {props.errors && <p style={{ color: "red" }}>{props.errors}</p>}
-    </div>
+    </Container>
   );
 };
 

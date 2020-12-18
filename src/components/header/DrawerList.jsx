@@ -8,6 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Typography,
+  Container,
   useMediaQuery,
   IconButton,
 } from "@material-ui/core";
@@ -66,7 +67,7 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
     theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
 
   return (
-    <div
+    <Container
       className={clsx(classes.list)}
       role="presentation"
       onClick={toggleDrawer(false)}
@@ -179,7 +180,7 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
           <ListItemText primary={"DELETE"} className={classes.linkText} />
         </ListItem>
       </Link>
-    </div>
+    </Container>
   );
 };
 

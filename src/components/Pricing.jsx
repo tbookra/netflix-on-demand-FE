@@ -119,7 +119,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   className={classes.cardHeader}
                 />
                 <CardContent>
-                  <div className={classes.cardPricing}>
+                  <Container className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
                     </Typography>
@@ -130,7 +130,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
                         ? "/mo"
                         : "/yr"}
                     </Typography>
-                  </div>
+                  </Container>
                   <ul>
                     {tier.description.map((line) => (
                       <Typography

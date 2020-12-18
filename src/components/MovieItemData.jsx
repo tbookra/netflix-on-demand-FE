@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player/youtube";
 import { tmdb } from "../api";
 import { youtubeBaseUrl, getMovieVideo } from "../config/movies-config";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress,Typography, Container } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 const MovieItemData = () => {
@@ -28,19 +28,19 @@ const MovieItemData = () => {
 
   if (isVideoExists !== null && !isVideoExists) {
     return (
-      <div>
-        <h1>{currentMovie.original_title}</h1>
-        <h2>Sorry this Movie has no video to share</h2>
-      </div>
+      <Container>
+        <Typography variant='h3' gutterBottom>{currentMovie.original_title}</Typography>
+        <Typography variant='body1'>Sorry this Movie has no video to share</Typography>
+      </Container>
     );
   }
 
   return (
-    <div className="movieItemDataRoot">
+    <Container className="movieItemDataRoot">
       <h1>{currentMovie.original_title}</h1>
 
       {videoKey ? (
-        <div className="player-wrapper">
+        <Container className="player-wrapper">
           <ReactPlayer
             className="react-player"
             url={youtubeBaseUrl(videoKey)}
@@ -48,13 +48,13 @@ const MovieItemData = () => {
             height="50%"
             controls
           />
-        </div>
+        </Container>
       ) : (
-        <div className="loading">
+        <Container className="loading">
           <CircularProgress size={100} />
-        </div>
+        </Container>
       )}
-    </div>
+    </Container>
   );
 };
 
