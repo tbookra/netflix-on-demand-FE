@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button, Typography, Container } from "@material-ui/core";
 import { httpRequest } from "../../api";
 
 const ConfirmPleasePage = () => {
@@ -23,17 +23,17 @@ const ConfirmPleasePage = () => {
   };
 
   return (
-    <div>
-      <h1>Please confirm your Email account at {userEmail}</h1>
-      <p>
+    <Container>
+      <Typography variant='h4' gutterBottom>Please confirm your Email account at {userEmail}</Typography>
+      <Typography variant="subtitle2" gutterBottom>
         if you haven't recieved an Email from us, please check if the Email
         above is correct{" "}
-      </p>
-      <p>
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
         to resend the email please press{" "}
         <Button onClick={handleResend}>HERE</Button>
-      </p>
-    </div>
+      </Typography>
+    </Container>
   );
 };
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
+import { Container} from '@material-ui/core';
+
 import Input from "../components/Input";
 import { searchSchema } from "../validation";
 
@@ -15,7 +17,7 @@ const SearchForm = (props) => {
       validationSchema={searchSchema}
     >
       {(props) => (
-        <div>
+        <Container>
           <Input
             name="searchString"
             type="text"
@@ -30,7 +32,7 @@ const SearchForm = (props) => {
               });
             }}
           />
-        </div>
+        </Container>
       )}
     </Formik>
   );

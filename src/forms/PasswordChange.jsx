@@ -2,10 +2,12 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
+import { Container} from '@material-ui/core';
+
 import { newPasswordSchema } from "../validation";
 const PasswordChange = (props) => {
   return (
-    <div>
+    <Container>
       <Formik
         initialValues={{
           email: "",
@@ -15,7 +17,7 @@ const PasswordChange = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <div>
+          <Container>
             <Input
               name="email"
               type="text"
@@ -45,10 +47,10 @@ const PasswordChange = (props) => {
             >
               Submit
             </Button>
-          </div>
+          </Container>
         )}
       </Formik>
-    </div>
+    </Container>
   );
 };
 

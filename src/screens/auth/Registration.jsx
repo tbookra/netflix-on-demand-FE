@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import {Typography, Container} from '@material-ui/core';
 
 import { useSelector, useDispatch } from "react-redux";
 import { RegistrationForm } from "../../forms";
@@ -30,11 +31,11 @@ const Registration = () => {
     }
   };
   return (
-    <div>
-      <h1>Sign In</h1>
+    <Container>
+      <Typography variant='h3' gutterBottom >Sign In</Typography>
       <RegistrationForm submitForm={handleSubmitForm} />
       {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
-    </div>
+    </Container>
   );
 };
 

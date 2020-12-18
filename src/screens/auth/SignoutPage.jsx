@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { httpRequest } from "../../api";
 import { useSelector, useDispatch } from "react-redux";
-import Button from "@material-ui/core/Button";
+import {Button, Typography, Container} from "@material-ui/core";
 import { removeToken } from "../../api/tokenHandler";
 import * as authTypes from "../../actions/authTypes";
 
@@ -30,12 +30,12 @@ const SignoutPage = () => {
   };
 
   return (
-    <div>
-      <h1>Signing Out</h1>
+    <Container>
+      <Typography variant='h3' gutterBottom>Signing Out</Typography>
       <Button variant="contained" color="secondary" onClick={handleSignout}>
         Click Here to Sign Out
       </Button>
-    </div>
+    </Container>
   );
 };
 
