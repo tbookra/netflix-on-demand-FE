@@ -3,6 +3,8 @@ import { Button } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
 import { newPasswordSchema } from "../validation";
+import PropTypes from "prop-types";
+
 const PasswordChange = (props) => {
   return (
     <div>
@@ -50,6 +52,10 @@ const PasswordChange = (props) => {
       </Formik>
     </div>
   );
+};
+
+PasswordChange.propTypes = { 
+  submitForm: PropTypes.func,
 };
 
 export default PasswordChange;

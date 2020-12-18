@@ -2,6 +2,8 @@ import React from "react";
 import { Formik } from "formik";
 import Input from "../components/Input";
 import { searchSchema } from "../validation";
+import PropTypes from "prop-types";
+
 
 const SearchForm = (props) => {
   return (
@@ -34,6 +36,10 @@ const SearchForm = (props) => {
       )}
     </Formik>
   );
+};
+
+SearchForm.propTypes = { 
+  setString: PropTypes.func,
 };
 
 export default SearchForm;

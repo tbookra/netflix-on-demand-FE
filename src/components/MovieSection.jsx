@@ -8,6 +8,9 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { insertMovie } from "../actions/appActions";
 import { useDispatch } from "react-redux";
 import * as appTypes from "../actions/appTypes";
+import PropTypes from "prop-types";
+
+
 const MovieSection = ({ sectionUrl, section, handlePageMove }) => {
   const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
@@ -51,5 +54,11 @@ const MovieSection = ({ sectionUrl, section, handlePageMove }) => {
     </div>
   );
 };
+
+MovieSection.prototype = {
+  section: PropTypes.string,
+  sectionUrl: PropTypes.string,
+  handlePageMove: PropTypes.func,
+}
 
 export default MovieSection;
