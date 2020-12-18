@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { httpRequest } from "../../api";
 import { MovieItemData } from "../../components";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Container } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { setChangePassword } from "../../actions/changePasswordAction";
 
@@ -44,9 +44,9 @@ const MovieItem = () => {
   }
 
   return isAccessible ? (
-    <div>
+    <Container>
       <MovieItemData />
-    </div>
+    </Container>
   ) : (
     <Redirect to={`/purchasePage/${currentMovie.id}`} />
   );
