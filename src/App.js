@@ -15,22 +15,27 @@ const App = () => {
       <div className="App ui container">
         <Navbar toggleDarkMode={toggleDarkMode} theme={themeConfig} />
         <Switch>
-          {routes.map((route, index) =>
-            route.privateRoute ? (
-              <PrivateRoute
-                key={index}
-                path={route.path}
-                component={route.component}
-                exact={route.exact}
-              />
-            ) : (
-              <Route
-                key={index}
-                path={route.path}
-                component={route.component}
-                exact={route.exact}
-              />
-            )
+          {routes.map(
+            ({ path, privateRoute, exact, component: Component }, index) =>
+              privateRoute ? (
+                <PrivateRoute
+                  key={index}
+                  path={path}
+                  component={Component}
+                  exact={exact}
+                />
+              ) : (
+                <Route
+                  key={index}
+                  path={path}
+                  render={(props) => (
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                      <Component {...props} />
+                    </React.Suspense>
+                  )}
+                  exact={exact}
+                />
+              )
           )}
         </Switch>
       </div>
