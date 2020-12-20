@@ -3,6 +3,7 @@ import { tmdb } from "../api";
 import { getMovieImgByPath } from "../config/movies-config";
 import { Link } from "react-router-dom";
 import Skeleton from "@material-ui/lab/Skeleton";
+import {Typography, Container} from '@material-ui/core';
 import { insertMovie } from "../actions/appActions";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
@@ -25,25 +26,25 @@ const MoviesRow = ({ rowUrl, rowTitle }) => {
   }, [rowUrl]);
 
   return (
-    <div>
-      <h3>{rowTitle}</h3>
-      <div id="moviesRow">
+    <Container>
+      <Typography variant='h6' gutterBottom display="block">{rowTitle}</Typography>
+      <Container id="moviesRow">
         {movies.map((movie, index) =>
           movie ? (
-            <div key={index} className="moviesRowItem">
+            <Container key={index} className="moviesRowItem">
               <Link
                 to={`/movieItem/${movie.id}`}
                 onClick={() => dispatch(insertMovie(movie.id))}
               >
                 <img src={getMovieImgByPath(movie.poster_path)} alt="img" />
               </Link>
-            </div>
+            </Container>
           ) : (
             <Skeleton variant="rect" width={210} height={118} />
           )
         )}
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 

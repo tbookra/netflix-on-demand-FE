@@ -64,7 +64,7 @@ const SearchPage = (props) => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <Container className={classes.paper}>
         <Avatar className={classes.avatar}>
           <SearchIcon />
         </Avatar>
@@ -72,9 +72,9 @@ const SearchPage = (props) => {
           Search your favorate show here
         </Typography>
 
-        <div className={classes.form}>
+        <Container className={classes.form}>
           <SearchForm setString={setString} />
-        </div>
+        </Container>
 
         <div className={classes.search_results}>
           <SearchedMovies
@@ -85,7 +85,7 @@ const SearchPage = (props) => {
         </div>
 
         <Typography component="h1" variant="h5"></Typography>
-      </div>
+      </Container>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox } from "@material-ui/core";
+import { Button, Checkbox, Container } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
 import { registrationSchema } from "../validation";
@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 const RegistrationForm = (props) => {
   return (
-    <div>
+    <Container>
       <Formik
         initialValues={{
           email: "",
@@ -19,7 +19,7 @@ const RegistrationForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <div>
+          <Container>
             <Input
               name="email"
               type="text"
@@ -64,10 +64,10 @@ const RegistrationForm = (props) => {
             >
               Registration
             </Button>
-          </div>
+          </Container>
         )}
       </Formik>
-    </div>
+    </Container>
   );
 };
 

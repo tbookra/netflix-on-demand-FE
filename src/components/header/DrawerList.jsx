@@ -8,6 +8,7 @@ import {
   ListItemText,
   makeStyles,
   Typography,
+  Container,
   useMediaQuery,
   IconButton,
 } from "@material-ui/core";
@@ -66,7 +67,7 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
     theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
 
   return (
-    <div
+    <Container
       className={clsx(classes.list)}
       role="presentation"
       onClick={toggleDrawer(false)}
@@ -103,17 +104,19 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
             <ListItemText primary={"HOME"} className={classes.linkText} />
           </ListItem>
         </Link>
-        <Link to="/accessibleMovies" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon>
-              <LocalMoviesIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Accessible Movies"}
-              className={classes.linkText}
-            />
-          </ListItem>
-        </Link>
+        {loggedIn ? (
+          <Link to="/accessibleMovies" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <LocalMoviesIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Accessible Movies"}
+                className={classes.linkText}
+              />
+            </ListItem>
+          </Link>
+        ) : null}
       </List>
       <Divider />
 
@@ -179,7 +182,7 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
           <ListItemText primary={"DELETE"} className={classes.linkText} />
         </ListItem>
       </Link>
-    </div>
+    </Container>
   );
 };
 

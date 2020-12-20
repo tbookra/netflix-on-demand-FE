@@ -38,11 +38,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = (props) => {
+const Navbar = ({ theme, toggleDarkMode }) => {
   const classes = useStyles();
   const { loggedIn, userName } = useSelector((state) => state.auth);
   const Switchicon =
-    props.theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
+    theme.palette.type === "dark" ? <Brightness7 /> : <Brightness3 />;
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
 
   return (
@@ -57,7 +57,7 @@ const Navbar = (props) => {
               edge="end"
               color="inherit"
               aria-label="mode"
-              onClick={props.toggleDarkMode}
+              onClick={toggleDarkMode}
               className={classes.darkModeIcon}
             >
               {Switchicon}
@@ -74,7 +74,7 @@ const Navbar = (props) => {
             </Typography>
           </Link>
           <div className={classes.nav}>
-            <Drawer theme={props.theme} toggleDarkMode={props.toggleDarkMode} />
+            <Drawer theme={theme} toggleDarkMode={toggleDarkMode} />
           </div>
         </Toolbar>
       </AppBar>

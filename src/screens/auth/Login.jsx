@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import {Typography, Container} from '@material-ui/core';
+
 import { LoginForm } from "../../forms";
 import { useSelector, useDispatch } from "react-redux";
 import { submitFormLogics } from "../../actions/authActions";
@@ -24,24 +26,24 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <Container>
+      <Typography variant='h3' gutterBottom>Login</Typography>
       <LoginForm submitForm={handleSubmitForm} />
-      {errorMessage && <h4 style={{ color: "red" }}>{errorMessage}</h4>}
+      {errorMessage && <Typography variant='h4' style={{ color: "red" }}>{errorMessage}</Typography>}
       {errorMessage === "need to change password" ? (
-        <div>
+        <Container>
           click <Link to="/ChangePasswordPage">HERE</Link> to change password
-        </div>
+        </Container>
       ) : (
         ""
       )}
 
-      <div style={{ margin: 20 }}></div>
+      <Container style={{ margin: 20 }}></Container>
 
-      <div>
+      <Container>
         not a member? click <Link to="/Registration">HERE</Link> to register
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 
