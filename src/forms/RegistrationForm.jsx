@@ -3,6 +3,8 @@ import { Button, Checkbox } from "@material-ui/core";
 import { Input } from "../components";
 import { Formik } from "formik";
 import { registrationSchema } from "../validation";
+import PropTypes from "prop-types";
+
 const RegistrationForm = (props) => {
   return (
     <div>
@@ -67,6 +69,10 @@ const RegistrationForm = (props) => {
       </Formik>
     </div>
   );
+};
+
+RegistrationForm.propTypes = { 
+  submitForm: PropTypes.func,
 };
 
 export default RegistrationForm;

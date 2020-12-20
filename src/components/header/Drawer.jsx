@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SwipeableDrawer, IconButton, makeStyles } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
 import DrawerList from "./DrawerList";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -57,5 +58,10 @@ const Drawer = (props) => {
     </div>
   );
 };
+
+Drawer.propTypes = {
+  theme: PropTypes.object,
+  toggleDarkMode: PropTypes.func,
+}
 
 export default Drawer;

@@ -2,6 +2,7 @@ import React from "react";
 import Fab from "@material-ui/core/Fab";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import PropTypes from "prop-types";
 
 const PageButtons = ({ handlePageMove }) => {
   return (
@@ -25,6 +26,10 @@ const PageButtons = ({ handlePageMove }) => {
       </Fab>
     </div>
   );
+};
+
+PageButtons.propTypes = { 
+  handlePageMove: PropTypes.func,
 };
 
 export default PageButtons;
