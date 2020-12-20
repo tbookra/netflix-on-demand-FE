@@ -4,4 +4,4 @@ export { default as PurchasePage } from "./PurchasePage";
 export { default as SearchPage } from "./SearchPage";
 export { default as NotFoundPage } from "./NotFoundPage";
 export { default as MovieSections } from "./MovieSections";
-export { default as accessibleMovies } from "./accessibleMovies";
+export { default as AccessibleMovies } from "./AccessibleMovies";
