@@ -72,6 +72,7 @@ export const routes = [
   {
     path: "/accessibleMovies",
     component: accessibleMovies,
+    privateRoute: true,
   },
   {
     path: "*",

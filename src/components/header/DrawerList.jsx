@@ -104,17 +104,19 @@ const DrawerList = ({ toggleDrawer, theme, toggleDarkMode }) => {
             <ListItemText primary={"HOME"} className={classes.linkText} />
           </ListItem>
         </Link>
-        <Link to="/accessibleMovies" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon>
-              <LocalMoviesIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Accessible Movies"}
-              className={classes.linkText}
-            />
-          </ListItem>
-        </Link>
+        {loggedIn ? (
+          <Link to="/accessibleMovies" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <LocalMoviesIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Accessible Movies"}
+                className={classes.linkText}
+              />
+            </ListItem>
+          </Link>
+        ) : null}
       </List>
       <Divider />
 
