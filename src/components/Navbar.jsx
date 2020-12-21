@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   username: {
     width: "15%",
-    fontSize: "0.85em",
+    fontSize: "0.75em",
   },
   nav: {
     marginLeft: '85%',
@@ -56,7 +56,7 @@ const Navbar = ({ theme, toggleDarkMode }) => {
     <div className={classes.rootDiv}>
       <AppBar position="fixed">
         <Toolbar className={isSmallScreen ? classes.root2 : classes.root}>
-          <Typography variant="h6" className={classes.username}>
+          <Typography variant="h6" className={classes.username} id='username'>
             {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
           {isSmallScreen ? null : (

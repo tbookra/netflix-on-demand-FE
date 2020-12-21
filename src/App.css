@@ -11,7 +11,9 @@
   flex-direction: row;
   overflow-x: auto;
 }
-
+#username{
+  width: 95%;
+}
 .moviesRowItem {
   margin: 0.75rem;
 }
