@@ -145,7 +145,13 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <StripeButton  price={tier.price}  addMovie={addMovie} buyMembership={buyMembership} tierTitle={tier.title}/>
+                  <StripeButton
+                    // className='stripeButton'
+                    price={tier.price} 
+                    addMovie={addMovie}
+                    buyMembership={buyMembership}
+                    tierTitle={tier.title}
+                    />
                   {/* <Button
                     fullWidth
                     variant={tier.buttonVariant}
@@ -164,7 +170,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
           ))}
         </Grid>
       </Container>
-      <Container>
+      <Container className='warning'>
         *Please use the following test credit card for payments
         <br />
         4242 4242 4242 4242  -  Exp: 01/22 - CVV: 123

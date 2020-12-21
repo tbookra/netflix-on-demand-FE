@@ -10,16 +10,12 @@ const StripeButton = ({price, addMovie, buyMembership, tierTitle}) => {
 
 const onToken = () => {
 
-    console.log("currentMovie", currentMovie)
-    console.log("tierTitle", tierTitle)
-    if (tierTitle === "Buy Movie") {
+     if (tierTitle === "Buy Movie") {
         addMovie(currentMovie.id, currentMovie.poster_path)
  } else {
      buyMembership()
     };
-                 
-    // alert('Payment Successful!')
-                }
+   }
 
     return (
         <div>

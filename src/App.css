@@ -25,7 +25,17 @@
   display: flex;
   justify-content: space-between;
 }
-
+.MuiCardActions-spacing{
+  margin-left: 30%;
+}
+/* .StripeCheckout{
+  margin-left: 70%;
+ 
+} */
+.warning{
+  margin-top: 1%;
+  color: red;
+}
 @media screen and (max-width: 1024px) {
   #moviesSection {
     grid-template-columns: auto auto auto;
