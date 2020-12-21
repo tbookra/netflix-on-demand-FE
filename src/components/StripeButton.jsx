@@ -1,13 +1,13 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import { useSelector } from "react-redux";
-
+import PropTypes from "prop-types";
 
 const StripeButton = ({price, addMovie, buyMembership, tierTitle}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_51I0O2lGpsgXPuGA6f3y2QMQuJTzo9Lotw6pHMNNQ4awMQ2ivqfbGE3ep6VTPaHdqlo9BGMSgcrQwdJ1XEtdGoWVa00etzMy8if'
     const { currentMovie } = useSelector((state) => state.mainApp);
-
+    console.log('pric1',price, typeof(price))
 const onToken = () => {
 
      if (tierTitle === "Buy Movie") {
@@ -33,6 +33,13 @@ const onToken = () => {
             />
         </div>
     )
-}
+} 
+
+StripeButton.propTypes = {
+    addMovie: PropTypes.func,
+    buyMembership: PropTypes.func,
+    tierTitle: PropTypes.string,
+    price: PropTypes.string,
+  };
 
 export default StripeButton
