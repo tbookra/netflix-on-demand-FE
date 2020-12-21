@@ -12,9 +12,8 @@ import {
   Container,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
-import { useSelector } from "react-redux";
 import StripeButton from './StripeButton';
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; 
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -70,8 +69,7 @@ const tiers = [
   },
 ];
 
-const Pricing = ({ addMovie, buyMembership }) => {
-  const { currentMovie } = useSelector((state) => state.mainApp);
+const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
   const classes = useStyles();
   return (
     <Container>
@@ -146,11 +144,11 @@ const Pricing = ({ addMovie, buyMembership }) => {
                 </CardContent>
                 <CardActions>
                   <StripeButton
-                    // className='stripeButton'
                     price={tier.price} 
                     addMovie={addMovie}
                     buyMembership={buyMembership}
                     tierTitle={tier.title}
+                    currentMovie={currentMovie}
                     />
                   {/* <Button
                     fullWidth
@@ -182,6 +180,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
 Pricing.propTypes = {
   addMovie: PropTypes.func,
   buyMembership: PropTypes.func,
+  currentMovie: PropTypes.string,
 };
 
 export default Pricing;

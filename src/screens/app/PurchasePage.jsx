@@ -33,7 +33,7 @@ const PurchasePage = () => {
   return isAddSuccessfully ? (
     <Redirect to={`/movieItem/${currentMovie.id}`} />
   ) : (
-    <Pricing addMovie={onAddMovie} buyMembership={onBuyMembership} />
+    <Pricing addMovie={onAddMovie} buyMembership={onBuyMembership} currentMovie={currentMovie} />
   );
 };
 
