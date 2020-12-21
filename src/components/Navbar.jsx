@@ -15,8 +15,14 @@ import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: "grid",
+    // justifyContent: "space-between",
+    gridTemplateColumns: '1fr 1fr 1fr 2fr'
+  },
+  root2: {
+    display: "grid",
+    // justifyContent: "space-between",
+    gridTemplateColumns: '2fr 3fr 2fr'
   },
   title: {
     color: "#d81f26",
@@ -31,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.85em",
   },
   nav: {
+    marginLeft: '85%',
     width: "15%",
   },
   rootDiv: {
@@ -48,7 +55,7 @@ const Navbar = ({ theme, toggleDarkMode }) => {
   return (
     <div className={classes.rootDiv}>
       <AppBar position="fixed">
-        <Toolbar className={classes.root}>
+        <Toolbar className={isSmallScreen ? classes.root2 : classes.root}>
           <Typography variant="h6" className={classes.username}>
             {loggedIn ? "Hello " + userName.full_name : null}
           </Typography>
@@ -58,7 +65,7 @@ const Navbar = ({ theme, toggleDarkMode }) => {
               color="inherit"
               aria-label="mode"
               onClick={toggleDarkMode}
-              className={classes.darkModeIcon}
+              className={classes.darkModeIcon + isSmallScreen ? classes.root2 : classes.root}
             >
               {Switchicon}
             </IconButton>
