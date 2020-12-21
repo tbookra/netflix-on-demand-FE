@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Button,
+  // Button,
   Card,
   CardActions,
   CardContent,
@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
 import { useSelector } from "react-redux";
+import StripeButton from './StripeButton';
 import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +73,6 @@ const tiers = [
 const Pricing = ({ addMovie, buyMembership }) => {
   const { currentMovie } = useSelector((state) => state.mainApp);
   const classes = useStyles();
-
   return (
     <Container>
       <CssBaseline />
@@ -118,7 +118,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   action={tier.title === "Pro" ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
-                <CardContent>
+                <CardContent> 
                   <Container className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
@@ -145,7 +145,8 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button
+                  <StripeButton  price={tier.price}  addMovie={addMovie} buyMembership={buyMembership} tierTitle={tier.title}/>
+                  {/* <Button
                     fullWidth
                     variant={tier.buttonVariant}
                     color="primary"
@@ -156,12 +157,17 @@ const Pricing = ({ addMovie, buyMembership }) => {
                     }}
                   >
                     {tier.buttonText}
-                  </Button>
+                  </Button> */}
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
+      </Container>
+      <Container>
+        *Please use the following test credit card for payments
+        <br />
+        4242 4242 4242 4242  -  Exp: 01/22 - CVV: 123
       </Container>
     </Container>
   );
