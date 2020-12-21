@@ -13,7 +13,7 @@ import {
   SearchPage,
   NotFoundPage,
   MovieSections,
-  accessibleMovies,
+  AccessibleMovies,
 } from "../screens/app";
 
 export const routes = [
@@ -71,7 +71,7 @@ export const routes = [
   },
   {
     path: "/accessibleMovies",
-    component: accessibleMovies,
+    component: AccessibleMovies,
     privateRoute: true,
   },
   {
