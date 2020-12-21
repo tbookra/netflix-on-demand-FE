@@ -18,16 +18,6 @@ const PrivateRoute = ({ Component, ...rest }) => {
   ) : (
     <Redirect to="/ChangePasswordPage" />
   );
-  // return !changePassword ? (
-  //   <Route
-  //     {...rest}
-  //     render={(props) =>
-  //       token ? <Component {...props} /> : <Redirect to="/Login" />
-  //     }
-  //   />
-  // ) : (
-  //   <Redirect to="/ChangePasswordPage" />
-  // );
 };
 
 PrivateRoute.propTypes = {

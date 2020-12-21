@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { httpRequest } from "../../api";
 import { useHistory, Link } from "react-router-dom";
-import { Typography, Container, Button, Grid } from "@material-ui/core";
+import {
+  Typography,
+  Container,
+  Button,
+  Grid,
+  CircularProgress,
+} from "@material-ui/core";
 import { AccessibleMoviesGrid } from "../../components";
 
 const AccessibleMovies = () => {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
   const [isMember, setIsMember] = useState(null);
   const [accessibleMovies, setAccessibleMovies] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const { data } = await httpRequest.get("/movie/getAccessibleMovies");
         if (data.isMember) return setIsMember(data.isMember);
         setAccessibleMovies(data.accessibleMovies);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -33,7 +42,15 @@ const AccessibleMovies = () => {
     }
   };
 
-  if (isMember) {
+  if (isLoading) {
+    return (
+      <Container>
+        <CircularProgress color="secondary" size={100} />
+      </Container>
+    );
+  }
+
+  if (isMember && !isLoading) {
     return (
       <Container>
         <Typography component="h4" variant="h3">
@@ -47,7 +64,7 @@ const AccessibleMovies = () => {
     );
   }
 
-  if (!accessibleMovies.length) {
+  if (!accessibleMovies.length && !isLoading) {
     return (
       <Container>
         <Typography component="h4" variant="h3">
