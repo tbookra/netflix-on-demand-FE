@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const StripeButton = ({price, addMovie, buyMembership, tierTitle,currentMovie}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_51I0O2lGpsgXPuGA6f3y2QMQuJTzo9Lotw6pHMNNQ4awMQ2ivqfbGE3ep6VTPaHdqlo9BGMSgcrQwdJ1XEtdGoWVa00etzMy8if'
-    console.log('pric1',price, typeof(price))
 const onToken = () => {
 
      if (tierTitle === "Buy Movie") {
@@ -19,7 +18,7 @@ const onToken = () => {
         <div>
             <StripeCheckout  
             label='PAY NOW'
-            name='netflixondemandproject'
+            name='netflix on demand project'
             billingAddress
             shippingAddress
             image='https://previews.123rf.com/images/andre266/andre2661102/andre266110200025/8900087-movie-elements.jpg'
