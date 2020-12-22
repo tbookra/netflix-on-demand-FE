@@ -1,50 +1,35 @@
-import {
-  Login,
-  Registration,
-  ChangePasswordPage,
-  ConfirmPleasePage,
-  SignoutPage,
-  ConfirmationAccepted,
-} from "../screens/auth";
-import {
-  Home,
-  MovieItem,
-  PurchasePage,
-  SearchPage,
-  NotFoundPage,
-  MovieSections,
-  AccessibleMovies,
-} from "../screens/app";
+import React from "react";
+import { AccessibleMovies, MovieItem, PurchasePage } from "../screens/app";
 
 export const routes = [
   {
     path: "/",
-    component: Home,
+    component: React.lazy(() => import("../screens/app/Home")),
     exact: true,
   },
   {
     path: "/SearchPage",
-    component: SearchPage,
+    component: React.lazy(() => import("../screens/app/SearchPage")),
     exact: true,
   },
   {
     path: "/SignoutPage",
-    component: SignoutPage,
+    component: React.lazy(() => import("../screens/auth/SignoutPage")),
     exact: true,
   },
   {
     path: "/ConfirmPleasePage",
-    component: ConfirmPleasePage,
+    component: React.lazy(() => import("../screens/auth/ConfirmPleasePage")),
     exact: true,
   },
   {
     path: "/auth/ConfirmationAccepted/:userEmail/:rememberMe",
-    component: ConfirmationAccepted,
+    component: React.lazy(() => import("../screens/auth/ConfirmationAccepted")),
     exact: true,
   },
   {
     path: "/ChangePasswordPage",
-    component: ChangePasswordPage,
+    component: React.lazy(() => import("../screens/auth/ChangePasswordPage")),
     exact: true,
   },
   {
@@ -59,15 +44,15 @@ export const routes = [
   },
   {
     path: "/login",
-    component: Login,
+    component: React.lazy(() => import("../screens/auth/Login")),
   },
   {
     path: "/registration",
-    component: Registration,
+    component: React.lazy(() => import("../screens/auth/Registration")),
   },
   {
     path: "/MovieSection/:section",
-    component: MovieSections,
+    component: React.lazy(() => import("../screens/app/MovieSections")),
   },
   {
     path: "/accessibleMovies",
@@ -76,6 +61,6 @@ export const routes = [
   },
   {
     path: "*",
-    component: NotFoundPage,
+    component: React.lazy(() => import("../screens/app/NotFoundPage")),
   },
 ];
