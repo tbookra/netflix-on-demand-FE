@@ -24,9 +24,7 @@ const AccessibleMovies = () => {
         if (data.isMember) return setIsMember(data.isMember);
         setAccessibleMovies(data.accessibleMovies);
         setIsLoading(false);
-        const { data } = await httpRequest.get("/movie/getAccessibleMovies");
-        if (data.isMember) return setIsMember(data.isMember);
-        setAccessibleMovies(data.accessibleMovies);
+        
       } catch (err) {
         console.log(err);
       }

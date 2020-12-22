@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.75em",
   },
   nav: {
-    marginLeft: '85%',
+    marginLeft: 'calc(40% + 3vw)',
     width: "15%",
   },
   rootDiv: {
