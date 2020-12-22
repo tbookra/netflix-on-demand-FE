@@ -34,7 +34,12 @@ export const submitFormLogics = (values, sentFrom) => async (dispatch) => {
       dispatch(setWaitingForConfirm(true));
     } else {
       dispatch({ type: authTypes.FETCH_SUCCESS });
-      dispatch(setUserData(data.userObj));
+      dispatch(
+        setUserData({
+          full_name: data.userObj.full_name,
+          email: data.userObj.email,
+        })
+      );
       setToken(data.token);
     }
   } catch (err) {

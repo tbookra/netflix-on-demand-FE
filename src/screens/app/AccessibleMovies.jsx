@@ -24,6 +24,9 @@ const AccessibleMovies = () => {
         if (data.isMember) return setIsMember(data.isMember);
         setAccessibleMovies(data.accessibleMovies);
         setIsLoading(false);
+        const { data } = await httpRequest.get("/movie/getAccessibleMovies");
+        if (data.isMember) return setIsMember(data.isMember);
+        setAccessibleMovies(data.accessibleMovies);
       } catch (err) {
         console.log(err);
       }
@@ -41,6 +44,7 @@ const AccessibleMovies = () => {
       console.log(err);
     }
   };
+
 
   if (isLoading) {
     return (
@@ -63,6 +67,7 @@ const AccessibleMovies = () => {
       </Container>
     );
   }
+
 
   if (!accessibleMovies.length && !isLoading) {
     return (
