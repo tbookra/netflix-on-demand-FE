@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Button,
+  // Button,
   Card,
   CardActions,
   CardContent,
@@ -12,8 +12,8 @@ import {
   Container,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
+import StripeButton from './StripeButton';
+import PropTypes from "prop-types"; 
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -69,10 +69,8 @@ const tiers = [
   },
 ];
 
-const Pricing = ({ addMovie, buyMembership }) => {
-  const { currentMovie } = useSelector((state) => state.mainApp);
+const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
   const classes = useStyles();
-
   return (
     <Container>
       <CssBaseline />
@@ -118,7 +116,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   action={tier.title === "Pro" ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
-                <CardContent>
+                <CardContent> 
                   <Container className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
@@ -145,7 +143,14 @@ const Pricing = ({ addMovie, buyMembership }) => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button
+                  <StripeButton
+                    price={tier.price} 
+                    addMovie={addMovie}
+                    buyMembership={buyMembership}
+                    tierTitle={tier.title}
+                    currentMovie={currentMovie}
+                    />
+                  {/* <Button
                     fullWidth
                     variant={tier.buttonVariant}
                     color="primary"
@@ -156,12 +161,17 @@ const Pricing = ({ addMovie, buyMembership }) => {
                     }}
                   >
                     {tier.buttonText}
-                  </Button>
+                  </Button> */}
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
+      </Container>
+      <Container className='warning'>
+        *Please use the following test credit card for payments
+        <br />
+        4242 4242 4242 4242  -  Exp: 01/22 - CVV: 123
       </Container>
     </Container>
   );
@@ -170,6 +180,7 @@ const Pricing = ({ addMovie, buyMembership }) => {
 Pricing.propTypes = {
   addMovie: PropTypes.func,
   buyMembership: PropTypes.func,
+  currentMovie: PropTypes.string,
 };
 
 export default Pricing;
