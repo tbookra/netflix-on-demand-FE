@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import { routes } from "./config/routes-config";
-import { Navbar, PrivateRoute } from "./components";
+import { Indicator, Navbar, PrivateRoute } from "./components";
 import { ThemeProvider, createMuiTheme, CssBaseline } from "@material-ui/core";
 import { useDarkMode } from "./hooks";
 
@@ -29,7 +29,7 @@ const App = () => {
                   key={index}
                   path={path}
                   render={(props) => (
-                    <React.Suspense fallback={<div>Loading...</div>}>
+                    <React.Suspense fallback={<Indicator />}>
                       <Component {...props} />
                     </React.Suspense>
                   )}

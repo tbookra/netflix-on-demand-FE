@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { httpRequest } from "../../api";
 import { useHistory, Link } from "react-router-dom";
-import {
-  Typography,
-  Container,
-  Button,
-  Grid,
-  CircularProgress,
-} from "@material-ui/core";
-import { AccessibleMoviesGrid } from "../../components";
+import { Typography, Container, Button, Grid } from "@material-ui/core";
+import { AccessibleMoviesGrid, Indicator } from "../../components";
 
 const AccessibleMovies = () => {
   const history = useHistory();
@@ -24,7 +18,6 @@ const AccessibleMovies = () => {
         if (data.isMember) return setIsMember(data.isMember);
         setAccessibleMovies(data.accessibleMovies);
         setIsLoading(false);
-        
       } catch (err) {
         console.log(err);
       }
@@ -43,14 +36,7 @@ const AccessibleMovies = () => {
     }
   };
 
-
-  if (isLoading) {
-    return (
-      <Container>
-        <CircularProgress color="secondary" size={100} />
-      </Container>
-    );
-  }
+  if (isLoading) return <Indicator />;
 
   if (isMember && !isLoading) {
     return (
@@ -65,7 +51,6 @@ const AccessibleMovies = () => {
       </Container>
     );
   }
-
 
   if (!accessibleMovies.length && !isLoading) {
     return (
