@@ -15,19 +15,27 @@ const AccessibleMoviesGrid = ({ accessibleMovies, handlePagination }) => {
       <Container style={{ margin: 20 }}>
         <Button
           style={{ marginRight: 10, marginLeft: 10 }}
-          onClick={() => handlePagination("down")}
+          onClick={() => {
+            if (accessibleMovies.hasPrevPage) {
+              handlePagination("down");
+            }
+          }}
         >
           Prev Page
         </Button>
         <Button
           style={{ marginRight: 10, marginLeft: 10 }}
-          onClick={() => handlePagination("up")}
+          onClick={() => {
+            if (accessibleMovies.hasNextPage) {
+              handlePagination("up");
+            }
+          }}
         >
           Next Page
         </Button>
       </Container>
       <Grid container>
-        {accessibleMovies.map((movie, index) =>
+        {accessibleMovies.currentMovies.map((movie, index) =>
           movie ? (
             <Grid
               item
@@ -51,24 +59,15 @@ const AccessibleMoviesGrid = ({ accessibleMovies, handlePagination }) => {
       </Grid>
     </Container>
   );
-  // return accessibleMovies.map((movie, index) =>
-  //   movie ? (
-  //     <Grid item xs={12} sm={4} md={3} key={index} className="moviesRowItem">
-  //       <Link
-  //         to={`/movieItem/${movie.movieId}`}
-  //         onClick={() => dispatch(insertMovie(movie.movieId))}
-  //       >
-  //         <img src={getMovieImgByPath(movie.posterPath)} alt="img" />
-  //       </Link>
-  //     </Grid>
-  //   ) : (
-  //     <Skeleton variant="rect" width={210} height={118} />
-  //   )
-  // );
 };
 
 AccessibleMoviesGrid.propTypes = {
-  accessibleMovies: PropTypes.array,
+  accessibleMovies: PropTypes.shape({
+    currentMovies: PropTypes.array,
+    hasNextPage: PropTypes.bool,
+    hasPrevPage: PropTypes.bool,
+  }),
+  handlePagination: PropTypes.func,
 };
 
 export default AccessibleMoviesGrid;
