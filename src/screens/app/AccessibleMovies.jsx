@@ -8,21 +8,27 @@ const AccessibleMovies = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [isMember, setIsMember] = useState(null);
-  const [accessibleMovies, setAccessibleMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [accessibleMovies, setAccessibleMovies] = useState({
+    currentMovies: [],
+    hasNextPage: true,
+    hasPrevPage: false,
+  });
 
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await httpRequest.get("/movie/getAccessibleMovies");
-        if (data.isMember) return setIsMember(data.isMember);
-        setAccessibleMovies(data.accessibleMovies);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
+    setIsLoading(true);
+
+    httpRequest
+      .get(`/movie/getAccessibleMovies/${currentPage}`)
+      .then((result) => {
+        console.log(result);
+        if (result.data.isMember) return setIsMember(result.data.isMember);
+        setAccessibleMovies(result.data);
+      })
+      .catch((err) => console.log(err));
+
+    setIsLoading(false);
+  }, [currentPage]);
 
   const handleCancelMembership = async () => {
     try {
@@ -36,6 +42,11 @@ const AccessibleMovies = () => {
     }
   };
 
+  const handlePagination = (diraction) => {
+    setCurrentPage((current) =>
+      diraction === "up" ? (current += 1) : (current -= 1)
+    );
+  };
   if (isLoading) return <Indicator />;
 
   if (isMember && !isLoading) {
@@ -51,12 +62,11 @@ const AccessibleMovies = () => {
       </Container>
     );
   }
-
-  if (!accessibleMovies.length && !isLoading) {
+  if (!accessibleMovies.currentMovies.length && !isLoading) {
     return (
       <Container>
         <Typography component="h4" variant="h3">
-          you have a membership
+          you dont have a membership
         </Typography>
         <Typography component="h5" variant="h4">
           <Link to="/">Start buy movies!</Link>
@@ -68,7 +78,10 @@ const AccessibleMovies = () => {
   return (
     <Container>
       <Grid container spacing={4} wrap="wrap">
-        <AccessibleMoviesGrid accessibleMovies={accessibleMovies} />
+        <AccessibleMoviesGrid
+          accessibleMovies={accessibleMovies}
+          handlePagination={handlePagination}
+        />
       </Grid>
     </Container>
   );

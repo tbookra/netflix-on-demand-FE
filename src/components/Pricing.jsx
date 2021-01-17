@@ -12,8 +12,8 @@ import {
   Container,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/StarBorder";
-import StripeButton from './StripeButton';
-import PropTypes from "prop-types"; 
+import StripeButton from "./StripeButton";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -116,7 +116,7 @@ const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
                   action={tier.title === "Pro" ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
-                <CardContent> 
+                <CardContent>
                   <Container className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
@@ -144,12 +144,12 @@ const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
                 </CardContent>
                 <CardActions>
                   <StripeButton
-                    price={tier.price} 
+                    price={tier.price}
                     addMovie={addMovie}
                     buyMembership={buyMembership}
                     tierTitle={tier.title}
                     currentMovie={currentMovie}
-                    />
+                  />
                   {/* <Button
                     fullWidth
                     variant={tier.buttonVariant}
@@ -168,10 +168,10 @@ const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
           ))}
         </Grid>
       </Container>
-      <Container className='warning'>
+      <Container className="warning">
         *Please use the following test credit card for payments
         <br />
-        4242 4242 4242 4242  -  Exp: 01/22 - CVV: 123
+        4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
       </Container>
     </Container>
   );
@@ -180,7 +180,7 @@ const Pricing = ({ addMovie, buyMembership, currentMovie }) => {
 Pricing.propTypes = {
   addMovie: PropTypes.func,
   buyMembership: PropTypes.func,
-  currentMovie: PropTypes.string,
+  currentMovie: PropTypes.object,
 };
 
 export default Pricing;
